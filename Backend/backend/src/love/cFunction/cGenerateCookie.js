@@ -5,7 +5,7 @@ const generateCookie = (statusCode, message, userKey, user, response) => {
     // Save Token
     const options = {
         exires: new Date(
-            Date.now + process.env.COOKIE_EXPIRE * 24 * 60 * 60 *1000
+            Date.now + 5 * 24 * 60 * 60 *1000
         ),
         httpOnly: true,
     }
