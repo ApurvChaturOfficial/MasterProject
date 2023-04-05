@@ -12,6 +12,8 @@ const generateCookie = (statusCode, message, userKey, user, response) => {
         sameSite: "lax"
     }
 
+    console.log(token)
+
     // Response
     response.status(statusCode).cookie('token', token, options ).json({ 
         // cookie saved in request...
