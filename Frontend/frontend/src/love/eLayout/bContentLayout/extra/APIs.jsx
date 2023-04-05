@@ -19,7 +19,7 @@ const APIs = {
     })
     .catch(error => {
         // console.log(error.response.data);
-        const serverResponse = error.response.data
+        // const serverResponse = error.response.data
         navigate(FinalRouteName.Auth.LoginRegister.LoginRoute)      
     });
   },
