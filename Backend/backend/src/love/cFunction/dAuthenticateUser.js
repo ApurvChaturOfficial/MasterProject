@@ -8,6 +8,8 @@ const authenticateUser = catchAsyncError( async (request, response, next) => {
     // Retrieve
     const { token } = request.cookies
 
+    console.log(token)
+
     // Not Found
     if (!token || token === "j:null") {
         return next(new ErrorHandler("Please login to access this resource", 401))
