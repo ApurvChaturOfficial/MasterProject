@@ -7,9 +7,6 @@ const generateCookie = (statusCode, message, userKey, user, response) => {
         exires: new Date(
             Date.now + process.env.COOKIE_EXPIRE * 24 * 60 * 60 *1000
         ),
-        sameSite : "none",
-        secure: true,
-        domain: "apurvchaturofficial.online",
         httpOnly: true
     }
 
