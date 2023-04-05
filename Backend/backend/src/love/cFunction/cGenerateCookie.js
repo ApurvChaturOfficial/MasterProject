@@ -9,7 +9,7 @@ const generateCookie = (statusCode, message, userKey, user, response) => {
         ),
         secure: false,
         httpOnly: false,
-        sameSite: None
+        sameSite: "none"
     }
 
     // Response
