@@ -1,14 +1,10 @@
 const jsonwebtoken = require('jsonwebtoken');
-const UserModel1 = require('../aMCR1/aModel/bAdministration/aUserModel') 
-const UserModel2 = require('../aMCR2/aModel/bAdministration/aUserModel')
 const catchAsyncError = require('./aCatchAsyncError');
 const ErrorHandler = require('./bErrorHandler');
 
-const authenticateUser = catchAsyncError( async (request, response, next) => {
+const authenticateUser = UserModel => catchAsyncError( async (request, response, next) => {
     // Retrieve
     const { token } = request.cookies
-
-    console.log(token)
 
     // Not Found
     if (!token || token === "j:null") {
@@ -23,9 +19,11 @@ const authenticateUser = catchAsyncError( async (request, response, next) => {
     )
 
     // Save User in Request
-    const user = process.env.ACTIVE_APP == 'AuthenticationApp' ? await UserModel1.findById(decodedData.id) :
-                 process.env.ACTIVE_APP == 'AdministrationApp' ? await UserModel2.findById(decodedData.id) :
-                 await UserModel2.findById(decodedData.id)
+    const user = await UserModel.findById(decodedData.id)
+
+    if (!user) {
+        return next(new ErrorHandler("User is removed", 401))
+    }
 
     request.user = user
     next()

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Action } from "./extra/State";
 import APIs from "./extra/APIs";
+import FinalRouteName from "../../gRoute/FinalRouteName";
+import environmentVariable from "../../dFunction/fEnvironmentVariable";
 
 
 const ContentLayout = (props) => {
@@ -114,42 +116,110 @@ const ContentLayout = (props) => {
               </a>
             </li>
 
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts">Layouts</div>
-              </a>
-
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="layouts-without-menu.html" class="menu-link">
-                    <div data-i18n="Without menu">Without menu</div>
-                  </a>
+            {environmentVariable.ACTIVE_APP === "PersonalPortfolioApp" ?
+              <React.Fragment>
+                <li class="menu-header small text-uppercase">
+                  <span class="menu-header-text">Main</span>
                 </li>
                 <li class="menu-item">
-                  <a href="layouts-without-navbar.html" class="menu-link">
-                    <div data-i18n="Without navbar">Without navbar</div>
-                  </a>
+                  <Link to={FinalRouteName.Content.Sidebar.Main.HomeRoute} class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Home</div>
+                  </Link>
                 </li>
                 <li class="menu-item">
-                  <a href="layouts-container.html" class="menu-link">
-                    <div data-i18n="Container">Container</div>
-                  </a>
+                  <Link to={FinalRouteName.Content.Sidebar.Main.AboutRoute} class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">About</div>
+                  </Link>
                 </li>
                 <li class="menu-item">
-                  <a href="layouts-fluid.html" class="menu-link">
-                    <div data-i18n="Fluid">Fluid</div>
-                  </a>
+                  <Link to={FinalRouteName.Content.Sidebar.Main.ExperienceRoute} class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Experience</div>
+                  </Link>
                 </li>
                 <li class="menu-item">
-                  <a href="layouts-blank.html" class="menu-link">
-                    <div data-i18n="Blank">Blank</div>
-                  </a>
+                  <Link to={FinalRouteName.Content.Sidebar.Main.ServiceRoute} class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Service</div>
+                  </Link>
                 </li>
-              </ul>
-            </li>
+                <li class="menu-item">
+                  <Link to={FinalRouteName.Content.Sidebar.Main.PortfolioRoute} class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Portfolio</div>
+                  </Link>
+                </li>
+                <li class="menu-item">
+                  <Link to={FinalRouteName.Content.Sidebar.Main.PortfolioCardRoute} class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Portfolio Card</div>
+                  </Link>
+                </li>
+                <li class="menu-item">
+                  <Link to={FinalRouteName.Content.Sidebar.Main.EventRoute} class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Event</div>
+                  </Link>
+                </li>
+                <li class="menu-item">
+                  <Link to={FinalRouteName.Content.Sidebar.Main.EventCardRoute} class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Event Card</div>
+                  </Link>
+                </li>
+                <li class="menu-item">
+                  <Link to={FinalRouteName.Content.Sidebar.Main.BlogRoute} class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Blog</div>
+                  </Link>
+                </li>
+                <li class="menu-item">
+                  <Link to={FinalRouteName.Content.Sidebar.Main.BlogCardRoute} class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-collection"></i>
+                    <div data-i18n="Basic">Blog Card</div>
+                  </Link>
+                </li>
+              </React.Fragment>
+              :
+              null
+            }
 
             <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Administration</span>
+            </li>
+            <li class="menu-item">
+              <Link to={FinalRouteName.Content.Sidebar.Administration.UserRoute} class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">User</div>
+              </Link>
+            </li>
+            <li class="menu-item">
+              <Link to={FinalRouteName.Content.Sidebar.Administration.RoleRoute} class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">About</div>
+              </Link>
+            </li>
+            <li class="menu-item">
+              <Link to={FinalRouteName.Content.Sidebar.Administration.MenuRoute} class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">Menu</div>
+              </Link>
+            </li>
+
+            
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Setting</span>
+            </li>
+            <li class="menu-item">
+              <Link to={FinalRouteName.Content.Sidebar.Setting.BaseRoute} class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">User</div>
+              </Link>
+            </li>
+
+            {/* <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Pages</span>
             </li>
             <li class="menu-item open active">
@@ -216,6 +286,7 @@ const ContentLayout = (props) => {
                 </li>
               </ul>
             </li>
+
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
             <li class="menu-item">
               <a href="cards-basic.html" class="menu-link">
@@ -416,7 +487,7 @@ const ContentLayout = (props) => {
                 <i class="menu-icon tf-icons bx bx-file"></i>
                 <div data-i18n="Documentation">Documentation</div>
               </a>
-            </li>
+            </li> */}
           </ul>
         </aside>
 

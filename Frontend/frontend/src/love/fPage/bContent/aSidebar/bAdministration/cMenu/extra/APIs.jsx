@@ -1,7 +1,6 @@
 import { toast } from "react-toastify";
 import API from "../../../../../../aAPI/API";
 import clearFormObject from "../../../../../../dFunction/aClearFormObject";
-import FinalRouteName from "../../../../../../gRoute/FinalRouteName";
 
 
 const APIs = {
@@ -41,9 +40,7 @@ const APIs = {
         basic_info: {
           title: Redux.state.FormObject.FormValue.title,
           sub_title: Redux.state.FormObject.FormValue.subTitle,
-          image: {
-            url: "https://picsum.photos/200/300"
-          },  
+          image: Redux.state.FormObject.FormValue.image,
           status: {
             is_active: Redux.state.FormObject.FormValue.isActive === 'active' ? true : false
           }
@@ -121,9 +118,7 @@ const APIs = {
         basic_info: {
           title: Redux.state.FormObject.FormValue.title,
           sub_title: Redux.state.FormObject.FormValue.subTitle,
-          image: {
-            url: "https://picsum.photos/200/300"
-          },  
+          image: Redux.state.FormObject.FormValue.image,
           status: {
             is_active: Redux.state.FormObject.FormValue.isActive === 'active' ? true : false
           }

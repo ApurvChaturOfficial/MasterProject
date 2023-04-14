@@ -6,7 +6,8 @@ const APIBase = (props) => {
     const configuration = {
         method: props.method,
         url: props.url,
-        baseURL: "https://administration-app-backend.onrender.com", // "http://localhost:4000",
+        // baseURL: "http://localhost:4000",
+        // baseURL: "https://administration-app-backend.onrender.com",
         headers: { 
             'Content-Type': 'application/json',
         },

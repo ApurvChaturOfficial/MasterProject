@@ -10,8 +10,6 @@ const generateCookie = (statusCode, message, userKey, user, response) => {
         httpOnly: true
     }
 
-    console.log(token, process.env.COOKIE_EXPIRE)
-
     // Response
     response.status(statusCode).cookie('token', token, options ).json({ 
         // cookie saved in request...

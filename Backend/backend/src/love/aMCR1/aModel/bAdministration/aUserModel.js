@@ -134,4 +134,4 @@ schema.methods.getResetPasswordToken = async function() {
   return resetToken;
 }
 
-module.exports = mongoose.model("UserModel1", schema)
+module.exports = mongoose.model("UserModel", schema)

@@ -1,7 +1,6 @@
-const app = require("./app");
 const dotenv = require('dotenv');
-const connectDatabase = require("./love/cFunction/iConnectDatabase");
-const connectFileStorage = require("./love/cFunction/jConnectFileStorage");
+const database = require("./connection/aDatabase");
+const fileStorage = require("./connection/bFileStorage");
 
 // Uncaught Exception
 process.on("uncaughtException", (error) => {
@@ -11,16 +10,24 @@ process.on("uncaughtException", (error) => {
 })
 
 // Connect Environment Variable
-dotenv.config({path: "src/love/bConfig/aConstantConfig.env"})
+dotenv.config({path: "src/config/my.env"})
+
+// Connect App
+if (process.env.ACTIVE_APP === 'SampleAuthenticationApp') {
+    var app = require("./app/app1")
+} else if (process.env.ACTIVE_APP === 'SampleAdministrationApp') {
+    var app = require("./app/app2")
+} else if (process.env.ACTIVE_APP === 'PersonalPortfolioApp') {
+    var app = require("./app/app3")
+} else {
+    var app = require("./app/app1")
+}
 
 // Connect Database
-connectDatabase(
-    process.env.ACTIVE_APP === 'AuthenticationApp' ? process.env.DB_URL1 :
-    process.env.ACTIVE_APP === 'AdministrationApp' ? process.env.DB_URL2 : process.env.DB_URL1
-)
+database()
 
 // Connect File Storage
-connectFileStorage()
+fileStorage()
 
 // Server Listen
 const server = app.listen(process.env.PORT, () => {

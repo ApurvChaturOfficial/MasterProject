@@ -60,4 +60,4 @@ schema.pre("save", async function() {
   this.basic_info.slug = slugify(this.basic_info.title, options);
 })
 
-module.exports = mongoose.model("BaseModel2", schema)
+module.exports = mongoose.model("BaseModel", schema)
