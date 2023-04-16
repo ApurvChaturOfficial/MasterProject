@@ -9,7 +9,7 @@ const generateCookie = (statusCode, message, userKey, user, response) => {
         ),
         httpOnly: true,
         secure: true,
-        domain: "https://apurvchaturofficial.online"
+        samSite: "none"
     }
 
     // Response
