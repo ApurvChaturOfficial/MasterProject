@@ -11,6 +11,22 @@ const APIs = {
       if (serverResponse.success === true) {
         const lastObject = serverResponse.list[serverResponse.list.length - 1]
 
+        Redux.dispatch({ type: Redux.action.ReceivedObject, payload: {
+					...Redux.state.ReceivedObject,
+          // HomeList,
+          // AboutList,
+          // ExperienceList,
+          // ServiceList,
+          // PortfolioList,
+          // EventList,
+					HomeList: {
+							id: lastObject._id,
+              image: lastObject.basic_info.image,
+							title: lastObject.basic_info.title,
+							subTitle: lastObject.basic_info.sub_title,
+						}
+				} })
+
         const HomeList = {
           id: lastObject._id,
           image: lastObject.basic_info.image,
@@ -22,7 +38,7 @@ const APIs = {
           resume: lastObject.more_info.resume,
         }
 
-        APIs.AboutListAPI(Redux, HomeList)
+        // APIs.AboutListAPI(Redux, HomeList)
 
       }
     })

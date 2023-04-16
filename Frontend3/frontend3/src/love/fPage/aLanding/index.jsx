@@ -46,9 +46,9 @@ const Landing = () => {
 			<About Redux={Redux} />
 			<Experience Redux={Redux} />
 			<Service Redux={Redux} />
-			<Portfolio Redux={Redux} />
-			<Event Redux={Redux} />
-			<Blog Redux={Redux} />
+			{/* <Portfolio Redux={Redux} /> */}
+			{/* <Event Redux={Redux} /> */}
+			{/* <Blog Redux={Redux} /> */}
 			<Testimonial Redux={Redux} />
 			<Contact Redux={Redux} />
 			<Footer Redux={Redux} />

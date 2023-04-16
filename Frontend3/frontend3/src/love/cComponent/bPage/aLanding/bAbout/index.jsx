@@ -17,7 +17,7 @@ const About = ({Redux}) => {
       <div className='container about__container' >
         <div className='about__me' >
           <div className='about__me-image' >
-            <img src={object.image.url} />
+            <img src={"object.image.url"} />
           </div>
         </div>
 
