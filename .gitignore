@@ -1,4 +1,3 @@
-Backend/backend/src/config
 
 Backend/backend/node_modules
 Frontend/frontend/node_modules
@@ -11,3 +10,4 @@ Frontend1/frontend1/build
 Frontend2/frontend2/build
 Frontend3/frontend3/build
 
+Backend/backend/src/config/
