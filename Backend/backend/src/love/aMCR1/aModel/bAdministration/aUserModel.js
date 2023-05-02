@@ -117,8 +117,8 @@ schema.methods.comparePassword = async function(enteredPassword) {
 schema.methods.getAuthenticationToken = function() {
   return jsonwebtoken.sign(
     { id: this._id },
-    process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_EXPIRE}
+    "SADLKASJDKLASJDKLASJDKLASJDKLADJASKLJDAKSLDJSAKLDjASKLDJCJLFKJLFSLKDPOFOW",
+    { expiresIn: "5d"}
   )
 }
 

@@ -15,7 +15,7 @@ const authenticateUser = UserModel => catchAsyncError( async (request, response,
     // Decode Token 
     const decodedData = jsonwebtoken.verify(
         token,
-        process.env.JWT_SECRET
+        "SADLKASJDKLASJDKLASJDKLASJDKLADJASKLJDAKSLDJSAKLDjASKLDJCJLFKJLFSLKDPOFOW"
     )
 
     // Save User in Request

@@ -24,7 +24,12 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(fileUpload())
-app.use(cors({ origin:  ["http://localhost:3000", "https://apurvchaturofficial.online"], credentials: true }))
+app.use(cors({ origin:  [
+  "http://localhost:3000", 
+  "http://localhost:3001", 
+  "https://sample-administration-app.nelify.app", 
+  "https://sample-administration-app-admin.nelify.app"
+], credentials: true }))
 
 app.use("/api/v1/base", baseRoute)
 app.use("/api/v1/user", userRoute)
