@@ -116,72 +116,84 @@ const ContentLayout = (props) => {
               </a>
             </li>
 
-            {environmentVariable.ACTIVE_APP === "PersonalPortfolioApp" ?
-              <React.Fragment>
-                <li class="menu-header small text-uppercase">
-                  <span class="menu-header-text">Main</span>
-                </li>
-                <li class="menu-item">
-                  <Link to={FinalRouteName.Content.Sidebar.Main.HomeRoute} class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-collection"></i>
-                    <div data-i18n="Basic">Home</div>
-                  </Link>
-                </li>
-                <li class="menu-item">
-                  <Link to={FinalRouteName.Content.Sidebar.Main.AboutRoute} class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-collection"></i>
-                    <div data-i18n="Basic">About</div>
-                  </Link>
-                </li>
-                <li class="menu-item">
-                  <Link to={FinalRouteName.Content.Sidebar.Main.ExperienceRoute} class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-collection"></i>
-                    <div data-i18n="Basic">Experience</div>
-                  </Link>
-                </li>
-                <li class="menu-item">
-                  <Link to={FinalRouteName.Content.Sidebar.Main.ServiceRoute} class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-collection"></i>
-                    <div data-i18n="Basic">Service</div>
-                  </Link>
-                </li>
-                <li class="menu-item">
-                  <Link to={FinalRouteName.Content.Sidebar.Main.PortfolioRoute} class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-collection"></i>
-                    <div data-i18n="Basic">Portfolio</div>
-                  </Link>
-                </li>
-                <li class="menu-item">
-                  <Link to={FinalRouteName.Content.Sidebar.Main.PortfolioCardRoute} class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-collection"></i>
-                    <div data-i18n="Basic">Portfolio Card</div>
-                  </Link>
-                </li>
-                <li class="menu-item">
-                  <Link to={FinalRouteName.Content.Sidebar.Main.EventRoute} class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-collection"></i>
-                    <div data-i18n="Basic">Event</div>
-                  </Link>
-                </li>
-                <li class="menu-item">
-                  <Link to={FinalRouteName.Content.Sidebar.Main.EventCardRoute} class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-collection"></i>
-                    <div data-i18n="Basic">Event Card</div>
-                  </Link>
-                </li>
-                <li class="menu-item">
-                  <Link to={FinalRouteName.Content.Sidebar.Main.BlogRoute} class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-collection"></i>
-                    <div data-i18n="Basic">Blog</div>
-                  </Link>
-                </li>
-                <li class="menu-item">
-                  <Link to={FinalRouteName.Content.Sidebar.Main.BlogCardRoute} class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-collection"></i>
-                    <div data-i18n="Basic">Blog Card</div>
-                  </Link>
-                </li>
-              </React.Fragment>
+            {process.env.REACT_APP_ACTIVE_APP === "SampleAuthenticationApp" ?
+                <React.Fragment>
+                </React.Fragment>
+              :
+              process.env.REACT_APP_ACTIVE_APP === "SampleAdministrationApp" ?
+                <React.Fragment>
+                </React.Fragment>
+              :
+              (
+                process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" || 
+                process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" || 
+                process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp"
+              ) ?
+                <React.Fragment>
+                  <li class="menu-header small text-uppercase">
+                    <span class="menu-header-text">Main</span>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Main.HomeRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-collection"></i>
+                      <div data-i18n="Basic">Home</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Main.AboutRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-collection"></i>
+                      <div data-i18n="Basic">About</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Main.ExperienceRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-collection"></i>
+                      <div data-i18n="Basic">Experience</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Main.ServiceRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-collection"></i>
+                      <div data-i18n="Basic">Service</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Main.PortfolioRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-collection"></i>
+                      <div data-i18n="Basic">Portfolio</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Main.PortfolioCardRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-collection"></i>
+                      <div data-i18n="Basic">Portfolio Card</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Main.EventRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-collection"></i>
+                      <div data-i18n="Basic">Event</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Main.EventCardRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-collection"></i>
+                      <div data-i18n="Basic">Event Card</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Main.BlogRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-collection"></i>
+                      <div data-i18n="Basic">Blog</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Main.BlogCardRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-collection"></i>
+                      <div data-i18n="Basic">Blog Card</div>
+                    </Link>
+                  </li>
+                </React.Fragment>
               :
               null
             }

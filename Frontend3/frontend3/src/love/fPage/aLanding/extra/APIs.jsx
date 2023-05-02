@@ -11,22 +11,6 @@ const APIs = {
       if (serverResponse.success === true) {
         const lastObject = serverResponse.list[serverResponse.list.length - 1]
 
-        Redux.dispatch({ type: Redux.action.ReceivedObject, payload: {
-					...Redux.state.ReceivedObject,
-          // HomeList,
-          // AboutList,
-          // ExperienceList,
-          // ServiceList,
-          // PortfolioList,
-          // EventList,
-					HomeList: {
-							id: lastObject._id,
-              image: lastObject.basic_info.image,
-							title: lastObject.basic_info.title,
-							subTitle: lastObject.basic_info.sub_title,
-						}
-				} })
-
         const HomeList = {
           id: lastObject._id,
           image: lastObject.basic_info.image,
@@ -38,8 +22,7 @@ const APIs = {
           resume: lastObject.more_info.resume,
         }
 
-        // APIs.AboutListAPI(Redux, HomeList)
-
+        APIs.AboutListAPI(Redux, HomeList)
       }
     })
     .catch(error => {
@@ -81,7 +64,7 @@ const APIs = {
   ExperienceListAPI: (Redux, HomeList, AboutList) => {
     API.Experience.ListAPI()
     .then(response => {
-      // console.log(response.data);
+      console.log(response.data);
       const serverResponse = response.data;
 
       if (serverResponse.success === true) {
@@ -121,6 +104,7 @@ const APIs = {
 
           cards: lastObject.more_info.cards,
         }
+
         APIs.PortfolioListAPI(Redux, HomeList, AboutList, ExperienceList,  ServiceList)
       }
     })
@@ -131,7 +115,7 @@ const APIs = {
   },
 
   // Portfolio List API
-  PortfolioListAPI: (Redux, HomeList, AboutList, ExperienceList,  ServiceList) => {
+  PortfolioListAPI: (Redux, HomeList, AboutList, ExperienceList, ServiceList) => {
     API.Portfolio.ListAPI()
     .then(response => {
       // console.log(response.data);
@@ -147,8 +131,8 @@ const APIs = {
 
           cards: lastObject.relation_info.cards,
         }
-        APIs.EventListAPI(Redux, HomeList, AboutList, ExperienceList,  ServiceList, PortfolioList)
 
+        APIs.EventListAPI(Redux, HomeList, AboutList, ExperienceList,  ServiceList, PortfolioList)
       }
     })
     .catch(error => {
@@ -174,6 +158,7 @@ const APIs = {
 
           cards: lastObject.relation_info.cards,
         }
+        
         APIs.BlogListAPI(Redux, HomeList, AboutList, ExperienceList,  ServiceList, PortfolioList, EventList)
       }
     })

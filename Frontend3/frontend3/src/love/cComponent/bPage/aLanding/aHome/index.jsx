@@ -17,7 +17,7 @@ const Home = ({Redux}) => {
 				<h4 class="text-light" >{object.description}</h4>
 
 				<div className='cta' >
-					<a href={"object.resume.url"} download target='_blank' className='btn' rel="noreferrer" >Download CV</a>
+					<a href={object.resume.url} download target='_blank' className='btn' rel="noreferrer" >Download CV</a>
 					<a href='#contact'  className='btn btn-primary' >Let's Talk</a>
 				</div>
 

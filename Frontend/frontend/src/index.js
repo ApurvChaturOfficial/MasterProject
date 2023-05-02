@@ -12,9 +12,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={Store}>
-      {(environmentVariable.ACTIVE_APP === "") && <App1 />}
-      {(environmentVariable.ACTIVE_APP === "") && <App2 />}
-      {(environmentVariable.ACTIVE_APP === "PersonalPortfolioApp") && <App3 />}
+      {(process.env.REACT_APP_ACTIVE_APP === "SampleAuthenticationApp") && <App1 />}
+      {(process.env.REACT_APP_ACTIVE_APP === "SampleAdministrationApp") && <App2 />}
+      {(
+        process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" || 
+        process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" || 
+        process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp"
+      ) && <App3 />}
     </Provider>
   </React.StrictMode>
 );

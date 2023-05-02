@@ -21,8 +21,8 @@ const RouteName = {
 				RoleRoute: "role",
 				MenuRoute: "menu",
 			},
-			Main: environmentVariable.ACTIVE_APP === "SampleAuthenticationApp" ? {} :
-				environmentVariable.ACTIVE_APP === "SampleAdministrationApp" ? {
+			Main: process.env.REACT_APP_ACTIVE_APP === "SampleAuthenticationApp" ? {} :
+				process.env.REACT_APP_ACTIVE_APP === "SampleAdministrationApp" ? {
 					Sample1Route: "sample1",				
 					Sample2Route: "sample2",				
 					Sample3Route: "sample3",				
@@ -30,7 +30,11 @@ const RouteName = {
 					Sample5Route: "sample5",				
 				}
 				:
-				environmentVariable.ACTIVE_APP === "PersonalPortfolioApp" ? {
+				(
+					process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" || 
+					process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" || 
+					process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp"
+				) ? {
 					HomeRoute: "home",				
 					AboutRoute: "about",				
 					ExperienceRoute: "experience",				

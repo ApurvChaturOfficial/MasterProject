@@ -17,8 +17,12 @@ if (process.env.ACTIVE_APP === 'SampleAuthenticationApp') {
     var app = require("./app/app1")
 } else if (process.env.ACTIVE_APP === 'SampleAdministrationApp') {
     var app = require("./app/app2")
-} else if (process.env.ACTIVE_APP === 'PersonalPortfolioApp') {
-    var app = require("./app/app3")
+} else if (
+    process.env.ACTIVE_APP === 'PersonalPortfolioApp' || 
+    process.env.ACTIVE_APP === 'NehaPortfolioApp' ||
+    process.env.ACTIVE_APP === 'AnushreePortfolioApp'
+    ) {
+        var app = require("./app/app3")
 } else {
     var app = require("./app/app1")
 }

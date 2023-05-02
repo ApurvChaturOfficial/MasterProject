@@ -25,11 +25,13 @@ const blogCardRoute = require('../love/aMCR3/cRoute/cMain/jBlogCardRoute');
 const app = express()
 
 // Use
-app.use(express.json())
+app.use(express.json({
+  limit: '50mb'
+}))
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(fileUpload())
-app.use(cors({ origin:  ["https://apurvchaturofficial.online"], credentials: true }))
+app.use(cors({ origin:  ["http://localhost:3000", "http://localhost:3001", "https://apurvchaturofficial.online"], credentials: true }))
 
 app.use("/api/v1/base", baseRoute)
 app.use("/api/v1/user", userRoute)

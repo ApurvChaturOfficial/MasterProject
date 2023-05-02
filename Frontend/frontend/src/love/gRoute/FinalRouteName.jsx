@@ -22,8 +22,8 @@ const FinalRouteName = {
 				RoleRoute: `/administration/${RouteName.Content.Sidebar.Administration.RoleRoute}`,
 				MenuRoute: `/administration/${RouteName.Content.Sidebar.Administration.MenuRoute}`,
 			},
-			Main: environmentVariable.ACTIVE_APP === "SampleAuthenticationApp" ? {} :
-			environmentVariable.ACTIVE_APP === "SampleAdministrationApp" ? {
+			Main: process.env.REACT_APP_ACTIVE_APP === "SampleAuthenticationApp" ? {} :
+			process.env.REACT_APP_ACTIVE_APP === "SampleAdministrationApp" ? {
 				Sample1Route: `/main/${RouteName.Content.Sidebar.Main.Sample1Route}`,
 				Sample2Route: `/main/${RouteName.Content.Sidebar.Main.Sample2Route}`,
 				Sample3Route: `/main/${RouteName.Content.Sidebar.Main.Sample3Route}`,
@@ -31,7 +31,12 @@ const FinalRouteName = {
 				Sample5Route: `/main/${RouteName.Content.Sidebar.Main.Sample5Route}`,
 			}
 			:
-			environmentVariable.ACTIVE_APP === "PersonalPortfolioApp" ? {
+			(
+				process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" || 
+				process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" || 
+				process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp"
+			) ?
+			{
 				HomeRoute: `/main/${RouteName.Content.Sidebar.Main.HomeRoute}`,				
 				AboutRoute: `/main/${RouteName.Content.Sidebar.Main.AboutRoute}`,			
 				ExperienceRoute: `/main/${RouteName.Content.Sidebar.Main.ExperienceRoute}`,				

@@ -236,8 +236,8 @@ const API = {
 					}, 
 				},
 			},
-			Main: environmentVariable.ACTIVE_APP === "SampleAuthenticationApp" ? {} :
-				environmentVariable.ACTIVE_APP === "SampleAdministrationApp" ? {
+			Main: process.env.REACT_APP_ACTIVE_APP === "SampleAuthenticationApp" ? {} :
+				process.env.REACT_APP_ACTIVE_APP === "SampleAdministrationApp" ? {
 					Sample1: {
 						ListAPI: (props) => {
 							return (
@@ -460,7 +460,11 @@ const API = {
 					},
 				}
 				:
-				environmentVariable.ACTIVE_APP === "PersonalPortfolioApp" ? {
+				(
+					process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" || 
+					process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" || 
+					process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp"
+				) ? {
 					Home: {
 						ListAPI: (props) => {
 							return (

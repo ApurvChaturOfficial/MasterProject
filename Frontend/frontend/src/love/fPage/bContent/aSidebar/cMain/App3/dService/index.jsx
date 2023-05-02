@@ -408,7 +408,7 @@ const Service = () => {
                           <label class="form-label" for="cards">
                             Cards
                             {Redux.state.FormObject.FormValue.cards && 
-                              Redux.state.FormObject.FormValue.cards.length < 2 && 
+                              Redux.state.FormObject.FormValue.cards.length < 6 && 
                               <i class='bx bxs-plus-circle ms-2' onClick={() => EventHandler.Card.Add(Redux)}></i>
                             }
                           </label><br />
@@ -440,24 +440,24 @@ const Service = () => {
                                       </div>
                                       
                                       <div class="mb-3">
-                                        <label class="form-label" for="subTitle">Sub Title</label>
+                                        <label class="form-label" for="sub_title">Sub Title</label>
                                         <input 
                                           type="text" 
                                           class="form-control" 
-                                          id="subTitle" 
+                                          id="sub_title" 
                                           placeholder="Enter Sub Title" 
-                                          name='subTitle'
-                                          value={each.subTitle || ""}
+                                          name='sub_title'
+                                          value={each.sub_title || ""}
                                           onChange={event => EventHandler.Card.Change(event, Redux, index)}
                                         />
-                                        <div class="form-text text-danger">{Redux.state.FormObject.FormError.subTitle}</div>
+                                        <div class="form-text text-danger">{Redux.state.FormObject.FormError.sub_title}</div>
                                       </div>
                                       
                                       <div class="mb-3">
                                         <label class="form-label" for="points">
                                           Points
                                           {each.points && 
-                                            each.points.length < 2 && 
+                                            each.points.length < 10 && 
                                             <i class='bx bxs-plus-circle ms-2' onClick={() => EventHandler.Points.Add(Redux, index)}></i>
                                           }
                                         </label>
@@ -781,7 +781,7 @@ const Service = () => {
                           <label class="form-label" for="cards">
                             Cards
                             {Redux.state.FormObject.FormValue.cards && 
-                              Redux.state.FormObject.FormValue.cards.length < 2 && 
+                              Redux.state.FormObject.FormValue.cards.length < 6 && 
                               <i class='bx bxs-plus-circle ms-2' onClick={() => EventHandler.Card.Add(Redux)}></i>
                             }
                           </label><br />
@@ -830,7 +830,7 @@ const Service = () => {
                                         <label class="form-label" for="points">
                                           Points
                                           {each.points && 
-                                            each.points.length < 2 && 
+                                            each.points.length < 10 && 
                                             <i class='bx bxs-plus-circle ms-2' onClick={() => EventHandler.Points.Add(Redux, index)}></i>
                                           }
                                         </label>

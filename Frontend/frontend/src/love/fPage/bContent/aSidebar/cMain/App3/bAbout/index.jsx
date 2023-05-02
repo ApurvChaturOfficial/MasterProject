@@ -459,8 +459,8 @@ const About = () => {
                                           class="form-control" 
                                           id="subTitle" 
                                           placeholder="Enter Sub Title" 
-                                          name='subTitle'
-                                          value={each.subTitle || ""}
+                                          name='sub_title'
+                                          value={each.sub_title || ""}
                                           onChange={event => EventHandler.Card.Change(event, Redux, index)}
                                         />
                                         <div class="form-text text-danger">{Redux.state.FormObject.FormError.subTitle}</div>
@@ -825,8 +825,8 @@ const About = () => {
                                           class="form-control" 
                                           id="subTitle" 
                                           placeholder="Enter Sub Title" 
-                                          name='subTitle'
-                                          value={each.subTitle || ""}
+                                          name='sub_title'
+                                          value={each.sub_title || ""}
                                           onChange={event => EventHandler.Card.Change(event, Redux, index)}
                                         />
                                         <div class="form-text text-danger">{Redux.state.FormObject.FormError.subTitle}</div>

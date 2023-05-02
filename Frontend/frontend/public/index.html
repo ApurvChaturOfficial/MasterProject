@@ -6,13 +6,28 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
-
-    <title>Assista</title>
-
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="%PUBLIC_URL%/assets/img/favicon/favicon.ico" />
+    <% if (process.env.REACT_APP_ACTIVE_APP === 'SampleAuthenticationApp') { %>
+      <link rel="icon" type="image/x-icon" href="%PUBLIC_URL%/assets/img/favicon/favicon1.ico" />
+    <% } %>
+    
+    <% if (process.env.REACT_APP_ACTIVE_APP === 'SampleAdministrationApp') { %>
+      <link rel="icon" type="image/x-icon" href="%PUBLIC_URL%/assets/img/favicon/favicon2.ico" />
+    <% } %>
+    
+    <% if (process.env.REACT_APP_ACTIVE_APP === 'PersonalPortfolioApp') { %>
+      <link rel="icon" type="image/x-icon" href="%PUBLIC_URL%/assets/img/favicon/favicon3.ico" />
+    <% } %>
+    
+    <% if (process.env.REACT_APP_ACTIVE_APP === 'NehaPortfolioApp') { %>
+      <link rel="icon" type="image/x-icon" href="%PUBLIC_URL%/assets/img/favicon/favicon4.ico" />
+    <% } %>
+    
+    <% if (process.env.REACT_APP_ACTIVE_APP === 'AnushreePortfolioApp') { %>
+      <link rel="icon" type="image/x-icon" href="%PUBLIC_URL%/assets/img/favicon/favicon5.ico" />
+    <% } %>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,7 +60,26 @@
     <script src="%PUBLIC_URL%/assets/js/config.js"></script>
 
     <!-- Title -->
-    <title>Apurv Chatur - Admin</title>
+    <% if (process.env.REACT_APP_ACTIVE_APP === 'SampleAuthenticationApp') { %>
+      <title>Admin</title>
+    <% } %>
+    
+    <% if (process.env.REACT_APP_ACTIVE_APP === 'SampleAdministrationApp') { %>
+      <title>Admin</title>
+    <% } %>
+    
+    <% if (process.env.REACT_APP_ACTIVE_APP === 'PersonalPortfolioApp') { %>
+      <title>Apurv Chatur - Admin</title>
+    <% } %>
+    
+    <% if (process.env.REACT_APP_ACTIVE_APP === 'NehaPortfolioApp') { %>
+      <title>Neha Chourasiya - Admin</title>
+    <% } %>
+    
+    <% if (process.env.REACT_APP_ACTIVE_APP === 'AnushreePortfolioApp') { %>
+      <title>Anushree Mandape - Admin</title>
+    <% } %>
+    
   </head>
 
   <body>
