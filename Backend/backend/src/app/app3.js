@@ -32,16 +32,30 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(fileUpload())
 app.use(cors({ origin: process.env.ACTIVE_APP === 'PersonalPortfolioApp' ? [
-  "https://personal-portfolio-app-admin.nelify.app"
+  "http://localhost:3000", 
+  "http://localhost:3001", 
+  "https://personal-portfolio-app.netlify.app", 
+  "https://personal-portfolio-app-admin.netlify.app"
 ] :
-process.env.ACTIVE_APP === 'NehaPortfolioApp' ? [
-  "https://neha-portfolio-app-admin.nelify.app"
+process.env.ACTIVE_APP === 'NehaPortfolioApp' ? 
+[
+  "http://localhost:3000", 
+  "http://localhost:3001", 
+  "https://neha-portfolio-app.netlify.app", 
+  "https://neha-portfolio-app-admin.netlify.app"
 ] :
-process.env.ACTIVE_APP === 'AnushreePortfolioApp' ? [
-  "https://anushree-portfolio-app-admin.nelify.app"
+process.env.ACTIVE_APP === 'AnushreePortfolioApp' ?
+[
+  "http://localhost:3000", 
+  "http://localhost:3001", 
+  "https://anushree-portfolio-app.netlify.app", 
+  "https://anushree-portfolio-app-admin.netlify.app"
 ] :
 [
-  "https://personal-portfolio-app-admin.nelify.app"
+  "http://localhost:3000", 
+  "http://localhost:3001", 
+  "https://personal-portfolio-app.netlify.app", 
+  "https://personal-portfolio-app-admin.netlify.app"
 ], credentials: true }))
 
 app.use("/api/v1/base", baseRoute)
