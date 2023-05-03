@@ -25,9 +25,9 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(fileUpload())
 app.use(cors({ origin:  [
-  "http://localhost:3000", 
-  "http://localhost:3001", 
-  "https://sample-administration-app.nelify.app", 
+  // "http://localhost:3000", 
+  // "http://localhost:3001", 
+  // "https://sample-administration-app.nelify.app", 
   "https://sample-administration-app-admin.nelify.app"
 ], credentials: true }))
 
