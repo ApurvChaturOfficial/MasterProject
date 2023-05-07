@@ -35,6 +35,7 @@ app.use(cors({ origin: process.env.ACTIVE_APP === 'PersonalPortfolioApp' ? [
   "http://localhost:3000", 
   "http://localhost:3001", 
   "https://personal-portfolio-app.netlify.app", 
+  "https://apurvchatur.netlify.app", 
   "https://personal-portfolio-app-admin.netlify.app"
 ] :
 process.env.ACTIVE_APP === 'NehaPortfolioApp' ? 
