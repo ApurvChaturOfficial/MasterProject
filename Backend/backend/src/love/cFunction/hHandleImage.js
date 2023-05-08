@@ -10,7 +10,6 @@ const handleImage = async (target, folder, type, retrieve) => {
 
       const myCloud = await cloudinary.v2.uploader.upload(target.url, {
         folder: folder,
-        width: 150,
         crop: "scale",
       });
   
