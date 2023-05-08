@@ -10,7 +10,7 @@ const APIBase = (props) => {
             process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" ? "https://ac-personal-portfolio-app.onrender.com" : 
             process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" ? "https://ac-neha-portfolio-app.onrender.com" :
             process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp" ? "https://ac-anushree-portfolio-app.onrender.com" :
-            "https://ac-personal-portfolio-app.onrender.com"
+            "adasd"
         ),
         headers: { 
             'Content-Type': 'application/json',
