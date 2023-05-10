@@ -5,7 +5,7 @@ import { BiCheck } from "react-icons/bi";
 
 const Service = ({Redux}) => {
 	// Variables
-	const object = Redux.state.ReceivedObject.ServiceList
+	const object = Redux?.state?.ReceivedObject?.ServiceList
 
 	// JSX
 	return (

@@ -5,7 +5,7 @@ import { FaGithub } from "react-icons/fa";
 
 const Home = ({Redux}) => {
 	// Variables
-	const object = Redux.state.ReceivedObject.HomeList
+	const object = Redux?.state?.ReceivedObject?.HomeList
 
 	// JSX
 	return (

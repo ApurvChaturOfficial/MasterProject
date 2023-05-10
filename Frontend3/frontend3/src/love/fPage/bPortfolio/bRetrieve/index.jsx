@@ -39,7 +39,7 @@ const PortfolioRetrieve = () => {
 	// JSX
   return (
     <React.Fragment>
-      <Header heading={"PROJECTS"} />
+			<Header heading={"My Portfolio"} />
 
 			<section id='portfolio-card-single'>
 				<div className='container portfolio-card-single__container' >
@@ -90,7 +90,6 @@ const PortfolioRetrieve = () => {
           
 			</section>
 
-      {/* <Footer /> */}
     </React.Fragment>
   )
 }

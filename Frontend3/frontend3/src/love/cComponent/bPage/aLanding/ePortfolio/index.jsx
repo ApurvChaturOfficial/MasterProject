@@ -11,7 +11,7 @@ import FinalRouteName from '../../../../gRoute/FinalRouteName';
 
 const Portfolio = ({Redux, disable}) => {
 	// Variables
-	const object = Redux.state.ReceivedObject.PortfolioList
+	const object = Redux?.state?.ReceivedObject?.PortfolioList
 
 	// JSX	
 	return (

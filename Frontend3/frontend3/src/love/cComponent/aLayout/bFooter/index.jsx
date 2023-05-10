@@ -9,7 +9,7 @@ import Logo3 from "../../../hAssets/3.png";
 
 const Footer = ({Redux}) => {
 	// Variables
-	const object = Redux.state.ReceivedObject.HomeList
+	const object = Redux?.state?.ReceivedObject?.HomeList
 
 	// JSX	
 	return (

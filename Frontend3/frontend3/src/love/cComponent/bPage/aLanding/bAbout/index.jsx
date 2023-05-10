@@ -5,7 +5,7 @@ import { FaAward } from 'react-icons/fa';
 
 const About = ({Redux}) => {
   // Variables
-	const object = Redux.state.ReceivedObject.AboutList
+	const object = Redux?.state?.ReceivedObject?.AboutList
 
 	// JSX
   return (

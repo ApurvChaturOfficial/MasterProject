@@ -4,7 +4,7 @@ import { BsPatchCheckFill } from "react-icons/bs";
 
 const Experience = ({Redux}) => {
 	// Variables
-	const object = Redux.state.ReceivedObject.ExperienceList
+	const object = Redux?.state?.ReceivedObject?.ExperienceList
 
 	// JSX
 	return (

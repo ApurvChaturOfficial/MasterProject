@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './love/eLayout';
+import { Action } from './love/eLayout/extra/State';
 import Landing from './love/fPage/aLanding';
 import PortfolioList from './love/fPage/bPortfolio/aList';
 import PortfolioRetrieve from './love/fPage/bPortfolio/bRetrieve';
@@ -11,27 +14,36 @@ import RouteName from './love/gRoute/RouteName';
 
 
 function App() {
-    return (
+	// Redux1
+	const Redux1 = {
+		state: useSelector((fullState) => fullState.LayoutState),
+		dispatch: useDispatch(),
+		action: Action,
+	};
+
+	// JSX
+	return (
 		<BrowserRouter>
 			<React.Fragment>
 				<Routes>
-					<Route element={<Landing />} path="" />
-					
-					<Route path={`portfolio/${RouteName.Portfolio.ListRoute}`} >
-						<Route element={<PortfolioList />} index />
-						<Route element={<PortfolioRetrieve />} path={`${RouteName.Portfolio.RetrieveRoute}/:id`} />
+					<Route element={<Layout />}>
+						<Route element={<Landing Redux1={Redux1} />} path="" />
+						
+						<Route path={`portfolio`} >
+							<Route element={<PortfolioList />} path={`${RouteName.Portfolio.ListRoute}`} />
+							<Route element={<PortfolioRetrieve />} path={`${RouteName.Portfolio.RetrieveRoute}/:id`} />
+						</Route>
+						
+						<Route path={`event`} >
+							<Route element={<EventList />} path={`${RouteName.Event.ListRoute}`} />
+							<Route element={<EventRetrieve />} path={`${RouteName.Event.RetrieveRoute}/:id`} />
+						</Route>
+						
+						<Route path={`blog`} >
+							<Route element={<BlogList />} path={`${RouteName.Blog.ListRoute}`} />
+							<Route element={<BlogRetrieve />} path={`${RouteName.Blog.RetrieveRoute}/:id`} />
+						</Route>
 					</Route>
-					
-					<Route path={`event/${RouteName.Event.ListRoute}`} >
-						<Route element={<EventList />} index />
-						<Route element={<EventRetrieve />} path={`${RouteName.Event.RetrieveRoute}/:id`} />
-					</Route>
-					
-					<Route path={`blog/${RouteName.Blog.ListRoute}`} >
-						<Route element={<BlogList />} index />
-						<Route element={<BlogRetrieve />} path={`${RouteName.Blog.RetrieveRoute}/:id`} />
-					</Route>
-					
 				</Routes>
 			</React.Fragment>
 		</BrowserRouter>

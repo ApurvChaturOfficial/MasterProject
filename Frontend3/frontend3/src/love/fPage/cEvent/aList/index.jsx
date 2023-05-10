@@ -36,7 +36,6 @@ const EventList = () => {
     <React.Fragment>
 			<Header heading={Redux.state.ReceivedObject.EventList.subTitle} />
 			<Event Redux={Redux} disable />
-			{/* <Footer /> */}
     </React.Fragment>
   )
 }

@@ -42,7 +42,7 @@ const EventRetrieve = () => {
 	// JSX
   return (
     <React.Fragment>
-      <Header heading={"My Event"} />
+			<Header heading={"My Events"} />
 
 			<section id='event-card-single_'>
 				{/* <h5>{Redux.state.ReceivedObject?.EventCardRetrieve?.title}</h5>
@@ -90,8 +90,6 @@ const EventRetrieve = () => {
 					<p>{parse(Redux.state.ReceivedObject?.EventCardRetrieve?.detail || "")}</p>
 				</div>
 			</section>
-
-      <Footer />
     </React.Fragment>
   )
 }

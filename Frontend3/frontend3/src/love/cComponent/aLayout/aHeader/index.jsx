@@ -2,11 +2,11 @@ import React from 'react'
 import './index.css';
 
 
-const Header = ({Redux}) => {
+const Header = ({heading}) => {
 	// JSX	
 	return (
 		<div className='header'>
-			<a href='/#' className='header__logo' >{Redux.subTitle}</a>
+			<span className='header__logo' >{heading}</span>
 		</div>
 	)
 }

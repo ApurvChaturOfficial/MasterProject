@@ -39,7 +39,7 @@ const BlogRetrieve = () => {
 	// JSX
   return (
     <React.Fragment>
-      <Header heading={"PROJECTS"} />
+			<Header heading={"My Blogs"} />
 
 			<section id='about'>
 				{/* <h5>{Redux.state.ReceivedObject?.BlogCardRetrieve?.title}</h5>
@@ -82,8 +82,6 @@ const BlogRetrieve = () => {
 					<p>{parse(Redux.state.ReceivedObject?.BlogCardRetrieve?.detail || "")}</p>
 				</div> */}
 			</section>
-
-      <Footer />
     </React.Fragment>
   )
 }

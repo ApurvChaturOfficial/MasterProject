@@ -6,15 +6,15 @@ const FinalRouteName = {
     },
     Portfolio: {
         ListRoute: `/portfolio/${RouteName.Portfolio.ListRoute}`,
-        RetrieveRoute: `/portfolio/${RouteName.Portfolio.ListRoute}/${RouteName.Portfolio.RetrieveRoute}`,
+        RetrieveRoute: `/portfolio/${RouteName.Portfolio.RetrieveRoute}`,
     },
     Event: {
         ListRoute: `/event/${RouteName.Event.ListRoute}`,
-        RetrieveRoute: `/event/${RouteName.Event.ListRoute}/${RouteName.Event.RetrieveRoute}`,
+        RetrieveRoute: `/event/${RouteName.Event.RetrieveRoute}`,
     },
     Blog: {
         ListRoute: `/blog/${RouteName.Blog.ListRoute}`,
-        RetrieveRoute: `/blog/${RouteName.Blog.ListRoute}/${RouteName.Blog.RetrieveRoute}`,
+        RetrieveRoute: `/blogs/${RouteName.Blog.RetrieveRoute}`,
     },
 };
 

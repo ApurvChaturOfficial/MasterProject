@@ -36,7 +36,6 @@ const BlogList = () => {
     <React.Fragment>
 			<Header heading={Redux.state.ReceivedObject.BlogList.subTitle} />
 			<Blog Redux={Redux} disable />
-			{/* <Footer /> */}
     </React.Fragment>
   )
 }

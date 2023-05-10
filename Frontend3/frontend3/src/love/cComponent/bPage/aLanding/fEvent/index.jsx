@@ -14,7 +14,7 @@ import { AiOutlineSend } from 'react-icons/ai';
 
 const Event = ({Redux, disable}) => {
 	// Variables
-	const object = Redux.state.ReceivedObject.EventList
+	const object = Redux?.state?.ReceivedObject?.EventList
 
 	// JSX	
 	return (

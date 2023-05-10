@@ -11,7 +11,7 @@ import FinalRouteName from '../../../../gRoute/FinalRouteName';
 
 const Blog = ({Redux, disable}) => {
 	// Variables
-	const object = Redux.state.ReceivedObject.BlogList
+	const object = Redux?.state?.ReceivedObject?.BlogList
 
 	// JSX	
 	return (

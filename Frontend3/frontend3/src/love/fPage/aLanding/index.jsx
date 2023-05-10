@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
 import Footer from '../../cComponent/aLayout/bFooter'
 import Navbar from '../../cComponent/aLayout/cNavbar';
 import Home from '../../cComponent/bPage/aLanding/aHome'
@@ -11,47 +10,21 @@ import Event from '../../cComponent/bPage/aLanding/fEvent';
 import Blog from '../../cComponent/bPage/aLanding/gBlog';
 import Testimonial from '../../cComponent/bPage/aLanding/hTestimonial';
 import Contact from '../../cComponent/bPage/aLanding/iContact';
-import APIs from './extra/APIs';
-import { Action } from './extra/State';
 
-const Landing = () => {
-	// Redux
-	const Redux = {
-		state: useSelector((fullState) => fullState.LandingState),
-		dispatch: useDispatch(),
-		action: Action,
-	};
 
-	// API Calls
-	const APICalls = {
-		HomeListAPICall: () => APIs.HomeListAPI(Redux),
-	}
-
-	// All Renders
-	// First Render
-	useEffect(() => {
-		APICalls.HomeListAPICall()
-	}, [])
-
-	// Extra Render
-	useEffect(() => {
-		console.log(Redux.state)
-	}, [Redux.state])
-	
+const Landing = ({Redux1}) => {
 	// JSX
 	return (
 		<React.Fragment>
-			<Navbar Redux={Redux} />
-			<Home Redux={Redux} />
-			<About Redux={Redux} />
-			<Experience Redux={Redux} />
-			<Service Redux={Redux} />
-			<Portfolio Redux={Redux} />
-			<Event Redux={Redux} />
-			<Blog Redux={Redux} />
-			{/* <Testimonial Redux={Redux} /> */}
-			{/* <Contact Redux={Redux} /> */}
-			<Footer Redux={Redux} />
+			<Home Redux={Redux1} />
+			<About Redux={Redux1} />
+			<Experience Redux={Redux1} />
+			<Service Redux={Redux1} />
+			<Portfolio Redux={Redux1} />
+			<Event Redux={Redux1} />
+			<Blog Redux={Redux1} />
+			{/* <Testimonial Redux={Redux1} /> */}
+			{/* <Contact Redux={Redux1} /> */}
 		</React.Fragment>
 	)
 }

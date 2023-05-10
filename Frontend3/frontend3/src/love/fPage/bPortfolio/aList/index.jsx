@@ -35,10 +35,8 @@ const PortfolioList = () => {
   return (
 		Redux.state.ReceivedObject.PortfolioList &&
     <React.Fragment>
-			<Navbar Redux={Redux} />
-			<Header Redux={Redux.state.ReceivedObject.PortfolioList} />
+			<Header heading={Redux.state.ReceivedObject.PortfolioList.subTitle} />
 			<Portfolio Redux={Redux} disable />
-			<Footer />
     </React.Fragment>
   )
 }
