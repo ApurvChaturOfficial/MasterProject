@@ -24,9 +24,9 @@ const Portfolio = ({Redux, disable}) => {
 				</React.Fragment>
 			}
 
-			<div className='container portfolio__container' >
-				{object.cards &&
-					object.cards.map(each => {
+			{object.cards.length ?
+				<div className='container portfolio__container' >
+					{object.cards.map(each => {
 						return (
 							<article className='portfolio__item'>
 								<div className='portfolio__item-image'>
@@ -40,11 +40,13 @@ const Portfolio = ({Redux, disable}) => {
 								</div>
 							</article>
 						)
-					})
-				}
-			</div>
+					}) }
+				</div>
+				:
+				<p className='my__error' >No items to display!</p>
+			}
 
-			{!disable &&
+			{!disable && object.cards.length !== 0 &&
 				<div className='cta' >
 					<Link to={`${FinalRouteName.Portfolio.ListRoute}`} className='btn' >View All Projects</Link>
 				</div>

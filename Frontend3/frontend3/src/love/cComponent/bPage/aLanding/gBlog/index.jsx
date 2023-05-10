@@ -24,9 +24,9 @@ const Blog = ({Redux, disable}) => {
 				</React.Fragment>
 			}
 
-			<div className='container blog__container' >
-				{object.cards &&
-					object.cards.map(each => {
+			{object.cards.length ?
+				<div className='container blog__container' >
+					{object.cards.map(each => {
 						return (
 							<article className='blog__item'>
 								<div className='blog__item-image'>
@@ -36,11 +36,13 @@ const Blog = ({Redux, disable}) => {
 								<p className='text-light' >{each.basic_info.sub_title}</p>
 							</article>
 						)
-					})
-				}
-			</div>
+					}) }
+				</div>
+				:
+				<p className='my__error' >No items to display!</p>
+			}
 
-			{!disable &&
+			{!disable && object.cards.length !== 0 &&
 				<div className='cta' >
 					<Link to={`${FinalRouteName.Blog.ListRoute}`} className='btn' >View All Blogs</Link>
 				</div>

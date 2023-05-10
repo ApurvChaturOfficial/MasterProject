@@ -27,9 +27,9 @@ const Event = ({Redux, disable}) => {
 				</React.Fragment>
 			}
 
-			<div className='container event__container' >
-				{object.cards &&
-					object.cards.map(each => {
+			{object.cards.length ?
+				<div className='container event__container' >
+					{object.cards.map(each => {
 						return (
 							<article className='event__item'>
 								<div className='event__item-image'>
@@ -46,11 +46,13 @@ const Event = ({Redux, disable}) => {
 								
 							</article>
 						)
-					})
-				}
-			</div>
+					}) }
+				</div>
+				:
+				<p className='my__error' >No items to display!</p>
+			}
 
-			{!disable &&
+			{!disable && object.cards.length !== 0 &&
 				<div className='cta' >
 					<Link to={`${FinalRouteName.Event.ListRoute}`} className='btn' >View All Events</Link>
 				</div>

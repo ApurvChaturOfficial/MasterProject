@@ -32,10 +32,11 @@ const BlogList = () => {
 	
 	// JSX
   return (
+		Redux.state.ReceivedObject.BlogList &&
     <React.Fragment>
-			<Header heading={"My Blogs"} />
+			<Header heading={Redux.state.ReceivedObject.BlogList.subTitle} />
 			<Blog Redux={Redux} disable />
-			<Footer />
+			{/* <Footer /> */}
     </React.Fragment>
   )
 }

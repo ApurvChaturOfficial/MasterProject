@@ -11,7 +11,7 @@ const APIs = {
       if (serverResponse.success === true) {
         const lastObject = serverResponse.list[serverResponse.list.length - 1]
 
-        const HomeList = {
+        const HomeList = lastObject && {
           id: lastObject._id,
           image: lastObject.basic_info.image,
           title: lastObject.basic_info.title,
@@ -26,7 +26,7 @@ const APIs = {
       }
     })
     .catch(error => {
-      // console.log(error.response.data);
+      console.log(error.response.data);
       const serverResponse = error.response.data
     });
   },
@@ -41,7 +41,7 @@ const APIs = {
       if (serverResponse.success === true) {
         const lastObject = serverResponse.list[serverResponse.list.length - 1]
 
-        const AboutList = {
+        const AboutList = lastObject && {
           id: lastObject._id,
           image: lastObject.basic_info.image,
           title: lastObject.basic_info.title,
@@ -55,7 +55,7 @@ const APIs = {
       }
     })
     .catch(error => {
-        // console.log(error.response.data);
+        console.log(error.response.data);
         const serverResponse = error.response.data
     });
   },
@@ -64,13 +64,13 @@ const APIs = {
   ExperienceListAPI: (Redux, HomeList, AboutList) => {
     API.Experience.ListAPI()
     .then(response => {
-      console.log(response.data);
+      // console.log(response.data);
       const serverResponse = response.data;
 
       if (serverResponse.success === true) {
         const lastObject = serverResponse.list[serverResponse.list.length - 1]
 
-        const ExperienceList = {
+        const ExperienceList = lastObject && {
           id: lastObject._id,
           title: lastObject.basic_info.title,
           subTitle: lastObject.basic_info.sub_title,
@@ -82,7 +82,7 @@ const APIs = {
       }
     })
     .catch(error => {
-        // console.log(error.response.data);
+        console.log(error.response.data);
         const serverResponse = error.response.data
     });
   },
@@ -91,13 +91,13 @@ const APIs = {
   ServiceListAPI: (Redux, HomeList, AboutList, ExperienceList) => {
     API.Service.ListAPI()
     .then(response => {
-      console.log(response.data);
+      // console.log(response.data);
       const serverResponse = response.data;
 
       if (serverResponse.success === true) {
         const lastObject = serverResponse.list[serverResponse.list.length - 1]
 
-        const ServiceList = {
+        const ServiceList = lastObject && {
           id: lastObject._id,
           title: lastObject.basic_info.title,
           subTitle: lastObject.basic_info.sub_title,
@@ -109,7 +109,7 @@ const APIs = {
       }
     })
     .catch(error => {
-        // console.log(error.response.data);
+        console.log(error.response.data);
         const serverResponse = error.response.data
     });
   },
@@ -124,7 +124,7 @@ const APIs = {
       if (serverResponse.success === true) {
         const lastObject = serverResponse.list[serverResponse.list.length - 1]
 
-        const PortfolioList = {
+        const PortfolioList = lastObject && {
           id: lastObject._id,
           title: lastObject.basic_info.title,
           subTitle: lastObject.basic_info.sub_title,
@@ -136,7 +136,7 @@ const APIs = {
       }
     })
     .catch(error => {
-        // console.log(error.response.data);
+        console.log(error.response.data);
         const serverResponse = error.response.data
     });
   },
@@ -151,7 +151,7 @@ const APIs = {
       if (serverResponse.success === true) {
         const lastObject = serverResponse.list[serverResponse.list.length - 1]
 
-        const EventList = {
+        const EventList = lastObject && {
           id: lastObject._id,
           title: lastObject.basic_info.title,
           subTitle: lastObject.basic_info.sub_title,
@@ -163,7 +163,7 @@ const APIs = {
       }
     })
     .catch(error => {
-        // console.log(error.response.data);
+        console.log(error.response.data);
         const serverResponse = error.response.data
     });
   },
@@ -186,7 +186,7 @@ const APIs = {
           ServiceList,
           PortfolioList,
           EventList,
-					BlogList: {
+					BlogList: lastObject && {
 							id: lastObject._id,
 							title: lastObject.basic_info.title,
 							subTitle: lastObject.basic_info.sub_title,
@@ -197,7 +197,7 @@ const APIs = {
       }
     })
     .catch(error => {
-        // console.log(error.response.data);
+        console.log(error.response.data);
         const serverResponse = error.response.data
     });
   },

@@ -90,7 +90,7 @@ const PortfolioRetrieve = () => {
           
 			</section>
 
-      <Footer />
+      {/* <Footer /> */}
     </React.Fragment>
   )
 }

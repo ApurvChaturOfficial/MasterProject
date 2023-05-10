@@ -32,10 +32,11 @@ const EventList = () => {
 	
 	// JSX
   return (
+		Redux.state.ReceivedObject.EventList &&
     <React.Fragment>
-			<Header heading={"My Events"} />
+			<Header heading={Redux.state.ReceivedObject.EventList.subTitle} />
 			<Event Redux={Redux} disable />
-			<Footer />
+			{/* <Footer /> */}
     </React.Fragment>
   )
 }

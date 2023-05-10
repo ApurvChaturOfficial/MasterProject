@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../../cComponent/aLayout/aHeader'
 import Footer from '../../../cComponent/aLayout/bFooter'
+import Navbar from '../../../cComponent/aLayout/cNavbar';
 import Portfolio from '../../../cComponent/bPage/aLanding/ePortfolio'
 import APIs from './extra/APIs';
 import { Action } from './extra/State';
@@ -32,8 +33,10 @@ const PortfolioList = () => {
 	
 	// JSX
   return (
+		Redux.state.ReceivedObject.PortfolioList &&
     <React.Fragment>
-			<Header heading={"My Portfolio"} />
+			<Navbar Redux={Redux} />
+			<Header Redux={Redux.state.ReceivedObject.PortfolioList} />
 			<Portfolio Redux={Redux} disable />
 			<Footer />
     </React.Fragment>

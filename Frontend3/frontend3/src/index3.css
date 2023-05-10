@@ -112,6 +112,12 @@ img {
     object-fit: cover;
 }
 
+.my__error {
+    display: grid;
+    justify-content: center;
+    color: var(--color-primary-variant);
+}
+
 
 /* =================== MEDIA QUERIES (MEDIUM DEVICES) =================== */
 @media screen and (max-width: 1024px) {
