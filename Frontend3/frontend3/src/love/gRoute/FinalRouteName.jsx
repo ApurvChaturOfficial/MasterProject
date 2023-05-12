@@ -14,7 +14,7 @@ const FinalRouteName = {
     },
     Blog: {
         ListRoute: `/blog/${RouteName.Blog.ListRoute}`,
-        RetrieveRoute: `/blogs/${RouteName.Blog.RetrieveRoute}`,
+        RetrieveRoute: `/blog/${RouteName.Blog.RetrieveRoute}`,
     },
 };
 

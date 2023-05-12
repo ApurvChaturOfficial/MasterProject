@@ -43,14 +43,14 @@ const Sample1 = () => {
 		// title
 		if (!FormValue.title) {
 			errors.title = "Please enter title"
-		} else if (FormValue.title.length < 3 || FormValue.title.length > 50) {
-			errors.title = "Please enter 3-50 characters"
+		} else if (FormValue.title.length < 3 || FormValue.title.length > 100) {
+			errors.title = "Please enter 3-100 characters"
 		}
 		// subTitle
 		if (!FormValue.subTitle) {
 			errors.subTitle = "Please enter sub title"
-		} else if (FormValue.subTitle.length < 3 || FormValue.subTitle.length > 50) {
-			errors.subTitle = "Please enter 3-50 characters"
+		} else if (FormValue.subTitle.length < 3 || FormValue.subTitle.length > 300) {
+			errors.subTitle = "Please enter 3-300 characters"
 		}
 		// isActive
 		if (!FormValue.isActive) {

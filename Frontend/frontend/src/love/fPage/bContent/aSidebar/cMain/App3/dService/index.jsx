@@ -44,14 +44,14 @@ const Service = () => {
 		// title
 		if (!FormValue.title) {
 			errors.title = "Please enter title"
-		} else if (FormValue.title.length < 3 || FormValue.title.length > 50) {
-			errors.title = "Please enter 3-50 characters"
+		} else if (FormValue.title.length < 3 || FormValue.title.length > 100) {
+			errors.title = "Please enter 3-100 characters"
 		}
 		// subTitle
 		if (!FormValue.subTitle) {
 			errors.subTitle = "Please enter sub title"
-		} else if (FormValue.subTitle.length < 3 || FormValue.subTitle.length > 50) {
-			errors.subTitle = "Please enter 3-50 characters"
+		} else if (FormValue.subTitle.length < 3 || FormValue.subTitle.length > 300) {
+			errors.subTitle = "Please enter 3-300 characters"
 		}
 		// isActive
 		if (!FormValue.isActive) {
@@ -471,7 +471,7 @@ const Service = () => {
                                                       each.points.length > 1 && 
                                                       <i class='bx bxs-minus-circle me-2' onClick={() => EventHandler.Points.Remove(Redux, index, index1)}></i>
                                                     }
-                                                    <small class="text-light fw-semibold">Point {index+1}</small>
+                                                    <small class="text-light fw-semibold">Point {index1+1}</small>
                                                   </div>
                                                   <div class="card-body">
                                                     <div class="mb-3">
@@ -844,7 +844,7 @@ const Service = () => {
                                                       each.points.length > 1 && 
                                                       <i class='bx bxs-minus-circle me-2' onClick={() => EventHandler.Points.Remove(Redux, index, index1)}></i>
                                                     }
-                                                    <small class="text-light fw-semibold">Point {index+1}</small>
+                                                    <small class="text-light fw-semibold">Point {index1+1}</small>
                                                   </div>
                                                   <div class="card-body">
                                                     <div class="mb-3">

@@ -51,13 +51,13 @@ const EventRetrieve = () => {
 				<div className='container event-card-single__container' >
 					<div className='event-card-single__me' >
 						<div className='event-card-single__me-image' >
-							<img src={ME1} />
+							<img src={Redux.state.ReceivedObject?.EventCardRetrieve?.image?.url} alt="" />
 						</div>
 					</div>
 
 					<div className='event-card-single__content' >
 						<h2>{Redux.state.ReceivedObject?.EventCardRetrieve?.title}</h2>
-						<h4 className='text-light' >{Redux.state.ReceivedObject?.EventCardRetrieve?.subTitle}</h4>
+						<h4 style={{marginTop: "0.5em"}} className="text-light" >{Redux.state.ReceivedObject?.EventCardRetrieve?.subTitle}</h4>
 						
 						<div style={{marginTop: "1.5em"}} >
 							<BsFillSkipStartFill className='event__details-icon' fontSize={"18px"} /><small >Start Date : </small> <br />
@@ -80,15 +80,28 @@ const EventRetrieve = () => {
 					</div>
 				</div>  
 
-				<div className='container event-card-single__more' >
+				<div className='container portfolio-card-single__more' >
 					<h3>Details</h3>
-					<p>{parse(Redux.state.ReceivedObject?.EventCardRetrieve?.detail || "")}</p>
+					<div className='rich-text' >
+						{parse(Redux.state.ReceivedObject?.EventCardRetrieve?.detail || "")}
+					</div>
 				</div>
           
-				<div className='container event-card-single__more' >
-					<h3>References</h3>
-					<p>{parse(Redux.state.ReceivedObject?.EventCardRetrieve?.detail || "")}</p>
-				</div>
+				{Redux.state.ReceivedObject?.EventCardRetrieve?.references?.length > 0 &&
+					<div className='container portfolio-card-single__more' >
+						<h3>References</h3>
+						<p>
+							{Redux.state.ReceivedObject?.EventCardRetrieve?.references.map(each => {
+									return (
+										<React.Fragment>
+											{each.label} :  <a href={each.url} style={{paddingLeft: "2em"}} target='_blank' rel="noreferrer" >{each.url}</a> <br/>
+										</React.Fragment>
+									)
+								})
+							}
+						</p>
+					</div>
+				}
 			</section>
     </React.Fragment>
   )

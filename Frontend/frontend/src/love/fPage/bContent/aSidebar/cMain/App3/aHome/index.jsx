@@ -44,14 +44,14 @@ const Home = () => {
 		// title
 		if (!FormValue.title) {
 			errors.title = "Please enter title"
-		} else if (FormValue.title.length < 3 || FormValue.title.length > 50) {
-			errors.title = "Please enter 3-50 characters"
+		} else if (FormValue.title.length < 3 || FormValue.title.length > 100) {
+			errors.title = "Please enter 3-100 characters"
 		}
 		// subTitle
 		if (!FormValue.subTitle) {
 			errors.subTitle = "Please enter sub title"
-		} else if (FormValue.subTitle.length < 3 || FormValue.subTitle.length > 50) {
-			errors.subTitle = "Please enter 3-50 characters"
+		} else if (FormValue.subTitle.length < 3 || FormValue.subTitle.length > 300) {
+			errors.subTitle = "Please enter 3-300 characters"
 		}
 		// isActive
 		if (!FormValue.isActive) {
@@ -453,17 +453,22 @@ const Home = () => {
                                       </div>
                                       
                                       <div class="mb-3">
-                                        <label class="form-label" for="icon">Icon</label>
-                                        <input 
-                                          type="text" 
-                                          class="form-control" 
+                                        <label for="icon" class="form-label">Icon</label>
+                                        <select 
                                           id="icon" 
-                                          placeholder="Enter Icon" 
-                                          name='icon'
-                                          value={each.icon || ""}
+                                          class="form-select" 
+                                          name="icon"
                                           onChange={event => EventHandler.Links.Change(event, Redux, index)}
-                                        />
-                                        <div class="form-text text-danger">{Redux.state.FormObject.FormError.title}</div>
+                                        >
+                                          <option disabled selected>--Select Icon--</option>
+                                          <option value="github" selected={each.icon === "github"} ><i class='bx bxl-github'></i> Github</option>
+                                          <option value="linkedin" selected={each.icon === "linkedin"} ><i class='bx bxl-linkedin'></i> LinkedIn</option>
+                                          <option value="facebook" selected={each.icon === "facebook"} ><i class='bx bxl-facebook'></i> Facebook</option>
+                                          <option value="instagram" selected={each.icon === "instagram"} ><i class='bx bxl-instagram'></i> Instagram</option>
+                                          <option value="twitter" selected={each.icon === "twitter"} ><i class='bx bxl-twitter'></i> Twitter</option>
+                                          <option value="other" selected={each.icon === "other"} ><i class='bx bxl-link'></i> Other</option>
+                                        </select>
+                                        <div class="form-text text-danger">{Redux.state.FormObject.FormError.role}</div>
                                       </div>
                                       
                                       <div class="mb-3">
@@ -852,17 +857,22 @@ const Home = () => {
                                       </div>
                                       
                                       <div class="mb-3">
-                                        <label class="form-label" for="icon">Icon</label>
-                                        <input 
-                                          type="text" 
-                                          class="form-control" 
+                                        <label for="icon" class="form-label">Icon</label>
+                                        <select 
                                           id="icon" 
-                                          placeholder="Enter Icon" 
-                                          name='icon'
-                                          value={each.icon || ""}
+                                          class="form-select" 
+                                          name="icon"
                                           onChange={event => EventHandler.Links.Change(event, Redux, index)}
-                                        />
-                                        <div class="form-text text-danger">{Redux.state.FormObject.FormError.title}</div>
+                                        >
+                                          <option disabled selected>--Select Icon--</option>
+                                          <option value="github" selected={each.icon === "github"} ><i class='bx bxl-github'></i> Github</option>
+                                          <option value="linkedin" selected={each.icon === "linkedin"} ><i class='bx bxl-linkedin'></i> LinkedIn</option>
+                                          <option value="facebook" selected={each.icon === "facebook"} ><i class='bx bxl-facebook'></i> Facebook</option>
+                                          <option value="instagram" selected={each.icon === "instagram"} ><i class='bx bxl-instagram'></i> Instagram</option>
+                                          <option value="twitter" selected={each.icon === "twitter"} ><i class='bx bxl-twitter'></i> Twitter</option>
+                                          <option value="other" selected={each.icon === "other"} ><i class='bx bxl-link'></i> Other</option>
+                                        </select>
+                                        <div class="form-text text-danger">{Redux.state.FormObject.FormError.role}</div>
                                       </div>
                                       
                                       <div class="mb-3">

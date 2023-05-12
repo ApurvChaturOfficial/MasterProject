@@ -27,7 +27,18 @@ header {
     position: absolute;
     left: 0;
     bottom: 3rem;
+    color: var(--color-primary);
 }
+
+.header__socials a {
+    color: var(--color-primary) !important;
+    transition: var(--transition) !important;
+}
+
+.header__socials a:hover {
+    color: var(--color-white) !important;
+}
+
 
 .header__socials::after {
     content: "";
@@ -81,7 +92,7 @@ header {
     }
 
     .header__socials, .scroll__down {
-        display: none;
+        display: none !important;
     }
 }
  

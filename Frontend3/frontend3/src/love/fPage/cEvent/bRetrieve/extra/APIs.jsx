@@ -13,6 +13,7 @@ const APIs = {
 					...Redux.state.ReceivedObject,
 					EventCardRetrieve: {
 							id: serverResponse.retrieve._id,
+              image: serverResponse.retrieve.basic_info.image,
 							title: serverResponse.retrieve.basic_info.title,
 							subTitle: serverResponse.retrieve.basic_info.sub_title,
 							slug: serverResponse.retrieve.basic_info.slug,

@@ -45,13 +45,13 @@ const PortfolioRetrieve = () => {
 				<div className='container portfolio-card-single__container' >
 					<div className='portfolio-card-single__me' >
 						<div className='portfolio-card-single__me-image' >
-							<img src="https://www.linkpicture.com/q/portfolio6.jpg" alt="" />
+							<img src={Redux.state.ReceivedObject?.PortfolioCardRetrieve?.image?.url} alt="" />
 						</div>
 					</div>
 
 					<div className='portfolio-card-single__content' >
 						<h2>{Redux.state.ReceivedObject?.PortfolioCardRetrieve?.title}</h2>
-						<h4 className='text-light' >{Redux.state.ReceivedObject?.PortfolioCardRetrieve?.subTitle}</h4>
+						<h4 style={{marginTop: "0.5em"}} className="text-light" >{Redux.state.ReceivedObject?.PortfolioCardRetrieve?.subTitle}</h4>
 
 						<p>{parse(Redux.state.ReceivedObject?.PortfolioCardRetrieve?.description || "")}</p>
 
@@ -62,7 +62,6 @@ const PortfolioRetrieve = () => {
 										<Link to={each.link} className={`btn ${each.label === 'Demo' && 'btn-primary'}`} >{each.label}</Link>
 									)
 								})
-								
 							}
 						</div>	
 					</div>
@@ -70,23 +69,26 @@ const PortfolioRetrieve = () => {
 
 				<div className='container portfolio-card-single__more' >
 					<h3>Details</h3>
-					<p>{parse(Redux.state.ReceivedObject?.PortfolioCardRetrieve?.detail || "")}</p>
+					<div className='rich-text' >
+						{parse(Redux.state.ReceivedObject?.PortfolioCardRetrieve?.detail || "")}
+					</div>
 				</div>
           
-				<div className='container portfolio-card-single__more' >
-					<h3>References</h3>
-					<p>
-						{Redux.state.ReceivedObject?.PortfolioCardRetrieve?.references &&
-							Redux.state.ReceivedObject?.PortfolioCardRetrieve?.references.map(each => {
-								return (
-									<React.Fragment>
-										{each.label} :  <a href={each.url} style={{paddingLeft: "2em"}} target='_blank'>{each.url}</a> <br/>
-									</React.Fragment>
-								)
-							})
-						}
-					</p>
-				</div>
+				{Redux.state.ReceivedObject?.PortfolioCardRetrieve?.references.length > 0 &&
+					<div className='container portfolio-card-single__more' >
+						<h3>References</h3>
+						<p>
+							{Redux.state.ReceivedObject?.PortfolioCardRetrieve?.references.map(each => {
+									return (
+										<React.Fragment>
+											{each.label} :  <a href={each.url} style={{paddingLeft: "2em"}} target='_blank' rel="noreferrer" >{each.url}</a> <br/>
+										</React.Fragment>
+									)
+								})
+							}
+						</p>
+					</div>
+				}
           
 			</section>
 

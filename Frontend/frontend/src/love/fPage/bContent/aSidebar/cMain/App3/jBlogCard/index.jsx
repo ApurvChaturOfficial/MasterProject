@@ -48,14 +48,14 @@ const BlogCard = () => {
 		// title
 		if (!FormValue.title) {
 			errors.title = "Please enter title"
-		} else if (FormValue.title.length < 3 || FormValue.title.length > 50) {
-			errors.title = "Please enter 3-50 characters"
+		} else if (FormValue.title.length < 3 || FormValue.title.length > 100) {
+			errors.title = "Please enter 3-100 characters"
 		}
 		// subTitle
 		if (!FormValue.subTitle) {
 			errors.subTitle = "Please enter sub title"
-		} else if (FormValue.subTitle.length < 3 || FormValue.subTitle.length > 50) {
-			errors.subTitle = "Please enter 3-50 characters"
+		} else if (FormValue.subTitle.length < 3 || FormValue.subTitle.length > 300) {
+			errors.subTitle = "Please enter 3-300 characters"
 		}
 		// isActive
 		if (!FormValue.isActive) {
@@ -468,7 +468,7 @@ const BlogCard = () => {
                                   <div class="card mb-4 bg-light">
                                     <div class="card-header">
                                       {Redux.state.FormObject.FormValue.links && 
-                                        Redux.state.FormObject.FormValue.links.length > 1 && 
+                                        Redux.state.FormObject.FormValue.links.length > 0 && 
                                         <i class='bx bxs-minus-circle me-2' onClick={() => EventHandler.Link.Remove(Redux, index)}></i>
                                       }
                                       <small class="text-light fw-semibold">Link {index+1}</small>
@@ -541,7 +541,7 @@ const BlogCard = () => {
                                   <div class="card mb-4 bg-light">
                                     <div class="card-header">
                                       {Redux.state.FormObject.FormValue.references && 
-                                        Redux.state.FormObject.FormValue.references.length > 1 && 
+                                        Redux.state.FormObject.FormValue.references.length > 0 && 
                                         <i class='bx bxs-minus-circle me-2' onClick={() => EventHandler.Reference.Remove(Redux, index)}></i>
                                       }
                                       <small class="text-light fw-semibold">Link {index+1}</small>
@@ -957,7 +957,7 @@ const BlogCard = () => {
                                   <div class="card mb-4 bg-light">
                                     <div class="card-header">
                                       {Redux.state.FormObject.FormValue.links && 
-                                        Redux.state.FormObject.FormValue.links.length > 1 && 
+                                        Redux.state.FormObject.FormValue.links.length > 0 && 
                                         <i class='bx bxs-minus-circle me-2' onClick={() => EventHandler.Link.Remove(Redux, index)}></i>
                                       }
                                       <small class="text-light fw-semibold">Link {index+1}</small>
@@ -1030,7 +1030,7 @@ const BlogCard = () => {
                                   <div class="card mb-4 bg-light">
                                     <div class="card-header">
                                       {Redux.state.FormObject.FormValue.references && 
-                                        Redux.state.FormObject.FormValue.references.length > 1 && 
+                                        Redux.state.FormObject.FormValue.references.length > 0 && 
                                         <i class='bx bxs-minus-circle me-2' onClick={() => EventHandler.Reference.Remove(Redux, index)}></i>
                                       }
                                       <small class="text-light fw-semibold">Link {index+1}</small>

@@ -44,14 +44,14 @@ const About = () => {
 		// title
 		if (!FormValue.title) {
 			errors.title = "Please enter title"
-		} else if (FormValue.title.length < 3 || FormValue.title.length > 50) {
-			errors.title = "Please enter 3-50 characters"
+		} else if (FormValue.title.length < 3 || FormValue.title.length > 100) {
+			errors.title = "Please enter 3-100 characters"
 		}
 		// subTitle
 		if (!FormValue.subTitle) {
 			errors.subTitle = "Please enter sub title"
-		} else if (FormValue.subTitle.length < 3 || FormValue.subTitle.length > 50) {
-			errors.subTitle = "Please enter 3-50 characters"
+		} else if (FormValue.subTitle.length < 3 || FormValue.subTitle.length > 300) {
+			errors.subTitle = "Please enter 3-300 characters"
 		}
 		// isActive
 		if (!FormValue.isActive) {
@@ -467,17 +467,21 @@ const About = () => {
                                       </div>
                                       
                                       <div class="mb-3">
-                                        <label class="form-label" for="icon">Icon</label>
-                                        <input 
-                                          type="text" 
-                                          class="form-control" 
+                                        <label for="icon" class="form-label">Icon</label>
+                                        <select 
                                           id="icon" 
-                                          placeholder="Enter Icon" 
-                                          name='icon'
-                                          value={each.icon || ""}
+                                          class="form-select" 
+                                          name="icon"
                                           onChange={event => EventHandler.Card.Change(event, Redux, index)}
-                                        />
-                                        <div class="form-text text-danger">{Redux.state.FormObject.FormError.icon}</div>
+                                        >
+                                          <option disabled selected>--Select Icon--</option>
+                                          <option value="award" selected={each.icon === "award"} >Award</option>
+                                          <option value="project" selected={each.icon === "project"} >Project</option>
+                                          <option value="company" selected={each.icon === "company"} >Company</option>
+                                          <option value="experience" selected={each.icon === "experience"} >Experience</option>
+                                          <option value="other" selected={each.icon === "other"} >Other</option>
+                                        </select>
+                                        <div class="form-text text-danger">{Redux.state.FormObject.FormError.role}</div>
                                       </div>
                                       
                                     </div>
@@ -833,17 +837,21 @@ const About = () => {
                                       </div>
                                       
                                       <div class="mb-3">
-                                        <label class="form-label" for="icon">Icon</label>
-                                        <input 
-                                          type="text" 
-                                          class="form-control" 
+                                        <label for="icon" class="form-label">Icon</label>
+                                        <select 
                                           id="icon" 
-                                          placeholder="Enter Icon" 
-                                          name='icon'
-                                          value={each.icon || ""}
+                                          class="form-select" 
+                                          name="icon"
                                           onChange={event => EventHandler.Card.Change(event, Redux, index)}
-                                        />
-                                        <div class="form-text text-danger">{Redux.state.FormObject.FormError.icon}</div>
+                                        >
+                                          <option disabled selected>--Select Icon--</option>
+                                          <option value="award" selected={each.icon === "award"} >Award</option>
+                                          <option value="project" selected={each.icon === "project"} >Project</option>
+                                          <option value="company" selected={each.icon === "company"} >Company</option>
+                                          <option value="experience" selected={each.icon === "experience"} >Experience</option>
+                                          <option value="other" selected={each.icon === "other"} >Other</option>
+                                        </select>
+                                        <div class="form-text text-danger">{Redux.state.FormObject.FormError.role}</div>
                                       </div>
                                       
                                     </div>

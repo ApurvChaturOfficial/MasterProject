@@ -18,6 +18,11 @@ footer a{
     display: inline-block;
 }
 
+.footer__logo:hover{
+    color: var(--color-bg) !important;
+}
+
+
 .footer__logo_img {
     width: 50px;
     margin: auto;

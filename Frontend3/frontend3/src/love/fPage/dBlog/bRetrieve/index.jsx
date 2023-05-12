@@ -48,14 +48,14 @@ const BlogRetrieve = () => {
 				<div className='container blog-card-single__container' >
 					<div className='blog-card-single__me' >
 						<div className='blog-card-single__me-image' >
-							<img src={ME1} />
+							<img src={Redux.state.ReceivedObject?.BlogCardRetrieve?.image?.url} alt="" />
 						</div>
 					</div>
 
 
 					<div className='blog-card-single__content' >
 						<h2>{Redux.state.ReceivedObject?.BlogCardRetrieve?.title}</h2>
-						{/* <h4 className='text-light' >{Redux.state.ReceivedObject?.BlogCardRetrieve?.subTitle}</h4> */}
+						<h4 style={{marginTop: "0.5em"}} className='text-light' >{Redux.state.ReceivedObject?.BlogCardRetrieve?.subTitle}</h4>
 
 						<p>{parse(Redux.state.ReceivedObject?.BlogCardRetrieve?.description || "")}</p>
 
@@ -72,9 +72,11 @@ const BlogRetrieve = () => {
 					</div>
 				</div>  
 
-				<div className='container blog-card-single__more' >
+				<div className='container portfolio-card-single__more' >
 					<h3>Details</h3>
-					<p>{parse(Redux.state.ReceivedObject?.BlogCardRetrieve?.detail || "")}</p>
+					<div className='rich-text' >
+						{parse(Redux.state.ReceivedObject?.BlogCardRetrieve?.detail || "")}
+					</div>
 				</div>
           
 				{/* <div className='container blog-card-single__more' >

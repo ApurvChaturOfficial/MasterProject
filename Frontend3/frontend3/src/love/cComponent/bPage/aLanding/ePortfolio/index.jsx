@@ -35,8 +35,13 @@ const Portfolio = ({Redux, disable}) => {
 								<h3><Link to={`${FinalRouteName.Portfolio.RetrieveRoute}/${each._id}`}>{each.basic_info.title}</Link></h3>
 								<p className='text-light' >{each.basic_info.sub_title}</p>
 								<div className='portfolio__item-cta' >
-									<Link to={each.toRetrieve} className='btn' >Github</Link>
-									<Link to='https://github.com' className='btn btn-primary' target='_blank' >Live Demo</Link>
+								{each.more_info.links &&
+									each.more_info.links.map(each1 => {
+										return (
+											<Link to={each1.link} className={`btn ${each1.label === 'Demo' && 'btn-primary'}`} >{each1.label}</Link>
+										)
+									})
+								}
 								</div>
 							</article>
 						)
