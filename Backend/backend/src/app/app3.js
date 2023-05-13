@@ -32,28 +32,28 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(fileUpload())
 app.use(cors({ origin: process.env.ACTIVE_APP === 'PersonalPortfolioApp' ? [
-  // "http://localhost:3000", 
-  // "http://localhost:3001", 
+  "http://localhost:3000", 
+  "http://localhost:3001", 
   "https://personal-portfolio-app-admin.netlify.app",
   "https://apurvchatur.netlify.app", 
 ] :
 process.env.ACTIVE_APP === 'NehaPortfolioApp' ? 
 [
-  // "http://localhost:3000", 
-  // "http://localhost:3001", 
+  "http://localhost:3000", 
+  "http://localhost:3001", 
   "https://neha-portfolio-app-admin.netlify.app",
   "https://nehachourasiya.netlify.app",
 ] :
 process.env.ACTIVE_APP === 'AnushreePortfolioApp' ?
 [
-  // "http://localhost:3000", 
-  // "http://localhost:3001", 
+  "http://localhost:3000", 
+  "http://localhost:3001", 
   "https://anushree-portfolio-app-admin.netlify.app",
   "https://anushreemandape.netlify.app"
 ] :
 [
-  // "http://localhost:3000", 
-  // "http://localhost:3001", 
+  "http://localhost:3000", 
+  "http://localhost:3001", 
   "https://personal-portfolio-app.netlify.app", 
   "https://personal-portfolio-app-admin.netlify.app"
 ], credentials: true }))
