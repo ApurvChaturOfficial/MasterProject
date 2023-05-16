@@ -30,8 +30,9 @@ import EventCardState from '../fPage/bContent/aSidebar/cMain/App3/hEventCard/ext
 import BlogState from '../fPage/bContent/aSidebar/cMain/App3/iBlog/extra/State';
 import BlogCardState from '../fPage/bContent/aSidebar/cMain/App3/jBlogCard/extra/State';
 
-
 import ProfileUpdateState from '../fPage/bContent/bTopbar/aProfile/extra/State';
+
+import DashboardState from '../fPage/bContent/aSidebar/dDashboard/App3/extra/State';
 
 
 const RootReducer = combineReducers({
@@ -67,6 +68,8 @@ const RootReducer = combineReducers({
     BlogCardState,
 
     ProfileUpdateState,
+
+    DashboardState,
     
 })  
 

@@ -50,7 +50,7 @@ const FinalRouteName = {
 			}
 			:
 			{},	
-			DashboardRoute: `/main/${RouteName.Content.Sidebar.DashboardRoute}`,
+			DashboardRoute: `/${RouteName.Content.Sidebar.DashboardRoute}`,
 		},
 		Topbar: {
 			ProfileRoute: `/main/${RouteName.Content.Topbar.ProfileRoute}`,

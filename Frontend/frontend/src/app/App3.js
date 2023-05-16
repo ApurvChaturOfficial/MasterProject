@@ -21,6 +21,7 @@ import Event from '../love/fPage/bContent/aSidebar/cMain/App3/gEvent';
 import EventCard from '../love/fPage/bContent/aSidebar/cMain/App3/hEventCard';
 import Blog from '../love/fPage/bContent/aSidebar/cMain/App3/iBlog';
 import BlogCard from '../love/fPage/bContent/aSidebar/cMain/App3/jBlogCard';
+import Dashboard from '../love/fPage/bContent/aSidebar/dDashboard/App3';
 import Profile from '../love/fPage/bContent/bTopbar/aProfile';
 import RouteName from '../love/gRoute/RouteName';
 
@@ -39,7 +40,7 @@ function App() {
         </Route>
 
         <Route element={<ContentLayout />} >
-          <Route path={RouteName.Content.Sidebar.DashboardRoute} element={<h1>Dashboard</h1>} />
+          <Route path={RouteName.Content.Sidebar.DashboardRoute} element={<Dashboard />} />
 
           <Route path='/setting'>
             <Route path={RouteName.Content.Sidebar.Setting.BaseRoute} element={<Base />} />

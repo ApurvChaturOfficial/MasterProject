@@ -128,10 +128,10 @@ const ContentLayout = (props) => {
           <ul class="menu-inner py-1">
             <li class="menu-item">
             {/* <li class="menu-item active"> */}
-              <a href="index.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-buildings"></i>
+              <Link to={FinalRouteName.Content.Sidebar.DashboardRoute} class="menu-link">
+                <i class="menu-icon tf-icons bx bx-buildings text-primary"></i>
                 <div data-i18n="Analytics">Dashboard</div>
-              </a>
+              </Link>
             </li>
 
             {process.env.REACT_APP_ACTIVE_APP === "SampleAuthenticationApp" ?
@@ -153,61 +153,61 @@ const ContentLayout = (props) => {
                   </li>
                   <li class="menu-item">
                     <Link to={FinalRouteName.Content.Sidebar.Main.HomeRoute} class="menu-link">
-                      <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                      <i class="menu-icon tf-icons bx bx-home-circle text-primary"></i>
                       <div data-i18n="Basic">Home</div>
                     </Link>
                   </li>
                   <li class="menu-item">
                     <Link to={FinalRouteName.Content.Sidebar.Main.AboutRoute} class="menu-link">
-                      <i class="menu-icon tf-icons bx bx-user"></i>
+                      <i class="menu-icon tf-icons bx bx-user text-danger"></i>
                       <div data-i18n="Basic">About</div>
                     </Link>
                   </li>
                   <li class="menu-item">
                     <Link to={FinalRouteName.Content.Sidebar.Main.ExperienceRoute} class="menu-link">
-                      <i class="menu-icon tf-icons bx bx-brain"></i>
+                      <i class="menu-icon tf-icons bx bx-brain text-warning"></i>
                       <div data-i18n="Basic">Experience</div>
                     </Link>
                   </li>
                   <li class="menu-item">
                     <Link to={FinalRouteName.Content.Sidebar.Main.ServiceRoute} class="menu-link">
-                      <i class="menu-icon tf-icons bx bx-cycling"></i>
+                      <i class="menu-icon tf-icons bx bx-cycling text-success"></i>
                       <div data-i18n="Basic">Service</div>
                     </Link>
                   </li>
                   <li class="menu-item">
                     <Link to={FinalRouteName.Content.Sidebar.Main.PortfolioRoute} class="menu-link">
-                      <i class="menu-icon tf-icons bx bx-briefcase"></i>
+                      <i class="menu-icon tf-icons bx bx-briefcase text-info"></i>
                       <div data-i18n="Basic">Portfolio</div>
                     </Link>
                   </li>
                   <li class="menu-item">
                     <Link to={FinalRouteName.Content.Sidebar.Main.PortfolioCardRoute} class="menu-link">
-                      <i class="menu-icon tf-icons bx bx-dumbbell"></i>
+                      <i class="menu-icon tf-icons bx bx-dumbbell text-info"></i>
                       <div data-i18n="Basic">Portfolio Card</div>
                     </Link>
                   </li>
                   <li class="menu-item">
                     <Link to={FinalRouteName.Content.Sidebar.Main.EventRoute} class="menu-link">
-                      <i class="menu-icon tf-icons bx bx-calendar-star"></i>
+                      <i class="menu-icon tf-icons bx bx-calendar-star text-warning"></i>
                       <div data-i18n="Basic">Event</div>
                     </Link>
                   </li>
                   <li class="menu-item">
                     <Link to={FinalRouteName.Content.Sidebar.Main.EventCardRoute} class="menu-link">
-                      <i class="menu-icon tf-icons bx bx-star"></i>
+                      <i class="menu-icon tf-icons bx bx-star text-warning"></i>
                       <div data-i18n="Basic">Event Card</div>
                     </Link>
                   </li>
                   <li class="menu-item">
                     <Link to={FinalRouteName.Content.Sidebar.Main.BlogRoute} class="menu-link">
-                      <i class="menu-icon tf-icons bx bx-chat"></i>
+                      <i class="menu-icon tf-icons bx bx-chat text-success"></i>
                       <div data-i18n="Basic">Blog</div>
                     </Link>
                   </li>
                   <li class="menu-item">
                     <Link to={FinalRouteName.Content.Sidebar.Main.BlogCardRoute} class="menu-link">
-                      <i class="menu-icon tf-icons bx bx-message-dots"></i>
+                      <i class="menu-icon tf-icons bx bx-message-dots text-success"></i>
                       <div data-i18n="Basic">Blog Card</div>
                     </Link>
                   </li>
@@ -221,19 +221,19 @@ const ContentLayout = (props) => {
             </li>
             <li class="menu-item">
               <Link to={FinalRouteName.Content.Sidebar.Administration.UserRoute} class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                <i class="menu-icon tf-icons bx bx-user-circle text-primary"></i>
                 <div data-i18n="Basic">User</div>
               </Link>
             </li>
             <li class="menu-item">
               <Link to={FinalRouteName.Content.Sidebar.Administration.RoleRoute} class="menu-link">
-                <i class="menu-icon tf-icons bx bx-ghost"></i>
+                <i class="menu-icon tf-icons bx bx-ghost text-success"></i>
                 <div data-i18n="Basic">Role</div>
               </Link>
             </li>
             <li class="menu-item">
               <Link to={FinalRouteName.Content.Sidebar.Administration.MenuRoute} class="menu-link">
-                <i class="menu-icon tf-icons bx bx-menu-alt-left"></i>
+                <i class="menu-icon tf-icons bx bx-menu-alt-left text-warning"></i>
                 <div data-i18n="Basic">Menu</div>
               </Link>
             </li>
@@ -244,7 +244,7 @@ const ContentLayout = (props) => {
             </li>
             <li class="menu-item">
               <Link to={FinalRouteName.Content.Sidebar.Setting.BaseRoute} class="menu-link">
-                <i class="menu-icon tf-icons bx bx-baseball"></i>
+                <i class="menu-icon tf-icons bx bx-baseball text-danger"></i>
                 <div data-i18n="Basic">Base</div>
               </Link>
             </li>
