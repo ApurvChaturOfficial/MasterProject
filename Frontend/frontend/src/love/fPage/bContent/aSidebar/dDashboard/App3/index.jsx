@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import FinalRouteName from '../../../../../gRoute/FinalRouteName';
 import APIs from './extra/APIs';
 import { Action } from './extra/State';
 
@@ -569,7 +571,7 @@ const Dashboard = () => {
                       You are doing very well, our best wishes with you. Check your overall profile glance on this dashboard below.
                     </p>
 
-                    <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
+                    <Link to={FinalRouteName.Content.Sidebar.Main.HomeRoute} class="btn btn-sm btn-outline-primary">Start Journey <i class="bx bx-chevrons-right ms-1"></i></Link>
                   </div>
                 </div>
                 <div class="col-sm-5 text-center text-sm-left">
@@ -1336,37 +1338,6 @@ const Dashboard = () => {
         }
       </div>
     </div>
-
-    <footer class="content-footer footer bg-footer-theme">
-      <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-        <div class="mb-2 mb-md-0">
-          ©
-          <script>
-            document.write(new Date().getFullYear());
-          </script>
-          , made with ❤️ by
-          <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
-        </div>
-        <div>
-          <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-          <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-          <a
-            href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-            target="_blank"
-            class="footer-link me-4"
-            >Documentation</a
-          >
-
-          <a
-            href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-            target="_blank"
-            class="footer-link me-4"
-            >Support</a
-          >
-        </div>
-      </div>
-    </footer>
 
     <div class="content-backdrop fade"></div>
   </div>

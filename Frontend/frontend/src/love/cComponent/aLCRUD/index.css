@@ -1,0 +1,36 @@
+.my_loader {
+  width: 40px;
+  height: 40px;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #430d43;
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+  position: relative;
+  margin: 0 auto;
+}
+
+.my_loader:before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border: 8px solid #430d43;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+    border-color: #C8A2C8;
+  }
+  100% {
+    transform: rotate(360deg);
+    border-color: #430d43;
+  }
+}
