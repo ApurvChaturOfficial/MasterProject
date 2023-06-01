@@ -14,8 +14,8 @@ import RouteName from './love/gRoute/RouteName';
 
 
 function App() {
-	// Redux1
-	const Redux1 = {
+	// Redux
+	const Redux = {
 		state: useSelector((fullState) => fullState.LayoutState),
 		dispatch: useDispatch(),
 		action: Action,
@@ -27,21 +27,21 @@ function App() {
 			<React.Fragment>
 				<Routes>
 					<Route element={<Layout />}>
-						<Route element={<Landing Redux1={Redux1} />} path="" />
+						<Route element={<Landing Redux1={Redux} />} path="" />
 						
 						<Route path={`portfolio`} >
-							<Route element={<PortfolioList />} path={`${RouteName.Portfolio.ListRoute}`} />
-							<Route element={<PortfolioRetrieve />} path={`${RouteName.Portfolio.RetrieveRoute}/:id`} />
+							<Route element={<PortfolioList />} Redux1={Redux} path={`${RouteName.Portfolio.ListRoute}`} />
+							<Route element={<PortfolioRetrieve />} Redux1={Redux} path={`${RouteName.Portfolio.RetrieveRoute}/:id`} />
 						</Route>
 						
 						<Route path={`event`} >
-							<Route element={<EventList />} path={`${RouteName.Event.ListRoute}`} />
-							<Route element={<EventRetrieve />} path={`${RouteName.Event.RetrieveRoute}/:id`} />
+							<Route element={<EventList />} Redux1={Redux} path={`${RouteName.Event.ListRoute}`} />
+							<Route element={<EventRetrieve />} Redux1={Redux} path={`${RouteName.Event.RetrieveRoute}/:id`} />
 						</Route>
 						
 						<Route path={`blog`} >
-							<Route element={<BlogList />} path={`${RouteName.Blog.ListRoute}`} />
-							<Route element={<BlogRetrieve />} path={`${RouteName.Blog.RetrieveRoute}/:id`} />
+							<Route element={<BlogList />} Redux1={Redux} path={`${RouteName.Blog.ListRoute}`} />
+							<Route element={<BlogRetrieve />} Redux1={Redux} path={`${RouteName.Blog.RetrieveRoute}/:id`} />
 						</Route>
 					</Route>
 				</Routes>

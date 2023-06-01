@@ -33,15 +33,7 @@ const AuthLayout = () => {
 
 
   return (
-    <div className="container-xxl position-relative bg-white d-flex p-0">
-        <div className="container-fluid">
-            <div className="row h-100 align-items-center justify-content-center" style={{ minHeight: "100vh"}}>
-                <div className="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                    <Outlet />
-                </div>
-            </div>
-        </div>
-    </div>
+    <Outlet />
   )
 }
 

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom'
 import Footer from '../cComponent/aLayout/bFooter'
 import Navbar from '../cComponent/aLayout/cNavbar'
+import Loader from '../cComponent/cLoader'
 import APIs from './extra/APIs'
 import { Action } from './extra/State'
 
@@ -32,11 +33,14 @@ const Layout = () => {
 	
   // JSX
   return (
-    <React.Fragment>
-			<Navbar Redux={Redux} />
-      <Outlet />
-			<Footer Redux={Redux} />
-    </React.Fragment>
+		Redux.state.ExtraObject?.loading ?
+			<Loader />
+			:
+			<React.Fragment>
+				<Navbar Redux={Redux} />
+				<Outlet />
+				<Footer Redux={Redux} />
+			</React.Fragment>
   )
 }
 

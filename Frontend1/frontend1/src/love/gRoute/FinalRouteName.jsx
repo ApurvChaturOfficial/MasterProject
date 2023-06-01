@@ -13,7 +13,10 @@ const FinalRouteName = {
 	},
 	Content: {
 		Profile: {
-			UpdateRoute: `/${RouteName.Content.Profile.UpdateRoute}`
+			RetrieveRoute: `/${RouteName.Content.Profile.RetrieveRoute}`,
+			UpdateRoute: `/${RouteName.Content.Profile.UpdateRoute}`,
+			UpdatePasswordRoute: `/${RouteName.Content.Profile.UpdatePasswordRoute}`,
+			DeleteRoute: `/${RouteName.Content.Profile.DeleteRoute}`,
 		},
 	},
 };

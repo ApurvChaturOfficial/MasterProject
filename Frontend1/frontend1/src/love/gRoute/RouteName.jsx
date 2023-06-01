@@ -11,7 +11,10 @@ const RouteName = {
 	},
 	Content: {
 		Profile: {
-			UpdateRoute: "profile-update"
+			RetrieveRoute: "",
+			UpdateRoute: "profile-update",
+			UpdatePasswordRoute: "profile-update-password",
+			DeleteRoute: "profile-delete",
 		},
 	},
 };

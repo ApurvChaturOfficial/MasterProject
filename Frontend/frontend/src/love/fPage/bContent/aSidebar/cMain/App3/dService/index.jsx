@@ -13,7 +13,7 @@ import { Create, Delete, List, Retrieve, Update } from './extra/Component';
 import EventHandler from './extra/EventHandler';
 import { Action } from './extra/State';
 
-const Service = () => {
+const Service = ({ Redux1 }) => {
   // Normal Variable
   const close1 = useRef()
   const close2 = useRef()
@@ -128,6 +128,10 @@ const Service = () => {
         next: FinalRouteName.Content.Sidebar.Main.PortfolioRoute,
         breadcrumb: "Service"
       }}
+      access={{
+				name: "Service",
+				Redux1: Redux1
+			}}
     />
   )
 }

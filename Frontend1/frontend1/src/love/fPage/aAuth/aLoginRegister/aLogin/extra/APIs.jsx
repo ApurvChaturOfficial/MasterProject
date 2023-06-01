@@ -17,7 +17,7 @@ const APIs = {
       const serverResponse = response.data;
 
       if (serverResponse.success === true) {
-        navigate(FinalRouteName.Content.Profile.UpdateRoute)
+        navigate(FinalRouteName.Content.Profile.RetrieveRoute)
         toast.success(serverResponse.message, { position: "top-center" });
         clearFormObject(Redux)
       }

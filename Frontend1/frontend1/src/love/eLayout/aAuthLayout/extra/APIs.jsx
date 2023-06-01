@@ -5,13 +5,13 @@ import FinalRouteName from "../../../gRoute/FinalRouteName";
 const APIs = {
   // User Profile Retrieve API
   UserProfileRetrieveAPI: (Redux, navigate) => {
-    API.Content.Topbar.UserProfileRetrieveAPI()
+    API.Content.Topbar.ProfileRetrieveAPI()
     .then(response => {
     //   console.log(response.data);
       const serverResponse = response.data;
 
       if (serverResponse.success === true) {
-        navigate(FinalRouteName.Content.Sidebar.Home.Dashboard.DashboardRoute)      
+        navigate(FinalRouteName.Content.Profile.RetrieveRoute)      
       }
     })
     .catch(error => {

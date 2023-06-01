@@ -8,21 +8,15 @@ const APIs = {
   RegisterAPI: (Redux, navigate) => {
     API.Auth.LoginRegister.RegisterAPI({
       data: {
-        critical_info: {
-          first_name: Redux.state.FormObject.FormValue.firstName,
-          last_name: Redux.state.FormObject.FormValue.lastName,
-          email: Redux.state.FormObject.FormValue.email,
-          password: Redux.state.FormObject.FormValue.password,
-          image: {
-            url: "https://picsum.photos/200/300"
-          },
-        },
+        first_name: Redux.state.FormObject.FormValue.firstName,
+        last_name: Redux.state.FormObject.FormValue.lastName,
+        email: Redux.state.FormObject.FormValue.email,
+        password: Redux.state.FormObject.FormValue.password,
+        image: Redux.state.FormObject.FormValue.image,
         basic_info: {
           title: `${Redux.state.FormObject.FormValue.firstName} ${Redux.state.FormObject.FormValue.lastName}`,
           sub_title: `${Redux.state.FormObject.FormValue.email} ${Redux.state.FormObject.FormValue.password}`,
-          image: {
-            url: "https://picsum.photos/200/300"
-          },
+          image: Redux.state.FormObject.FormValue.image,
         },
         relation_info: {
           role: {

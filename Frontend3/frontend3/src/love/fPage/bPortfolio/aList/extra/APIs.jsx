@@ -1,9 +1,12 @@
 import API from "../../../../aAPI/API";
+import loading from "../../../../dFunction/fLoading";
 import FinalRouteName from "../../../../gRoute/FinalRouteName";
 
 const APIs = {
   // Portfolio List API
-  PortfolioListAPI: (Redux) => {
+  PortfolioListAPI: (Redux, Redux1) => {
+    loading.start(Redux1)
+
     API.Portfolio.ListAPI()
     .then(response => {
       console.log(response.data);
@@ -33,11 +36,14 @@ const APIs = {
               // }
 						}
 				} })
+
+        loading.stop(Redux1)
       }
     })
     .catch(error => {
         // console.log(error.response.data);
         const serverResponse = error.response.data
+        loading.stop(Redux1)
     });
   },
 

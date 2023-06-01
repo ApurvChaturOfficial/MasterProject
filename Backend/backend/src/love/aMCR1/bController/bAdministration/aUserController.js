@@ -5,7 +5,9 @@ const catchAsyncError = require("../../../cFunction/aCatchAsyncError")
 const sendEmail = require("../../../cFunction/iSendEmail")
 const crypto = require("crypto");
 const SearchFilterPaginate = require("../../../cFunction/fSearchFilterPaginate")
+const RoleModel = require("../../aModel/bAdministration/bRoleModel")
 const handleImage = require("../../../cFunction/hHandleImage")
+const idToObject = require("../../../cFunction/gIDToObject")
 
 
 exports.userController = (Model= UserModel, Label= 'User') => {
@@ -42,6 +44,16 @@ exports.userController = (Model= UserModel, Label= 'User') => {
 					request.body.basic_info.image, 
 					Label,
 					'create'
+				)
+			)
+
+			// Relation Info
+			request.body.relation_info.role && (
+				request.body.relation_info.role = await idToObject(
+					request.body.relation_info.role,
+					RoleModel,
+					'Role',
+					next
 				)
 			)
 			
@@ -95,7 +107,17 @@ exports.userController = (Model= UserModel, Label= 'User') => {
 					'update',
 					object_retrieve.basic_info.image
 				)      
-			)      
+			)   
+			
+			// Relation Info
+			request.body.relation_info_info.role && (
+				request.body.relation_info_info.role = await idToObject(
+					request.body.relation_info.role,
+					RoleModel,
+					'Role',
+					next
+				)
+			)
 
 			// Update
 			object_retrieve = await Model.findByIdAndUpdate(
@@ -142,6 +164,31 @@ exports.userController = (Model= UserModel, Label= 'User') => {
 		///////////////////////// User Authentication Controller //////////////////////////
 		// Register Controller
 		register: catchAsyncError(async (request, response, next) => {
+			// Personal Info
+			request.body.personal_info = {
+				created_at: new Date(Date.now()),
+				created_by: "Self"
+			}
+
+			// Image
+			request.body.basic_info.image && (
+				request.body.basic_info.image = await handleImage(
+					request.body.basic_info.image, 
+					Label,
+					'create'
+				)
+			)
+
+			// Relation Info
+			request.body?.relation_info?.role && (
+				request.body.relation_info.role = await idToObject(
+					request.body.relation_info.role,
+					RoleModel,
+					'Role',
+					next
+				)
+			)
+			
 			// Create
 			const user = await Model.create(request.body)
 
@@ -158,7 +205,7 @@ exports.userController = (Model= UserModel, Label= 'User') => {
 			if (!email || !password) next(new ErrorHandler("Please enter email & password", 400))
 
 			// Retrieve
-			const user = await Model.findOne({"critical_info.email": email}).select("+critical_info.password")
+			const user = await Model.findOne({email}).select("+password")
 
 			// Not Found
 			if (!user) next(new ErrorHandler("Invalid email or password", 401))
@@ -198,10 +245,69 @@ exports.userController = (Model= UserModel, Label= 'User') => {
 			if (!email) next(new ErrorHandler("Please enter email", 400))
 
 			// Retrieve
-			const user = await Model.findOne({"critical_info.email": email});
+			const user = await Model.findOne({"email": email});
 
 			// Not Found
 			if (!user) next(new ErrorHandler("User Not Found", 404))
+		
+			// Get Reset Password Token & set OTP
+			const resetPasswordOTP = await user.getResetPasswordOTP();
+
+			// Save 
+			await user.save({ validateBeforeSave: false });
+		
+			// Message
+			const textMessage = `Reset Password OTP: ${resetPasswordOTP}`;
+				
+			// // Send Email
+			// try {
+			// 	await sendEmail({
+			// 		from: "imapurvchatur@gmail.com",
+			// 		to: [user.email],
+			// 		subject: `Password Recovery`,
+			// 		text: textMessage,
+			// 	});
+				
+			// 	// Response
+			// 	response.status(200).json({
+			// 		success: true,
+			// 		message: `OTP sent to ${user.email} successfully`,
+			// 		user_forgot_password: user,
+			// 		textMessage
+			// 	});
+			// } catch (error) {
+			// 	user.resetPasswordOTP = undefined;
+
+			// 	await user.save({ validateBeforeSave: false });
+			// 	return next(new ErrorHandler(error.message, 500));
+			// }
+
+			// Response
+			response.status(200).json({
+				success: true,
+				message: textMessage,
+				user_forgot_password: user,
+				textMessage
+			});
+
+		}),
+
+		// Validate OTP Controller
+		validateOTP: catchAsyncError(async (request, response, next) => {
+			// Destructure Body
+			const {email, otp} = request.body
+
+			// Check
+			if (!email) next(new ErrorHandler("Please enter email", 400))
+
+			// Hash OTP
+			const resetPasswordOTP = crypto.createHash("sha256").update(otp).digest("hex");
+
+			// Retrieve
+			const user = await UserModel.findOne({email, 'reset_password_otp': resetPasswordOTP, 'reset_password_otp_expire': { $gt: Date.now() }});
+			
+			// Not Found
+			if (!user) next(new ErrorHandler("Reset OTP is invalid or has been expired", 400));
 		
 			// Get Reset Password Token
 			const resetPasswordToken = await user.getResetPasswordToken();
@@ -210,75 +316,62 @@ exports.userController = (Model= UserModel, Label= 'User') => {
 			await user.save({ validateBeforeSave: false });
 		
 			// Message
-			const resetPasswordURL = `${request.protocol}://${request.get("host")}/reset-password/${resetPasswordToken}`;
-			const textMessage = `Reset Password URL: ${resetPasswordURL}`;
+			const textMessage = `Reset Password Token: ${resetPasswordToken}`;
 				
-			// Send Email
-			try {
-				await sendEmail({
-					from: "imapurvchatur@gmail.com",
-					to: [user.critical_info.email],
-					subject: `Password Recovery`,
-					text: textMessage,
-				});
-				
-				// Response
-				response.status(200).json({
-					success: true,
-					message: `Email sent to ${user.critical_info.email} successfully`,
-					user_forgot_password: user,
-					textMessage
-				});
-			} catch (error) {
-				user.resetPasswordToken = undefined;
-				user.resetPasswordExpire = undefined;
+			// Response
+			response.status(200).json({
+				success: true,
+				message: textMessage,
+				user_validate_otp: user,
+				textMessage,
+				token: resetPasswordToken
+			});
 
-				await user.save({ validateBeforeSave: false });
-				return next(new ErrorHandler(error.message, 500));
-			}
 		}),
 
 		// Reset Password
 		resetPassword: catchAsyncError(async (request, response, next) => {
-				// Destructure Body & Params
-				const {token} = request.params
-				const {new_password, confirm_password} = request.body
+			// Destructure Body & Params
+			const {token} = request.params
+			const {new_password, confirm_password} = request.body
 
-				// Hash Token
-				const resetPasswordToken = crypto.createHash("sha256").update(token).digest("hex");
-				
+			// Hash Token
+			const resetPasswordToken = crypto.createHash("sha256").update(token).digest("hex");
+
 			// Retrieve
-			const user = await UserModel.findOne({'critical_info.reset_password_token': resetPasswordToken, 'critical_info.reset_password_token_expire': { $gt: Date.now() }});
+			const user = await UserModel.findOne({'reset_password_token': resetPasswordToken, 'reset_password_token_expire': { $gt: Date.now() }});
 			
 			// Not Found
 			if (!user) next(new ErrorHandler("Reset password link is invalid or has been expired", 400));
 			
 			// Check 1
-						if (!new_password, !confirm_password) next(new ErrorHandler("Please enter new password and confirm password", 400))
+			if (!new_password, !confirm_password) next(new ErrorHandler("Please enter new password and confirm password", 400))
 
 			// Check 2
 			if (new_password !== confirm_password) next(new ErrorHandler("Please match both password", 400));
 			
 			// // Match Password 2
-						// const isPasswordMatched = await user.comparePassword(new_password)
+			// const isPasswordMatched = await user.comparePassword(new_password)
 
-						// // Not Matched
-						// if (isPasswordMatched) next(new ErrorHandler("New password connot be same as old password", 401))
+			// // Not Matched
+			// if (isPasswordMatched) next(new ErrorHandler("New password connot be same as old password", 401))
 
 			// Save
-			user.critical_info.password = new_password;
-			user.critical_info.reset_password_token = undefined;
-			user.critical_info.reset_password_token_expire = undefined;
+			user.password = new_password;
+			user.reset_password_otp = undefined;
+			user.reset_password_otp_expire = undefined;
+			user.reset_password_token = undefined;
+			user.reset_password_token_expire = undefined;
 			await user.save({ validateBeforeSave: false });
 			
-						// Response
-						generateCookie(201, `Password Recovered Successfully`, `user_reset_password`, user, response)
+			// Response
+			generateCookie(201, `Password Recovered Successfully`, `user_reset_password`, user, response)
 		}),        
 
 		// Profile Retrieve Controller
 		profileRetrieve: catchAsyncError(async (request, response, next) => {
 			// Retrieve
-			const user = await UserModel.findById(request.user.id);
+			const user = await UserModel.findById(request.user._id);
 
 			// Not Found
 			if (!user) next(new ErrorHandler(`${Label} Not Found`, 404))
@@ -293,7 +386,7 @@ exports.userController = (Model= UserModel, Label= 'User') => {
 		// update User Profile
 		profileUpdate: catchAsyncError(async (request, response, next) => {
 			// Retrieve
-			let object_retrieve = await Model.findById(request.user.id).select("+critical_info.password")
+			let object_retrieve = await Model.findById(request.user.id)
 
 			// Not Found
 			if (!object_retrieve) next(new ErrorHandler(`${Label} Not Found`, 404))
@@ -305,15 +398,31 @@ exports.userController = (Model= UserModel, Label= 'User') => {
 				updated_by: request.user
 			}
 
+			// Image
+			request.body.basic_info.image && (
+				request.body.basic_info.image = await handleImage(
+					request.body.basic_info.image, 
+					Label,
+					'update',
+					object_retrieve.basic_info.image
+				)      
+			)   
+
+			// Image
+			request.body.image && (
+				request.body.image = await handleImage(
+					request.body.image, 
+					Label,
+					'update',
+					object_retrieve.image
+				)      
+			)   
+
 			// Update
 			object_retrieve = await Model.findByIdAndUpdate(
 				request.user.id,
-				{...request.body, 
-					critical_info: {
-						...request.body.critical_info,
-						password: object_retrieve.critical_info.password
-					}
-				}, {
+				request.body, 
+				{
 					new: true,
 					runValidators: true,
 					useFindAndModify: false
@@ -328,19 +437,19 @@ exports.userController = (Model= UserModel, Label= 'User') => {
 			})
 		}),
 
-		// Profile Password Update Controller
-		profilePasswordUpdate: catchAsyncError(async (request, response, next) => {
+		// Profile Update Password Controller
+		profileUpdatePassword: catchAsyncError(async (request, response, next) => {
 			// Destructure Body
-						const {old_password, new_password, confirm_password} = request.body
+			const {old_password, new_password, confirm_password} = request.body
 
 			// Retrieve
-			const user = await Model.findById(request.user.id).select("+critical_info.password");
+			const user = await Model.findById(request.user.id).select("+password");
 
 			// Not Found
-						if (!user) next(new ErrorHandler(`${Label} Not Found`, 404))
+			if (!user) next(new ErrorHandler(`${Label} Not Found`, 404))
 
 			// Check 1
-						if (!old_password, !new_password, !confirm_password) next(new ErrorHandler("Please enter old password, new password and confirm password", 400))
+			if (!old_password, !new_password, !confirm_password) next(new ErrorHandler("Please enter old password, new password and confirm password", 400))
 
 			// Check 2
 			if (old_password === new_password)  next(new ErrorHandler("New password connot be same as old password", 404));
@@ -349,23 +458,23 @@ exports.userController = (Model= UserModel, Label= 'User') => {
 			if (new_password !== confirm_password)  next(new ErrorHandler("Please match both password", 400));
 
 			// Match Password 1
-						const isPasswordMatched1 = await user.comparePassword(old_password)
+			const isPasswordMatched1 = await user.comparePassword(old_password)
 
-						// Not Matched
-						if (!isPasswordMatched1) next(new ErrorHandler("Old password is incorrect", 401))
+			// Not Matched
+			if (!isPasswordMatched1) next(new ErrorHandler("Old password is incorrect", 401))
 
 			// // Match Password 2
-						// const isPasswordMatched2 = await user.comparePassword(new_password)
+			// const isPasswordMatched2 = await user.comparePassword(new_password)
 
-						// // Not Matched
-						// if (isPasswordMatched2) next(new ErrorHandler("New password connot be same as old password", 401))
-			
+			// // Not Matched
+			// if (isPasswordMatched2) next(new ErrorHandler("New password connot be same as old password", 401))
+
 			// Save
-			user.critical_info.password = new_password;
+			user.password = new_password;
 			await user.save();
 			
-						// Response
-						generateCookie(201, `Profile Password Updated Successfully`, `profile_password_update`, user, response)
+			// Response
+			generateCookie(201, `Profile Password Updated Successfully`, `profile_password_update`, user, response)
 		})
 
 	}   

@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import NotFoundCard from '../../../../../cComponent/bDashboard/aNotFoundCard';
 import FinalRouteName from '../../../../../gRoute/FinalRouteName';
 import APIs from './extra/APIs';
 import { Action } from './extra/State';
 
-const Dashboard = () => {
+const Dashboard = ({ Redux1 }) => {
     // Redux
 	const Redux = {
 		state: useSelector((fullState) => fullState.DashboardState),
@@ -32,1145 +33,324 @@ const Dashboard = () => {
   return (
     <div class="content-wrapper">
 
-    <div class="container-xxl flex-grow-1 container-p-y">
-      {/* <div class="row">
-        <div class="col-lg-8 mb-4 order-0">
-          <div class="card">
-            <div class="d-flex align-items-end row">
-              <div class="col-sm-7">
-                <div class="card-body">
-                  <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
-                  <p class="mb-4">
-                    You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                    your profile.
-                  </p>
-
-                  <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
-                </div>
-              </div>
-              <div class="col-sm-5 text-center text-sm-left">
-                <div class="card-body pb-0 px-0 px-md-4">
-                  <img
-                    src="../assets/img/illustrations/man-with-laptop-light.png"
-                    height="140"
-                    alt="View Badge User"
-                    data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                    data-app-light-img="illustrations/man-with-laptop-light.png"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 order-1">
-          <div class="row">
-            <div class="col-lg-6 col-md-12 col-6 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title d-flex align-items-start justify-content-between">
-                    <div class="avatar flex-shrink-0">
-                      <img
-                        src="../assets/img/icons/unicons/chart-success.png"
-                        alt="chart success"
-                        class="rounded"
-                      />
-                    </div>
-                    <div class="dropdown">
-                      <button
-                        class="btn p-0"
-                        type="button"
-                        id="cardOpt3"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                      </div>
-                    </div>
-                  </div>
-                  <span class="fw-semibold d-block mb-1">Profit</span>
-                  <h3 class="card-title mb-2">$12,628</h3>
-                  <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-12 col-6 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title d-flex align-items-start justify-content-between">
-                    <div class="avatar flex-shrink-0">
-                      <img
-                        src="../assets/img/icons/unicons/wallet-info.png"
-                        alt="Credit Card"
-                        class="rounded"
-                      />
-                    </div>
-                    <div class="dropdown">
-                      <button
-                        class="btn p-0"
-                        type="button"
-                        id="cardOpt6"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                      </div>
-                    </div>
-                  </div>
-                  <span>Sales</span>
-                  <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-                  <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
-          <div class="card">
-            <div class="row row-bordered g-0">
-              <div class="col-md-8">
-                <h5 class="card-header m-0 me-2 pb-3">Total Revenue</h5>
-                <div id="totalRevenueChart" class="px-2"></div>
-              </div>
-              <div class="col-md-4">
-                <div class="card-body">
-                  <div class="text-center">
-                    <div class="dropdown">
-                      <button
-                        class="btn btn-sm btn-outline-primary dropdown-toggle"
-                        type="button"
-                        id="growthReportId"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        2022
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
-                        <a class="dropdown-item" href="javascript:void(0);">2021</a>
-                        <a class="dropdown-item" href="javascript:void(0);">2020</a>
-                        <a class="dropdown-item" href="javascript:void(0);">2019</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="growthChart"></div>
-                <div class="text-center fw-semibold pt-3 mb-2">62% Company Growth</div>
-
-                <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
-                  <div class="d-flex">
-                    <div class="me-2">
-                      <span class="badge bg-label-primary p-2"><i class="bx bx-dollar text-primary"></i></span>
-                    </div>
-                    <div class="d-flex flex-column">
-                      <small>2022</small>
-                      <h6 class="mb-0">$32.5k</h6>
-                    </div>
-                  </div>
-                  <div class="d-flex">
-                    <div class="me-2">
-                      <span class="badge bg-label-info p-2"><i class="bx bx-wallet text-info"></i></span>
-                    </div>
-                    <div class="d-flex flex-column">
-                      <small>2021</small>
-                      <h6 class="mb-0">$41.2k</h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
-          <div class="row">
-            <div class="col-6 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title d-flex align-items-start justify-content-between">
-                    <div class="avatar flex-shrink-0">
-                      <img src="../assets/img/icons/unicons/paypal.png" alt="Credit Card" class="rounded" />
-                    </div>
-                    <div class="dropdown">
-                      <button
-                        class="btn p-0"
-                        type="button"
-                        id="cardOpt4"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                      </div>
-                    </div>
-                  </div>
-                  <span class="d-block mb-1">Payments</span>
-                  <h3 class="card-title text-nowrap mb-2">$2,456</h3>
-                  <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title d-flex align-items-start justify-content-between">
-                    <div class="avatar flex-shrink-0">
-                      <img src="../assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded" />
-                    </div>
-                    <div class="dropdown">
-                      <button
-                        class="btn p-0"
-                        type="button"
-                        id="cardOpt1"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="cardOpt1">
-                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                      </div>
-                    </div>
-                  </div>
-                  <span class="fw-semibold d-block mb-1">Transactions</span>
-                  <h3 class="card-title mb-2">$14,857</h3>
-                  <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
-                    <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
-                      <div class="card-title">
-                        <h5 class="text-nowrap mb-2">Profile Report</h5>
-                        <span class="badge bg-label-warning rounded-pill">Year 2021</span>
-                      </div>
-                      <div class="mt-sm-auto">
-                        <small class="text-success text-nowrap fw-semibold"
-                          ><i class="bx bx-chevron-up"></i> 68.2%</small
-                        >
-                        <h3 class="mb-0">$84,686k</h3>
-                      </div>
-                    </div>
-                    <div id="profileReportChart"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
-          <div class="card h-100">
-            <div class="card-header d-flex align-items-center justify-content-between pb-0">
-              <div class="card-title mb-0">
-                <h5 class="m-0 me-2">Order Statistics</h5>
-                <small class="text-muted">42.82k Total Sales</small>
-              </div>
-              <div class="dropdown">
-                <button
-                  class="btn p-0"
-                  type="button"
-                  id="orederStatistics"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
-                  <a class="dropdown-item" href="javascript:void(0);">Select All</a>
-                  <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-                  <a class="dropdown-item" href="javascript:void(0);">Share</a>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <div class="d-flex flex-column align-items-center gap-1">
-                  <h2 class="mb-2">8,258</h2>
-                  <span>Total Orders</span>
-                </div>
-                <div id="orderStatisticsChart"></div>
-              </div>
-              <ul class="p-0 m-0">
-                <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <span class="avatar-initial rounded bg-label-primary"
-                      ><i class="bx bx-mobile-alt"></i
-                    ></span>
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <h6 class="mb-0">Electronic</h6>
-                      <small class="text-muted">Mobile, Earbuds, TV</small>
-                    </div>
-                    <div class="user-progress">
-                      <small class="fw-semibold">82.5k</small>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <span class="avatar-initial rounded bg-label-success"><i class="bx bx-closet"></i></span>
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <h6 class="mb-0">Fashion</h6>
-                      <small class="text-muted">T-shirt, Jeans, Shoes</small>
-                    </div>
-                    <div class="user-progress">
-                      <small class="fw-semibold">23.8k</small>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <span class="avatar-initial rounded bg-label-info"><i class="bx bx-home-alt"></i></span>
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <h6 class="mb-0">Decor</h6>
-                      <small class="text-muted">Fine Art, Dining</small>
-                    </div>
-                    <div class="user-progress">
-                      <small class="fw-semibold">849k</small>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-flex">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <span class="avatar-initial rounded bg-label-secondary"
-                      ><i class="bx bx-football"></i
-                    ></span>
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <h6 class="mb-0">Sports</h6>
-                      <small class="text-muted">Football, Cricket Kit</small>
-                    </div>
-                    <div class="user-progress">
-                      <small class="fw-semibold">99</small>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4 order-1 mb-4">
-          <div class="card h-100">
-            <div class="card-header">
-              <ul class="nav nav-pills" role="tablist">
-                <li class="nav-item">
-                  <button
-                    type="button"
-                    class="nav-link active"
-                    role="tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#navs-tabs-line-card-income"
-                    aria-controls="navs-tabs-line-card-income"
-                    aria-selected="true"
-                  >
-                    Income
-                  </button>
-                </li>
-                <li class="nav-item">
-                  <button type="button" class="nav-link" role="tab">Expenses</button>
-                </li>
-                <li class="nav-item">
-                  <button type="button" class="nav-link" role="tab">Profit</button>
-                </li>
-              </ul>
-            </div>
-            <div class="card-body px-0">
-              <div class="tab-content p-0">
-                <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
-                  <div class="d-flex p-4 pt-3">
-                    <div class="avatar flex-shrink-0 me-3">
-                      <img src="../assets/img/icons/unicons/wallet.png" alt="User" />
-                    </div>
-                    <div>
-                      <small class="text-muted d-block">Total Balance</small>
-                      <div class="d-flex align-items-center">
-                        <h6 class="mb-0 me-1">$459.10</h6>
-                        <small class="text-success fw-semibold">
-                          <i class="bx bx-chevron-up"></i>
-                          42.9%
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                  <div id="incomeChart"></div>
-                  <div class="d-flex justify-content-center pt-4 gap-2">
-                    <div class="flex-shrink-0">
-                      <div id="expensesOfWeek"></div>
-                    </div>
-                    <div>
-                      <p class="mb-n1 mt-1">Expenses This Week</p>
-                      <small class="text-muted">$39 less than last week</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4 order-2 mb-4">
-          <div class="card h-100">
-            <div class="card-header d-flex align-items-center justify-content-between">
-              <h5 class="card-title m-0 me-2">Transactions</h5>
-              <div class="dropdown">
-                <button
-                  class="btn p-0"
-                  type="button"
-                  id="transactionID"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
-                  <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                  <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                  <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <ul class="p-0 m-0">
-                <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="../assets/img/icons/unicons/paypal.png" alt="User" class="rounded" />
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <small class="text-muted d-block mb-1">Paypal</small>
-                      <h6 class="mb-0">Send money</h6>
-                    </div>
-                    <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">+82.6</h6>
-                      <span class="text-muted">USD</span>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="../assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <small class="text-muted d-block mb-1">Wallet</small>
-                      <h6 class="mb-0">Mac'D</h6>
-                    </div>
-                    <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">+270.69</h6>
-                      <span class="text-muted">USD</span>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="../assets/img/icons/unicons/chart.png" alt="User" class="rounded" />
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <small class="text-muted d-block mb-1">Transfer</small>
-                      <h6 class="mb-0">Refund</h6>
-                    </div>
-                    <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">+637.91</h6>
-                      <span class="text-muted">USD</span>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="../assets/img/icons/unicons/cc-success.png" alt="User" class="rounded" />
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <small class="text-muted d-block mb-1">Credit Card</small>
-                      <h6 class="mb-0">Ordered Food</h6>
-                    </div>
-                    <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">-838.71</h6>
-                      <span class="text-muted">USD</span>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-flex mb-4 pb-1">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="../assets/img/icons/unicons/wallet.png" alt="User" class="rounded" />
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <small class="text-muted d-block mb-1">Wallet</small>
-                      <h6 class="mb-0">Starbucks</h6>
-                    </div>
-                    <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">+203.33</h6>
-                      <span class="text-muted">USD</span>
-                    </div>
-                  </div>
-                </li>
-                <li class="d-flex">
-                  <div class="avatar flex-shrink-0 me-3">
-                    <img src="../assets/img/icons/unicons/cc-warning.png" alt="User" class="rounded" />
-                  </div>
-                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                    <div class="me-2">
-                      <small class="text-muted d-block mb-1">Mastercard</small>
-                      <h6 class="mb-0">Ordered Food</h6>
-                    </div>
-                    <div class="user-progress d-flex align-items-center gap-1">
-                      <h6 class="mb-0">-92.45</h6>
-                      <span class="text-muted">USD</span>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-      {/* asdasdasd */}
-
-      {Redux.state.ReceivedObject.HomeList &&
-        <div class="row">
-          <div class="col-12 mb-4 order-0">
-            <div class="card">
-              <div class="d-flex align-items-end row">
-                <div class="col-sm-7">
-                  <div class="card-body">
-                    <h5 class="card-title text-primary">Welcome Back {Redux.state.ReceivedObject.HomeList.subTitle}! 🎉</h5>
-                    <p class="mb-4">
-                      You are doing very well, our best wishes with you. Check your overall profile glance on this dashboard below.
-                    </p>
-
-                    <Link to={FinalRouteName.Content.Sidebar.Main.HomeRoute} class="btn btn-sm btn-outline-primary">Start Journey <i class="bx bx-chevrons-right ms-1"></i></Link>
-                  </div>
-                </div>
-                <div class="col-sm-5 text-center text-sm-left">
-                  <div class="card-body pb-0 px-0 px-md-4">
-                    <img
-                      src="../assets/img/illustrations/man-with-laptop-light.png"
-                      height="140"
-                      alt="View Badge User"
-                      data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                      data-app-light-img="illustrations/man-with-laptop-light.png"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      }
-
-      <div class="row">
+      <div class="container-xxl flex-grow-1 container-p-y">
         {Redux.state.ReceivedObject.HomeList &&
-          <div class="col-md-6 col-lg-6 order-2 mb-4">
-            <div class="card h-100">
-              <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                <div class="card-title mb-0">
-                  <div class="d-flex">
-                    <div class="avatar flex-shrink-0 me-3">
-                      <span class="avatar-initial rounded bg-label-primary"
-                        ><i class="bx bx-home-circle"></i
-                      ></span>
+          <div class="row">
+            <div class="col-12 mb-4 order-0">
+              <div class="card">
+                <div class="d-flex align-items-end row">
+                  <div class="col-sm-7">
+                    <div class="card-body">
+                      <h5 class="card-title text-primary">Welcome Back {Redux.state.ReceivedObject.HomeList.subTitle}! 🎉</h5>
+                      <p class="mb-4">
+                        You are doing very well, our best wishes with you. Check your overall profile glance on this dashboard below.
+                      </p>
+
+                      <Link to={FinalRouteName.Content.Sidebar.Main.HomeRoute} class="btn btn-sm btn-outline-primary">Start Journey <i class="bx bx-chevrons-right ms-1"></i></Link>
                     </div>
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                      <div class="me-2">
-                        <h5 class="mb-0">Home</h5>
-                        <small class="text-muted">Total 3 Items Found</small>
-                      </div>
+                  </div>
+                  <div class="col-sm-5 text-center text-sm-left">
+                    <div class="card-body pb-0 px-0 px-md-4">
+                      <img
+                        src="../assets/img/illustrations/man-with-laptop-light.png"
+                        height="140"
+                        alt="View Badge User"
+                        data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                        data-app-light-img="illustrations/man-with-laptop-light.png"
+                      />
                     </div>
                   </div>
                 </div>
-                <button
-                  class="btn p-0"
-                  type="button"
-                  id="orederStatistics"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-edit"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <ul class="p-0 mt-4">
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Greeting</small>
-                        <h6 class="mb-0">{Redux.state.ReceivedObject.HomeList.title}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Name</small>
-                        <h6 class="mb-0">{Redux.state.ReceivedObject.HomeList.subTitle}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Tag</small>
-                        <h6 class="mb-0">{Redux.state.ReceivedObject.HomeList.description}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-3 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Links</small>
-                        {Redux.state.ReceivedObject.HomeList.links &&
-                          Redux.state.ReceivedObject.HomeList.links.map(each => {
-                            return (
-                              <h6 class="mb-1"> <a href={each.url} target="_blank" rel="noreferrer"><i class="bx bx-link me-2"></i></a>{each.label}</h6>
-                            )
-                          })
-                        }
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Image</small>
-                        <h6 class="mb-0"> <a href={Redux.state.ReceivedObject.HomeList.image.url} target="_blank" rel="noreferrer" ><i class="bx bx-link me-2"></i></a>Click to preview</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Resume</small>
-                        <h6 class="mb-0"> <a href={Redux.state.ReceivedObject.HomeList.resume.url} target="_blank" rel="noreferrer" ><i class="bx bx-link me-2"></i></a>Click to preview</h6>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
         }
 
-        {Redux.state.ReceivedObject.AboutList &&
-          <div class="col-md-6 col-lg-6 order-2 mb-4">
-            <div class="card h-100">
-              <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                <div class="card-title mb-0">
-                  <div class="d-flex">
-                    <div class="avatar flex-shrink-0 me-3">
-                      <span class="avatar-initial rounded bg-label-danger"
-                        ><i class="bx bx-user"></i
-                      ></span>
-                    </div>
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                      <div class="me-2">
-                        <h5 class="mb-0">About</h5>
-                        <small class="text-muted">Total 3 Items Found</small>
+        <div class="row">
+          {Redux.state.ReceivedObject.HomeList ?
+            <div class="col-md-6 col-lg-6 order-2 mb-4">
+              <div class="card h-100">
+                <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                  <div class="card-title mb-0">
+                    <div class="d-flex">
+                      <div class="avatar flex-shrink-0 me-3">
+                        <span class="avatar-initial rounded bg-label-primary"
+                          ><i class="bx bx-home-circle"></i
+                        ></span>
+                      </div>
+                      <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                        <div class="me-2">
+                          <h5 class="mb-0">Home</h5>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <button class="btn p-0" type="button" ><i class="bx bx-edit"></i></button>
                 </div>
-                <button
-                  class="btn p-0"
-                  type="button"
-                  id="orederStatistics"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-edit"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <ul class="p-0 mt-4">
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Pre Heading</small>
-                        <h6 class="mb-0">{Redux.state.ReceivedObject.AboutList.title}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Heading</small>
-                        <h6 class="mb-0">{Redux.state.ReceivedObject.AboutList.subTitle}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-3 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Cards</small>
-                        {Redux.state.ReceivedObject.AboutList.cards &&
-                          Redux.state.ReceivedObject.AboutList.cards.map(each => {
-                            return (
-                              <h6 class="mb-2">{each.title} {each.sub_title}</h6>
-                            )
-                          })
-                        }
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Description</small>
-                        <h6 class="mb-0 col-sm-2 text-truncate">{Redux.state.ReceivedObject.AboutList.description}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Image</small>
-                        <h6 class="mb-0"> <a href={Redux.state.ReceivedObject.AboutList.image.url} target="_blank" rel="noreferrer"><i class="bx bx-link me-2"></i></a>Click to preview</h6>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+                <div class="card-body text-center">
+                  <div class="d-flex justify-content-center my-4">
+                    <img src={Redux.state.ReceivedObject.HomeList.image.url} class="rounded-circle" alt="example placeholder" style={{width: "125px", height: "125px", objectFit: "contain"}} />
+                  </div>
+
+                  <h6 class="card-title text-muted">{Redux.state.ReceivedObject.HomeList.title}</h6>
+                  <h5 class="card-title">{Redux.state.ReceivedObject.HomeList.subTitle}</h5>
+                  <p class="card-text">{Redux.state.ReceivedObject.HomeList.description}</p>
+
+                  <a href={Redux.state.ReceivedObject.HomeList.resume.url} target="_blank" rel='noreferrer' class="btn btn-sm btn-outline-primary my-4">Check Resume</a>
+
+                  <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item"></li>
+                    {Redux.state.ReceivedObject.HomeList.links &&
+                      Redux.state.ReceivedObject.HomeList.links.map(each => {
+                        return (
+                          <li class="list-group-item">Link to
+                            <Link to={each.url} class="ms-2 card-link">{each.label}</Link>
+                          </li>                      
+                        )
+                      })
+                    }
+                    <li class="list-group-item"></li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-        }
-      </div>
+            :
+            <NotFoundCard
+              head="Home"
+              message="No Home Item Found!"
+              size="col-md-6 col-lg-6 order-2 mb-4"
+            />
+          }
 
-      <div class="row">
-        {Redux.state.ReceivedObject.ExperienceList &&
-          <div class="col-md-6 col-lg-6 order-2 mb-4">
-            <div class="card h-100">
-              <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                <div class="card-title mb-0">
-                  <div class="d-flex">
-                    <div class="avatar flex-shrink-0 me-3">
-                      <span class="avatar-initial rounded bg-label-warning"
-                        ><i class="bx bx-brain"></i
-                      ></span>
-                    </div>
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                      <div class="me-2">
-                        <h5 class="mb-0">Experience</h5>
-                        <small class="text-muted">Total 3 Items Found</small>
+          {Redux.state.ReceivedObject.AboutList ?
+            <div class="col-md-6 col-lg-6 order-2 mb-4">
+              <div class="card h-100">
+                <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                  <div class="card-title mb-0">
+                    <div class="d-flex">
+                      <div class="avatar flex-shrink-0 me-3">
+                        <span class="avatar-initial rounded bg-label-danger"
+                          ><i class="bx bx-user"></i
+                        ></span>
+                      </div>
+                      <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                        <div class="me-2">
+                          <h5 class="mb-0">About</h5>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <button class="btn p-0" type="button" ><i class="bx bx-edit"></i></button>
                 </div>
-                <button
-                  class="btn p-0"
-                  type="button"
-                  id="orederStatistics"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-edit"></i>
-                </button>
+                <div class="card-body text-center">
+                  <div class="d-flex justify-content-center my-4">
+                    <img src={Redux.state.ReceivedObject.AboutList.image.url} class="rounded" alt="example placeholder" style={{width: "125px", height: "125px", objectFit: "contain"}} />
+                  </div>
+
+                  <h6 class="card-title text-muted">{Redux.state.ReceivedObject.AboutList.title}</h6>
+                  <h5 class="card-title">{Redux.state.ReceivedObject.AboutList.subTitle}</h5>
+                  <p class="card-text">{Redux.state.ReceivedObject.AboutList.description}</p>
+
+                  <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item"></li>
+                    {Redux.state.ReceivedObject.AboutList.cards &&
+                      Redux.state.ReceivedObject.AboutList.cards.map(each => {
+                        return (
+                          <li class="list-group-item">{each.title} {each.sub_title}</li>                      
+                        )
+                      })
+                    }
+                    <li class="list-group-item"></li>
+                  </ul>
+                </div>
               </div>
-              <div class="card-body">
-                <ul class="p-0 mt-4">
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Pre Heading</small>
-                        <h6 class="mb-0">{Redux.state.ReceivedObject.ExperienceList.title}</h6>
+            </div>
+            :
+            <NotFoundCard
+              head="About"
+              message="No About Item Found!"
+              size="col-md-6 col-lg-6 order-2 mb-4"
+            />
+          }
+        </div>
+
+        <div class="row">
+          {Redux.state.ReceivedObject.ExperienceList ?
+            <div class="col-md-6 col-lg-6 order-2 mb-4">
+              <div class="card h-100">
+                <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                  <div class="card-title mb-0">
+                    <div class="d-flex">
+                      <div class="avatar flex-shrink-0 me-3">
+                        <span class="avatar-initial rounded bg-label-warning"
+                          ><i class="bx bx-brain"></i
+                        ></span>
+                      </div>
+                      <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                        <div class="me-2">
+                          <h5 class="mb-0">Experience</h5>
+                        </div>
                       </div>
                     </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Heading</small>
-                        <h6 class="mb-0">{Redux.state.ReceivedObject.ExperienceList.subTitle}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-3 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Cards</small>
+                  </div>
+                  <button class="btn p-0" type="button"><i class="bx bx-edit"></i></button>
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="card-title text-muted mt-4">{Redux.state.ReceivedObject.ExperienceList.title}</h6>
+                  <h5 class="card-title">{Redux.state.ReceivedObject.ExperienceList.subTitle}</h5>
+                  <p class="card-text">{Redux.state.ReceivedObject.ExperienceList.description}</p>
 
-                        {Redux.state.ReceivedObject.ExperienceList.cards &&
-                          Redux.state.ReceivedObject.ExperienceList.cards.map(each => {
-                            return (
-                              <div class="mb-0">
-                                <h6 class="mb-2">{each.title}</h6>
-
-                                {/* {each.points &&
-                                  each.points.map(each => {
+                  <div class="accordion mt-4" id="accordionExample">
+                    {Redux.state.ReceivedObject.ExperienceList.cards &&
+                      Redux.state.ReceivedObject.ExperienceList.cards.map((each, index) => {
+                        return (
+                          <div class="card accordion-item" style={{textAlign: "start"}}>
+                            <h2 class="accordion-header" id="headingOne">
+                              <button
+                                type="button"
+                                class="accordion-button"
+                                data-bs-toggle="collapse"
+                                data-bs-target={`#accordion${index}`}
+                                aria-expanded="true"
+                                aria-controls={`accordion${index}`}
+                              >
+                                {each.title}
+                              </button>
+                            </h2>
+        
+                            <div
+                              id={`accordion${index}`}
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#accordionExample"
+                            >
+                              <div class="accordion-body">
+                                {each.points &&
+                                  each.points.map(each1 => {
                                     return (
-                                      <div class="mb-2 ms-2">
-                                        <p class="mb-0">{each.title}</p>
-                                        <small class="text-muted">{each.sub_title}</small>
+                                      <div>
+                                        <h6 class="card-title mb-1">{each1.title}</h6>
+                                        <p class="text-muted">{each1.sub_title}</p>
                                       </div>
                                     )
                                   })
-                                } */}
+                                }
                               </div>
-                            )
-                          })
-                        }
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+                            </div>
+                          </div>
+                        )
+                      })
+                    }
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        }
+            :
+            <NotFoundCard
+              head="Experience"
+              message="No Experience Item Found!"
+              size="col-md-6 col-lg-6 order-2 mb-4"
+            />
+          }
 
-        {Redux.state.ReceivedObject.ServiceList &&
-          <div class="col-md-6 col-lg-6 order-2 mb-4">
-            <div class="card h-100">
-              <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                <div class="card-title mb-0">
-                  <div class="d-flex">
-                    <div class="avatar flex-shrink-0 me-3">
-                      <span class="avatar-initial rounded bg-label-success"
-                        ><i class="bx bx-cycling"></i
-                      ></span>
-                    </div>
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                      <div class="me-2">
-                        <h5 class="mb-0">Service</h5>
-                        <small class="text-muted">Total 3 Items Found</small>
+          {Redux.state.ReceivedObject.ServiceList ?
+            <div class="col-md-6 col-lg-6 order-2 mb-4">
+              <div class="card h-100">
+                <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                  <div class="card-title mb-0">
+                    <div class="d-flex">
+                      <div class="avatar flex-shrink-0 me-3">
+                        <span class="avatar-initial rounded bg-label-success"
+                          ><i class="bx bx-cycling"></i
+                        ></span>
+                      </div>
+                      <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                        <div class="me-2">
+                          <h5 class="mb-0">Service</h5>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <button
+                    class="btn p-0"
+                    type="button"
+                  >
+                    <i class="bx bx-edit"></i>
+                  </button>
                 </div>
-                <button
-                  class="btn p-0"
-                  type="button"
-                  id="orederStatistics"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-edit"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <ul class="p-0 mt-4">
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Pre Heading</small>
-                        <h6 class="mb-0">{Redux.state.ReceivedObject.ServiceList.title}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Heading</small>
-                        <h6 class="mb-0">{Redux.state.ReceivedObject.ServiceList.subTitle}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-3 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Cards</small>
+                <div class="card-body text-center">
+                  <h6 class="card-title text-muted mt-4">{Redux.state.ReceivedObject.ServiceList.title}</h6>
+                  <h5 class="card-title">{Redux.state.ReceivedObject.ServiceList.subTitle}</h5>
+                  <p class="card-text">{Redux.state.ReceivedObject.ServiceList.description}</p>
 
-                        {Redux.state.ReceivedObject.ServiceList.cards &&
-                          Redux.state.ReceivedObject.ServiceList.cards.map(each => {
-                            return (
-                              <div class="mb-0">
-                                <h6 class="mb-2">{each.title}</h6>
-
-                                {/* {each.points &&
-                                  each.points.map(each => {
+                  <div class="accordion mt-4" id="accordionExample">
+                    {Redux.state.ReceivedObject.ServiceList.cards &&
+                      Redux.state.ReceivedObject.ServiceList.cards.map((each, index) => {
+                        return (
+                          <div class="card accordion-item" style={{textAlign: "start"}}>
+                            <h2 class="accordion-header" id="headingOne">
+                              <button
+                                type="button"
+                                class="accordion-button"
+                                data-bs-toggle="collapse"
+                                data-bs-target={`#accordionService${index}`}
+                                aria-expanded="true"
+                                aria-controls={`accordionService${index}`}
+                              >
+                                {each.title}
+                              </button>
+                            </h2>
+        
+                            <div
+                              id={`accordionService${index}`}
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#accordionExample"
+                            >
+                              <div class="accordion-body">
+                                {each.points &&
+                                  each.points.map(each1 => {
                                     return (
-                                      <div class="mb-2 ms-2">
-                                        <p class="mb-0">{each.title}</p>
-                                        <small class="text-muted">{each.sub_title}</small>
-                                      </div>
+                                      <p class="card-title">{each1.title}</p>
                                     )
                                   })
-                                } */}
+                                }
                               </div>
-                            )
-                          })
-                        }
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+                            </div>
+                          </div>
+                        )
+                      })
+                    }
+                  </div>              
+                </div>
               </div>
             </div>
-          </div>
-        }
-      </div>
+            :
+            <NotFoundCard
+              head="Service"
+              message="No Service Item Found!"
+              size="col-md-6 col-lg-6 order-2 mb-4"
+            />
+          }
+        </div>
 
-      <div class="row">
-        {Redux.state.ReceivedObject.PortfolioList &&
-          <div class="col-md-4 col-lg-4 order-2 mb-4">
-            <div class="card h-100">
-              <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                <div class="card-title mb-0">
-                  <div class="d-flex">
-                    <div class="avatar flex-shrink-0 me-3">
-                      <span class="avatar-initial rounded bg-label-info"
-                        ><i class="bx bx-briefcase"></i
-                      ></span>
-                    </div>
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                      <div class="me-2">
-                        <h5 class="mb-0">Portfolio</h5>
-                        <small class="text-muted">Total 3 Items Found</small>
+        <div class="row">
+          {Redux.state.ReceivedObject.PortfolioList ?
+            <div class="col-md-4 col-lg-4 order-2 mb-4">
+              <div class="card h-100">
+                <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                  <div class="card-title mb-0">
+                    <div class="d-flex">
+                      <div class="avatar flex-shrink-0 me-3">
+                        <span class="avatar-initial rounded bg-label-info"
+                          ><i class="bx bx-briefcase"></i
+                        ></span>
+                      </div>
+                      <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                        <div class="me-2">
+                          <h5 class="mb-0">Portfolio</h5>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <button
-                  class="btn p-0"
-                  type="button"
-                  id="orederStatistics"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-edit"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <ul class="p-0 mt-4">
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Pre Heading</small>
-                        <h6 class="mb-0">{Redux.state.ReceivedObject.PortfolioList.title}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Heading</small>
-                        <h6 class="mb-0">{Redux.state.ReceivedObject.PortfolioList.subTitle}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-3 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Cards</small>
-
-                        {Redux.state.ReceivedObject.PortfolioList.cards &&
-                          Redux.state.ReceivedObject.PortfolioList.cards.map(each => {
-                            return (
-                              <div class="mb-0">
-                                <h6 class="mb-2">{each.basic_info.title}</h6>
-                              </div>
-                            )
-                          })
-                        }
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        }
-
-        {Redux.state.ReceivedObject.EventList &&
-          <div class="col-md-4 col-lg-4 order-2 mb-4">
-            <div class="card h-100">
-              <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                <div class="card-title mb-0">
-                  <div class="d-flex">
-                    <div class="avatar flex-shrink-0 me-3">
-                      <span class="avatar-initial rounded bg-label-warning"
-                        ><i class="bx bx-calendar-star"></i
-                      ></span>
-                    </div>
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                      <div class="me-2">
-                        <h5 class="mb-0">Event</h5>
-                        <small class="text-muted">Total 3 Items Found</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button
-                  class="btn p-0"
-                  type="button"
-                  id="orederStatistics"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-edit"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <ul class="p-0 mt-4">
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Pre Heading</small>
-                        <h6 class="mb-0">{Redux.state.ReceivedObject.EventList.title}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Heading</small>
-                        <h6 class="mb-0">{Redux.state.ReceivedObject.EventList.subTitle}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-3 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Cards</small>
-
-                        {Redux.state.ReceivedObject.EventList.cards &&
-                          Redux.state.ReceivedObject.EventList.cards.map(each => {
-                            return (
-                              <div class="mb-0">
-                                <h6 class="mb-2">{each.basic_info.title}</h6>
-                              </div>
-                            )
-                          })
-                        }
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        }
-
-        {Redux.state.ReceivedObject.BlogList &&
-          <div class="col-md-4 col-lg-4 order-2 mb-4">
-            <div class="card h-100">
-              <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                <div class="card-title mb-0">
-                  <div class="d-flex">
-                    <div class="avatar flex-shrink-0 me-3">
-                      <span class="avatar-initial rounded bg-label-success"
-                        ><i class="bx bx-chat"></i
-                      ></span>
-                    </div>
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                      <div class="me-2">
-                        <h5 class="mb-0">Blog</h5>
-                        <small class="text-muted">Total 3 Items Found</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button
-                  class="btn p-0"
-                  type="button"
-                  id="orederStatistics"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-edit"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <ul class="p-0 mt-4">
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Pre Heading</small>
-                        <h6 class="mb-0">{Redux.state.ReceivedObject.BlogList.title}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Heading</small>
-                        <h6 class="mb-0">{Redux.state.ReceivedObject.BlogList.subTitle}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-3 pb-1">
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 ms-4">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Cards</small>
-
-                        {Redux.state.ReceivedObject.BlogList.cards &&
-                          Redux.state.ReceivedObject.BlogList.cards.map(each => {
-                            return (
-                              <div class="mb-0">
-                                <h6 class="mb-2">{each.basic_info.title}</h6>
-                              </div>
-                            )
-                          })
-                        }
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        }
-      </div>
-
-      <div class="row">
-        {Redux.state.ReceivedObject.PortfolioCardList && Redux.state.ReceivedObject.PortfolioCardList.length > 0 &&
-          <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
-            <div class="card h-100">
-              <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                <div class="card-title mb-0">
-                  <div class="d-flex">
-                    <div class="avatar flex-shrink-0 me-3">
-                      <span class="avatar-initial rounded bg-label-info"
-                        ><i class="bx bx-dumbbell"></i
-                      ></span>
-                    </div>
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                      <div class="me-2">
-                        <h5 class="mb-0">Portfolio Cards</h5>
-                        <small class="text-muted">Total 3 Items Found</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="dropdown">
                   <button
                     class="btn p-0"
                     type="button"
@@ -1179,60 +359,78 @@ const Dashboard = () => {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    <i class="bx bx-dots-vertical-rounded"></i>
+                    <i class="bx bx-edit"></i>
                   </button>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
-                    <a class="dropdown-item" href="javascript:void(0);">Select All</a>
-                    <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-                    <a class="dropdown-item" href="javascript:void(0);">Share</a>
-                  </div>
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="card-title text-muted mt-4">{Redux.state.ReceivedObject.PortfolioList.title}</h6>
+                  <h5 class="card-title">{Redux.state.ReceivedObject.PortfolioList.subTitle}</h5>
+                  <p class="card-text">{Redux.state.ReceivedObject.PortfolioList.description}</p>
+
+                  <div class="accordion mt-4" id="accordionExample">
+                    {Redux.state.ReceivedObject.PortfolioList.cards &&
+                      Redux.state.ReceivedObject.PortfolioList.cards.map((each, index) => {
+                        return (
+                          <div class="card accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                              <button
+                                type="button"
+                                class="accordion-button"
+                                data-bs-toggle="collapse"
+                                data-bs-target={`#accordionPortfolio${index}`}
+                                aria-expanded="true"
+                                aria-controls={`accordionPortfolio${index}`}
+                              >
+                                Project {index+1}
+                              </button>
+                            </h2>
+        
+                            <div
+                              id={`accordionPortfolio${index}`}
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#accordionExample"
+                            >
+                              <div class="accordion-body">
+                                <div>
+                                    <h6 class="card-title mt-2">{each.basic_info.title}</h6>
+                                    <p class="text-muted">{each.basic_info.sub_title}</p>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      })
+                    }
+                  </div>              
                 </div>
               </div>
-              <div class="card-body">
-                <ul class="p-0 mt-4">
-                  {Redux.state.ReceivedObject.PortfolioCardList.map(each => {
-                    return (
-                      <li class="d-flex mb-4 pb-1">
-                        <div class="avatar flex-shrink-0 me-3">
-                          <span class="avatar-initial rounded-circle bg-label-primary">
-                            <img src={each.image.url} alt="" class="w-px-40 h-100 w-100 rounded-circle" />
-                          </span>
-                        </div>
-                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                          <div class="me-2">
-                            <h6 class="mb-0">{each.title}</h6>
-                            <small class="text-muted">{each.subTitle}</small>
-                          </div>
-                        </div>
-                      </li>
-                    )
-                  }) }
-                </ul>
-              </div>
             </div>
-          </div>
-        }
+            :
+            <NotFoundCard
+              head="Portfolio"
+              message="No Portfolio Item Found!"
+              size="col-md-4 col-lg-4 order-2 mb-4"
+            />
+          }
 
-        {Redux.state.ReceivedObject.EventCardList && Redux.state.ReceivedObject.EventCardList.length > 0 &&
-          <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
-            <div class="card h-100">
-              <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                <div class="card-title mb-0">
-                  <div class="d-flex">
-                    <div class="avatar flex-shrink-0 me-3">
-                      <span class="avatar-initial rounded bg-label-warning"
-                        ><i class="bx bx-star"></i
-                      ></span>
-                    </div>
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                      <div class="me-2">
-                        <h5 class="mb-0">Event Cards</h5>
-                        <small class="text-muted">Total 3 Items Found</small>
+          {Redux.state.ReceivedObject.EventList ?
+            <div class="col-md-4 col-lg-4 order-2 mb-4">
+              <div class="card h-100">
+                <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                  <div class="card-title mb-0">
+                    <div class="d-flex">
+                      <div class="avatar flex-shrink-0 me-3">
+                        <span class="avatar-initial rounded bg-label-warning"
+                          ><i class="bx bx-calendar-star"></i
+                        ></span>
+                      </div>
+                      <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                        <div class="me-2">
+                          <h5 class="mb-0">Event</h5>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="dropdown">
                   <button
                     class="btn p-0"
                     type="button"
@@ -1241,60 +439,78 @@ const Dashboard = () => {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    <i class="bx bx-dots-vertical-rounded"></i>
+                    <i class="bx bx-edit"></i>
                   </button>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
-                    <a class="dropdown-item" href="javascript:void(0);">Select All</a>
-                    <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-                    <a class="dropdown-item" href="javascript:void(0);">Share</a>
-                  </div>
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="card-title text-muted mt-4">{Redux.state.ReceivedObject.EventList.title}</h6>
+                  <h5 class="card-title">{Redux.state.ReceivedObject.EventList.subTitle}</h5>
+                  <p class="card-text">{Redux.state.ReceivedObject.EventList.description}</p>
+
+                  <div class="accordion mt-4" id="accordionExample">
+                    {Redux.state.ReceivedObject.EventList.cards &&
+                      Redux.state.ReceivedObject.EventList.cards.map((each, index) => {
+                        return (
+                          <div class="card accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                              <button
+                                type="button"
+                                class="accordion-button"
+                                data-bs-toggle="collapse"
+                                data-bs-target={`#accordionPortfolio${index}`}
+                                aria-expanded="true"
+                                aria-controls={`accordionPortfolio${index}`}
+                              >
+                                Event {index+1}
+                              </button>
+                            </h2>
+        
+                            <div
+                              id={`accordionPortfolio${index}`}
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#accordionExample"
+                            >
+                              <div class="accordion-body">
+                                <div>
+                                    <h6 class="card-title mt-2">{each.basic_info.title}</h6>
+                                    <p class="text-muted">{each.basic_info.sub_title}</p>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      })
+                    }
+                  </div>              
                 </div>
               </div>
-              <div class="card-body">
-                <ul class="p-0 mt-4">
-                  {Redux.state.ReceivedObject.EventCardList.map(each => {
-                    return (
-                      <li class="d-flex mb-4 pb-1">
-                        <div class="avatar flex-shrink-0 me-3">
-                          <span class="avatar-initial rounded-circle bg-label-primary">
-                            <img src={each.image.url} alt="" class="w-px-40 h-100 w-100 rounded-circle" />
-                          </span>
-                        </div>
-                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                          <div class="me-2">
-                            <h6 class="mb-0">{each.title}</h6>
-                            <small class="text-muted">{each.subTitle}</small>
-                          </div>
-                        </div>
-                      </li>
-                    )
-                  }) }
-                </ul>
-              </div>
             </div>
-          </div>
-        }
+            :
+            <NotFoundCard
+              head="Event"
+              message="No Event Item Found!"
+              size="col-md-4 col-lg-4 order-2 mb-4"
+            />
+          }
 
-        {Redux.state.ReceivedObject.BlogCardList && Redux.state.ReceivedObject.BlogCardList.length > 0 &&
-          <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
-            <div class="card h-100">
-              <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                <div class="card-title mb-0">
-                  <div class="d-flex">
-                    <div class="avatar flex-shrink-0 me-3">
-                      <span class="avatar-initial rounded bg-label-success"
-                        ><i class="bx bx-message-dots"></i
-                      ></span>
-                    </div>
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                      <div class="me-2">
-                        <h5 class="mb-0">Blog Cards</h5>
-                        <small class="text-muted">Total 3 Items Found</small>
+          {Redux.state.ReceivedObject.BlogList ?
+            <div class="col-md-4 col-lg-4 order-2 mb-4">
+              <div class="card h-100">
+                <div class="card-header d-flex align-items-center justify-content-between pb-0">
+                  <div class="card-title mb-0">
+                    <div class="d-flex">
+                      <div class="avatar flex-shrink-0 me-3">
+                        <span class="avatar-initial rounded bg-label-success"
+                          ><i class="bx bx-chat"></i
+                        ></span>
+                      </div>
+                      <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                        <div class="me-2">
+                          <h5 class="mb-0">Blog</h5>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="dropdown">
                   <button
                     class="btn p-0"
                     type="button"
@@ -1303,44 +519,64 @@ const Dashboard = () => {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    <i class="bx bx-dots-vertical-rounded"></i>
+                    <i class="bx bx-edit"></i>
                   </button>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
-                    <a class="dropdown-item" href="javascript:void(0);">Select All</a>
-                    <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-                    <a class="dropdown-item" href="javascript:void(0);">Share</a>
-                  </div>
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="card-title text-muted mt-4">{Redux.state.ReceivedObject.BlogList.title}</h6>
+                  <h5 class="card-title">{Redux.state.ReceivedObject.BlogList.subTitle}</h5>
+                  <p class="card-text">{Redux.state.ReceivedObject.BlogList.description}</p>
+
+                  <div class="accordion mt-4" id="accordionExample">
+                    {Redux.state.ReceivedObject.BlogList.cards &&
+                      Redux.state.ReceivedObject.BlogList.cards.map((each, index) => {
+                        return (
+                          <div class="card accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                              <button
+                                type="button"
+                                class="accordion-button"
+                                data-bs-toggle="collapse"
+                                data-bs-target={`#accordionPortfolio${index}`}
+                                aria-expanded="true"
+                                aria-controls={`accordionPortfolio${index}`}
+                              >
+                                Blog {index+1}
+                              </button>
+                            </h2>
+        
+                            <div
+                              id={`accordionPortfolio${index}`}
+                              class="accordion-collapse collapse"
+                              data-bs-parent="#accordionExample"
+                            >
+                              <div class="accordion-body">
+                                <div>
+                                    <h6 class="card-title mt-2">{each.basic_info.title}</h6>
+                                    <p class="text-muted">{each.basic_info.sub_title}</p>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      })
+                    }
+                  </div>              
                 </div>
               </div>
-              <div class="card-body">
-                <ul class="p-0 mt-4">
-                  {Redux.state.ReceivedObject.BlogCardList.map(each => {
-                    return (
-                      <li class="d-flex mb-4 pb-1">
-                        <div class="avatar flex-shrink-0 me-3">
-                          <span class="avatar-initial rounded-circle bg-label-primary">
-                            <img src={each.image.url} alt="" class="w-px-40 h-100 w-100 rounded-circle" />
-                          </span>
-                        </div>
-                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                          <div class="me-2">
-                            <h6 class="mb-0">{each.title}</h6>
-                            <small class="text-muted">{each.subTitle}</small>
-                          </div>
-                        </div>
-                      </li>
-                    )
-                  }) }
-                </ul>
-              </div>
             </div>
-          </div>
-        }
+            :
+            <NotFoundCard
+              head="Blog"
+              message="No Blog Item Found!"
+              size="col-md-4 col-lg-4 order-2 mb-4"
+            />
+          }
+        </div>
       </div>
+
+      <div class="content-backdrop fade"></div>
     </div>
-
-    <div class="content-backdrop fade"></div>
-  </div>
   )
 }
 

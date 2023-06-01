@@ -7,7 +7,7 @@ import Portfolio from '../../../cComponent/bPage/aLanding/ePortfolio'
 import APIs from './extra/APIs';
 import { Action } from './extra/State';
 
-const PortfolioList = () => {
+const PortfolioList = ({ Redux1 }) => {
 	// Redux
 	const Redux = {
 		state: useSelector((fullState) => fullState.PortfolioListState),
@@ -17,7 +17,7 @@ const PortfolioList = () => {
 
 	// API Calls
 	const APICalls = {
-		PortfolioListAPICall: () => APIs.PortfolioListAPI(Redux),
+		PortfolioListAPICall: () => APIs.PortfolioListAPI(Redux, Redux1),
 	}
 
 	// All Renders

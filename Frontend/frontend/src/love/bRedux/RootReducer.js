@@ -34,6 +34,8 @@ import ProfileUpdateState from '../fPage/bContent/bTopbar/aProfile/extra/State';
 
 import DashboardState from '../fPage/bContent/aSidebar/dDashboard/App3/extra/State';
 
+import DirectHomeState from '../fPage/bContent/aSidebar/eDirect/App3/aDirectHome/extra/State';
+
 
 const RootReducer = combineReducers({
     LoginState,
@@ -70,6 +72,8 @@ const RootReducer = combineReducers({
     ProfileUpdateState,
 
     DashboardState,
+
+    DirectHomeState,
     
 })  
 

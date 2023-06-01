@@ -13,7 +13,7 @@ import APIs from './extra/APIs';
 import { Create, Delete, List, Retrieve, Update } from './extra/Component';
 import { Action } from './extra/State';
 
-const Blog = () => {
+const Blog = ({ Redux1 }) => {
   // Normal Variable
   const close1 = useRef()
   const close2 = useRef()
@@ -113,6 +113,10 @@ const Blog = () => {
         next: FinalRouteName.Content.Sidebar.Main.BlogCardRoute,
         breadcrumb: "Blog"
       }}
+			access={{
+				name: "Blog",
+				Redux1: Redux1
+			}}
     />
   )
 }

@@ -9,7 +9,7 @@ import APIs from './extra/APIs';
 import { Create, Delete, List, Retrieve, Update } from './extra/Component';
 import { Action } from './extra/State';
 
-const Home = () => {
+const Home = ({ Redux1 }) => {
   // Normal Variable
   const close1 = useRef()
   const close2 = useRef()
@@ -122,6 +122,10 @@ const Home = () => {
         next: FinalRouteName.Content.Sidebar.Main.AboutRoute,
         breadcrumb: "Home"
       }}
+      access={{
+				name: "Home",
+				Redux1: Redux1
+			}}
     />
   )
 }

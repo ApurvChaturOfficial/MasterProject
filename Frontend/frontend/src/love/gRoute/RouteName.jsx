@@ -48,6 +48,24 @@ const RouteName = {
 				}
 				:
 				{},	
+			Direct: process.env.REACT_APP_ACTIVE_APP === "SampleAuthenticationApp" ? {} :
+			process.env.REACT_APP_ACTIVE_APP === "SampleAdministrationApp" ? {}
+			:
+			(
+				process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" || 
+				process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" || 
+				process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp"
+			) ? {
+				HomeRoute: "home",				
+				AboutRoute: "about",				
+				ExperienceRoute: "experience",				
+				ServiceRoute: "service",				
+				PortfolioRoute: "portfolio",				
+				EventRoute: "event",				
+				BlogRoute: "blog",				
+			}
+			:
+			{},	
 			DashboardRoute: "",
 		},
 		Topbar: {

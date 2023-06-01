@@ -4,7 +4,6 @@ const handleInput = (event, Redux) => {
 
   switch (true) {
     case type === "select-one":
-      console.log("first")
       Redux.dispatch({
         type: Redux.action.FormObject,
         payload: {

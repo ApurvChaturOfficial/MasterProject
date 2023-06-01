@@ -13,7 +13,7 @@ import { Create, Delete, List, Retrieve, Update } from './extra/Component';
 import EventHandler from './extra/EventHandler';
 import { Action } from './extra/State';
 
-const Experience = () => {
+const Experience = ({ Redux1 }) => {
   // Normal Variable
   const close1 = useRef()
   const close2 = useRef()
@@ -129,6 +129,10 @@ const Experience = () => {
         next: FinalRouteName.Content.Sidebar.Main.ServiceRoute,
         breadcrumb: "Experience"
       }}
+      access={{
+				name: "Experience",
+				Redux1: Redux1
+			}}
     />
   )
 }

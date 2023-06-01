@@ -8,15 +8,15 @@ const APIs = {
   RegisterAPI: (Redux, navigate) => {
     API.Auth.LoginRegister.RegisterAPI({
       data: {
-        critical_info: {
-          first_name: Redux.state.FormObject.FormValue.firstName,
-          last_name: Redux.state.FormObject.FormValue.lastName,
-          email: Redux.state.FormObject.FormValue.email,
-          password: Redux.state.FormObject.FormValue.password
-        },
+        first_name: Redux.state.FormObject.FormValue.firstName,
+        last_name: Redux.state.FormObject.FormValue.lastName,
+        email: Redux.state.FormObject.FormValue.email,
+        password: Redux.state.FormObject.FormValue.password,
+        image: Redux.state.FormObject.FormValue.image,
         basic_info: {
           title: `${Redux.state.FormObject.FormValue.firstName} ${Redux.state.FormObject.FormValue.lastName}`,
-          sub_title: `${Redux.state.FormObject.FormValue.email} ${Redux.state.FormObject.FormValue.password}`
+          sub_title: `${Redux.state.FormObject.FormValue.email} ${Redux.state.FormObject.FormValue.password}`,
+          image: Redux.state.FormObject.FormValue.image,
         }
       }
     })
@@ -25,7 +25,7 @@ const APIs = {
       const serverResponse = response.data;
 
       if (serverResponse.success === true) {
-        navigate(FinalRouteName.Content.Profile.UpdateRoute)
+        navigate(FinalRouteName.Content.Profile.RetrieveRoute)
         toast.success(serverResponse.message, { position: "top-center" });
         clearFormObject(Redux)
       }

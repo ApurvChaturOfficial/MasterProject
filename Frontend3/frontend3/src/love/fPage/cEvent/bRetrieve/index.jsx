@@ -13,7 +13,7 @@ import { BiTargetLock } from 'react-icons/bi';
 import { AiOutlineSend } from 'react-icons/ai';
 
 
-const EventRetrieve = () => {
+const EventRetrieve = ({ Redux1 }) => {
 	const { id } = useParams()
 
 	// Redux
@@ -25,7 +25,7 @@ const EventRetrieve = () => {
 
 	// API Calls
 	const APICalls = {
-		EventRetrieveAPICall: () => APIs.EventCardRetrieveAPI(Redux, id),
+		EventRetrieveAPICall: () => APIs.EventCardRetrieveAPI(Redux, id, Redux1),
 	}
 
 	// All Renders

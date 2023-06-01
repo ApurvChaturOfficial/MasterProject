@@ -1,8 +1,11 @@
 import API from "../../../../aAPI/API";
+import loading from "../../../../dFunction/fLoading";
 
 const APIs = {
   // Blog List API
-  BlogListAPI: (Redux) => {
+  BlogListAPI: (Redux, Redux1) => {
+    loading.start(Redux1)
+
     API.Blog.ListAPI()
     .then(response => {
       // console.log(response.data);
@@ -21,11 +24,13 @@ const APIs = {
 							cards: lastObject.relation_info.cards,
 						}
 				} })
+        loading.stop(Redux1)
       }
     })
     .catch(error => {
         // console.log(error.response.data);
         const serverResponse = error.response.data
+        loading.stop(Redux1)
     });
   },
 

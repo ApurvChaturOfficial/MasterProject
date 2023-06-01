@@ -1,8 +1,11 @@
 import API from "../../../../aAPI/API";
+import loading from "../../../../dFunction/fLoading";
 
 const APIs = {
   // PortfolioCard Retrieve API
-  PortfolioCardRetrieveAPI: (Redux, id) => {
+  PortfolioCardRetrieveAPI: (Redux, id, Redux1) => {
+    loading.start(Redux1)
+
     API.PortfolioCard.RetrieveAPI({id})
     .then(response => {
       // console.log(response.data);
@@ -23,21 +26,16 @@ const APIs = {
               detail: serverResponse.retrieve.more_info.detail,
               links: serverResponse.retrieve.more_info.links,
               references: serverResponse.retrieve.more_info.references,
-              tempImage: serverResponse.retrieve.more_info.temp_image,
 
-              createdBy: `${serverResponse.retrieve.personal_info.created_by.first_name} ${serverResponse.retrieve.personal_info.created_by.last_name}`,
-              createdAt: serverResponse.retrieve.personal_info.created_at,
-              updatedBy: serverResponse.retrieve.personal_info?.updated_by ? 
-                `${serverResponse.retrieve.personal_info?.updated_by.first_name} ${serverResponse.retrieve.personal_info?.updated_by.last_name}` :
-                "-",
-              updatedAt: serverResponse.retrieve.personal_info?.updated_by ? serverResponse.retrieve.personal_info?.updated_at : "-",
 						}
 				}})
+        loading.stop(Redux1)
       }
     })
     .catch(error => {
         // console.log(error.response.data);
         const serverResponse = error.response.data
+        loading.stop(Redux1)
     });
   },
 

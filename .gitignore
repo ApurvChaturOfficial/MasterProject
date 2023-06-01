@@ -3,11 +3,15 @@ Frontend/frontend/node_modules
 Frontend1/frontend1/node_modules
 Frontend2/frontend2/node_modules
 Frontend3/frontend3/node_modules
+Frontend4/frontend4/node_modules
+Frontend5/frontend5/node_modules
 
 Frontend/frontend/build
 Frontend1/frontend1/build
 Frontend2/frontend2/build
 Frontend3/frontend3/build
+Frontend4/frontend4/build
+Frontend5/frontend5/build
 
 Backend/backend/src/config/
 Frontend/frontend/.env

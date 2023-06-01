@@ -31,7 +31,7 @@ const AuthLayout = () => {
 		console.log(Redux.state)
 	}, [Redux.state])
 
-
+  // JSX
   return (
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">

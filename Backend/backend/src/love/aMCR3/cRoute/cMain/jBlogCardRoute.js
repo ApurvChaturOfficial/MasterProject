@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.route("/list").get(blogCardController().list);
 router.route("/create").post(authenticateUser(UserModel), blogCardController().create);
-router.route("/retrieve/:id").get(authenticateUser(UserModel), blogCardController().retrieve);
+router.route("/retrieve/:id").get(blogCardController().retrieve);
 router.route("/update/:id").put(authenticateUser(UserModel), blogCardController().update);
 router.route("/delete/:id").delete(authenticateUser(UserModel), blogCardController().delete);
 

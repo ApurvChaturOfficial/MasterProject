@@ -15,7 +15,7 @@ import LCRUD from '../../../../../../cComponent/aLCRUD';
 import { Create, Delete, List, Retrieve, Update } from './extra/Component';
 import FinalRouteName from '../../../../../../gRoute/FinalRouteName';
 
-const BlogCard = () => {
+const BlogCard = ({ Redux1 }) => {
   // Normal Variable
   const close1 = useRef()
   const close2 = useRef()
@@ -136,6 +136,10 @@ const BlogCard = () => {
         subTitle: "You are doing very well, add impressive blog cards to your career gallery.",
         breadcrumb: "Blog Card"
       }}
+      access={{
+				name: "Blog Card",
+				Redux1: Redux1
+			}}
     />
   )
 }

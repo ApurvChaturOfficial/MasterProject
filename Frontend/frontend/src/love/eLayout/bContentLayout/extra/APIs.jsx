@@ -13,7 +13,7 @@ const APIs = {
       if (serverResponse.success === true) {
         Redux.dispatch({ type: Redux.action.ReceivedObject, payload: {
           ...Redux.state.ReceivedObject,
-          UserProfileRetrieve: serverResponse.profile_retrieve
+          ProfileRetrieve: serverResponse.profile_retrieve
         }})
       }
     })
@@ -24,6 +24,22 @@ const APIs = {
     });
   },
 
+  // Logout API
+  LogoutAPI: (Redux, navigate) => {
+    API.Auth.Logout.LogoutAPI()
+    .then(response => {
+    //   console.log(response.data);
+      const serverResponse = response.data;
+
+      if (serverResponse.success === true) {
+        navigate(FinalRouteName.Auth.LoginRegister.LoginRoute)      
+      }
+    })
+    .catch(error => {
+        // console.log(error.response.data);
+        const serverResponse = error.response.data
+    });
+  },  
 
 }
 

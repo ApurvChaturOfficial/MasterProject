@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
-import Clock from 'react-live-clock';
-import Sidebar from "../../cComponent/bSidebar/Sidebar";
-import Topbar from "../../cComponent/aTopbar";
 import { useDispatch, useSelector } from "react-redux";
 import { Action } from "./extra/State";
 import APIs from "./extra/APIs";
+import FinalRouteName from "../../gRoute/FinalRouteName";
 
 
 const ContentLayout = (props) => {
@@ -22,31 +20,43 @@ const ContentLayout = (props) => {
 
 	// API Calls
 	const APICalls = {
-		UserProfileRetrieveAPICall: () => APIs.UserProfileRetrieveAPI(Redux, navigate)
+		ProfileRetrieveAPICall: () => APIs.ProfileRetrieveAPI(Redux, navigate),
+		LogoutAPICall: () => APIs.LogoutAPI(Redux, navigate)
 	}
 
 	// All Renders
 	// First Render
 	useEffect(() => {
-		APICalls.UserProfileRetrieveAPICall()
+		APICalls.ProfileRetrieveAPICall()
 	}, [])
 
 	// Extra Render
 	useEffect(() => {
-		// console.log(Redux.state)
+		console.log(Redux.state)
 	}, [Redux.state])
 
 	// JSX
 	return (
-		<div class="container-xxl position-relative bg-white d-flex p-0">
-			<Sidebar Redux={Redux} />
-			<div class="content">
-				<Topbar Redux1={Redux} />
+		<React.Fragment>
+			<div class="form-container" style={{textAlign: 'center', alignContent: 'center'}}>
 
-				<Outlet />
+				<img src={Redux.state.ReceivedObject?.ProfileRetrieve?.image?.url} alt="profile" width={"100px"} />
+				<h4>{Redux.state.ReceivedObject?.ProfileRetrieve?.first_name} {Redux.state.ReceivedObject?.ProfileRetrieve?.last_name}</h4>
+				<h4>{Redux.state.ReceivedObject?.ProfileRetrieve?.email}</h4>
+
+				<button onClick={() => APICalls.LogoutAPICall()} >Logout</button>
+				<p>
+					Change profile details <Link to={FinalRouteName.Content.Profile.UpdateRoute} >Edit Profile</Link>
+				</p>
+				<p>
+					Change profile password <Link to={FinalRouteName.Content.Profile.UpdatePasswordRoute}>Change Password</Link>
+				</p>
+
+				
 			</div>
-			<a href="/#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-		</div>
+
+			<Outlet />
+		</React.Fragment>
 	);
 };
 

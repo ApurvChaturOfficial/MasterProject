@@ -8,6 +8,8 @@ import FinalRouteName from "../../gRoute/FinalRouteName";
 import Logo1 from "../../hAssets/1.png";
 import Logo2 from "../../hAssets/2.png";
 import Logo3 from "../../hAssets/3.png";
+import Logo4 from "../../hAssets/4.png";
+import Logo5 from "../../hAssets/5.png";
 
 
 const ContentLayout = (props) => {
@@ -23,7 +25,8 @@ const ContentLayout = (props) => {
 
 	// API Calls
 	const APICalls = {
-		ProfileRetrieveAPICall: () => APIs.ProfileRetrieveAPI(Redux, navigate)
+		ProfileRetrieveAPICall: () => APIs.ProfileRetrieveAPI(Redux, navigate),
+    LogoutAPICall: () => APIs.LogoutAPI(Redux, navigate)
 	}
 
 	// All Renders
@@ -49,9 +52,11 @@ const ContentLayout = (props) => {
               <span class="app-brand-logo demo">
                 <img 
                   src={
-                    process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" ? Logo1 :
-                    process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" ? Logo2 :
-                    process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp" ? Logo3 : 
+                    process.env.REACT_APP_ACTIVE_APP === "SampleAuthenticationApp" ? Logo1 :
+                    process.env.REACT_APP_ACTIVE_APP === "SampleAdministrationApp" ? Logo2 :
+                    process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" ? Logo3 :
+                    process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" ? Logo4 :
+                    process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp" ? Logo5 : 
                     <svg
                       width="25"
                       viewBox="0 0 25 42"
@@ -142,6 +147,103 @@ const ContentLayout = (props) => {
                 <React.Fragment>
                 </React.Fragment>
               :
+              (
+                process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" || 
+                process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" || 
+                process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp"
+              ) ?
+                <React.Fragment>
+                  <li class="menu-header small text-uppercase">
+                    <span class="menu-header-text">Direct</span>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Direct.HomeRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                      <div data-i18n="Basic">Home</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Direct.AboutRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-user"></i>
+                      <div data-i18n="Basic">About</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Direct.ExperienceRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-brain"></i>
+                      <div data-i18n="Basic">Experience</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Direct.ServiceRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-cycling"></i>
+                      <div data-i18n="Basic">Service</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Direct.PortfolioRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-briefcase"></i>
+                      <div data-i18n="Basic">Portfolio</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Direct.EventRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-calendar-star"></i>
+                      <div data-i18n="Basic">Event</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Direct.BlogRoute} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-chat"></i>
+                      <div data-i18n="Basic">Blog</div>
+                    </Link>
+                  </li>
+                </React.Fragment>
+              :
+              null
+            }
+
+            {process.env.REACT_APP_ACTIVE_APP === "SampleAuthenticationApp" ?
+                <React.Fragment>
+                </React.Fragment>
+              :
+              process.env.REACT_APP_ACTIVE_APP === "SampleAdministrationApp" ?
+                <React.Fragment>
+                  <li class="menu-header small text-uppercase">
+                    <span class="menu-header-text">Main</span>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Main.Sample1Route} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                      <div data-i18n="Basic">Sample 1</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Main.Sample2Route} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                      <div data-i18n="Basic">Sample 2</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Main.Sample3Route} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                      <div data-i18n="Basic">Sample 3</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Main.Sample4Route} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                      <div data-i18n="Basic">Sample 4</div>
+                    </Link>
+                  </li>
+                  <li class="menu-item">
+                    <Link to={FinalRouteName.Content.Sidebar.Main.Sample5Route} class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                      <div data-i18n="Basic">Sample 5</div>
+                    </Link>
+                  </li>
+                </React.Fragment>
+          :
               (
                 process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" || 
                 process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" || 
@@ -566,37 +668,41 @@ const ContentLayout = (props) => {
                 </li> */}
 
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                  <span class="d-flex nav-link dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                      <img src={Redux.state.ReceivedObject?.ProfileRetrieve?.image?.url || "../assets/img/avatars/1.png"} style={{width: "40px", height: "40px", objectFit: "contain"}} alt="" class="rounded-circle" />
                     </div>
-                  </a>
+                    {/* <div class="flex-grow-1 ms-2">
+                      <span class="fw-semibold d-block">{Redux.state.ReceivedObject?.ProfileRetrieve?.first_name} {Redux.state.ReceivedObject?.ProfileRetrieve?.last_name}</span>
+                      <small class="text-muted">{Redux.state.ReceivedObject?.ProfileRetrieve?.relation_info?.role?.basic_info?.title}</small>
+                    </div> */}
+                  </span>
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <span class="dropdown-item">
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src={Redux.state.ReceivedObject?.ProfileRetrieve?.image?.url || "../assets/img/avatars/1.png"} style={{width: "40px", height: "40px", objectFit: "contain"}} alt="" class="rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
+                            <span class="fw-semibold d-block">{Redux.state.ReceivedObject?.ProfileRetrieve?.first_name} {Redux.state.ReceivedObject?.ProfileRetrieve?.last_name}</span>
+                            <small class="text-muted">{Redux.state.ReceivedObject?.ProfileRetrieve?.relation_info?.role?.basic_info?.title}</small>
                           </div>
                         </div>
-                      </a>
+                      </span>
                     </li>
                     <li>
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <Link class="dropdown-item" to={FinalRouteName.Content.Topbar.ProfileRoute}>
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle">My Profile</span>
-                      </a>
+                      </Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <a class="dropdown-item" href="#">
                         <i class="bx bx-cog me-2"></i>
                         <span class="align-middle">Settings</span>
@@ -610,15 +716,15 @@ const ContentLayout = (props) => {
                           <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
                         </span>
                       </a>
-                    </li>
+                    </li> */}
                     <li>
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
+                      <Link class="dropdown-item" onClick={() => APICalls.LogoutAPICall()} >
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>

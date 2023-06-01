@@ -33,6 +33,15 @@ const API = {
 					})
 				)
 			},    
+			ValidateOTPAPI: (props) => {
+				return (
+					APIBase({
+						method: "POST",
+						url: `/api/v1/user/validate-otp`,
+						data: props.data,
+					})
+				)
+			},    
 			ResetPasswordAPI: (props) => {
 				return (
 					APIBase({
@@ -43,7 +52,7 @@ const API = {
 				)
 			},   
 		},
-		LogoutAPI: {
+		Logout: {
 			LogoutAPI: (props) => {
 				return (
 					APIBase({
@@ -51,8 +60,8 @@ const API = {
 						url: `/api/v1/user/logout`,
 					})
 				)
-			}, 			
-		}
+			},  
+		},
 	},
 	Content: {
 		Sidebar: {
@@ -911,6 +920,32 @@ const API = {
 		},
 		Topbar: {
 			ProfileRetrieveAPI: (props) => {
+				return (
+					APIBase({
+						method: "GET",
+						url: `/api/v1/user/profile-retrieve`,
+					})
+				)
+			}, 
+			ProfileUpdateAPI: (props) => {
+				return (
+					APIBase({
+						method: "POST",
+						url: `/api/v1/user/profile-update`,
+						data: props.data,
+					})
+				)
+			}, 
+			ProfileUpdatePasswordAPI: (props) => {
+				return (
+					APIBase({
+						method: "POST",
+						url: `/api/v1/user/profile-update-password`,
+						data: props.data,
+					})
+				)
+			}, 
+			ProfileDeleteAPI: (props) => {
 				return (
 					APIBase({
 						method: "GET",

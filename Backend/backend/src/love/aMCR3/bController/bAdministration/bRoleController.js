@@ -13,7 +13,7 @@ exports.roleController = (Model= RoleModel, Label= 'Role') => {
 		// List Controller
 		list: catchAsyncError(async (request, response, next) => {
 			// API Feature
-			const searchFilterPaginate = new SearchFilterPaginate(Model.find(), request.query).search().filter().paginate(10)
+			const searchFilterPaginate = new SearchFilterPaginate(Model.find(), request.query).search().filter().paginate(50)
 
 			// List
 			const object_list = await searchFilterPaginate.query

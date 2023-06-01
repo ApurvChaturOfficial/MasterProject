@@ -4,7 +4,7 @@ import Select from 'react-select'
 import validateFormObject from '../../../../../../../dFunction/bValidateFormObject'
 import handleInput from '../../../../../../../dFunction/dHandleInput'
 
-export const List = ({ Redux, APICalls }) => {
+export const List = ({ Redux, APICalls, access }) => {
   return (
     <div class="card">
       <div class="table-responsive text-nowrap">
@@ -26,7 +26,7 @@ export const List = ({ Redux, APICalls }) => {
                     <td>
                       <div class="avatar">
                         <i class="fab fa-angular fa-lg text-danger me-3"></i>
-                        <img src={each.image?.url || "../assets/img/avatars/1.png"} alt="" class="w-px-40 h-100 w-100 rounded-circle object-cover" />
+                        <img src={each.image?.url || "../assets/img/avatars/1.png"} alt="" class="w-px-40 h-100 w-100 rounded-circle" style={{objectFit: "contain"}}  />
                       </div>                        
                     </td>
                     <td> <strong>{each.title}</strong></td>
@@ -40,28 +40,35 @@ export const List = ({ Redux, APICalls }) => {
                     </td>
                     <td>
                       <div class="d-flex">
-                        <Link 
-                          class="btn btn-sm btn-outline-primary"
-                          data-bs-toggle="modal"
-                          data-bs-target="#exLargeModal"
-                          onClick={() => APICalls.RetrieveAPICall(each.id)}
-                        ><i class="bx bx-spreadsheet me-1"></i> Read
-                        </Link>
-                        <Link 
-                          class="btn btn-sm btn-outline-primary ms-2"
-                          data-bs-toggle="modal"
-                          data-bs-target="#updateModal"
-                          onClick={() => APICalls.RetrieveAPICall(each.id)}
-                        ><i class="bx bx-edit-alt me-1"></i> Edit
-                        </Link>
-                    
-                        <Link
-                          class="btn btn-sm btn-outline-danger ms-2"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalCenter"
-                          onClick={() => APICalls.RetrieveAPICall(each.id)}
-                        ><i class="bx bx-trash me-1"></i> Delete
-                        </Link> 
+                        {access?.Redux1.state.ReceivedObject?.UserAccess?.[access.name]?.retrieve &&
+                          <Link 
+                            class="btn btn-sm btn-outline-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exLargeModal"
+                            onClick={() => APICalls.RetrieveAPICall(each.id)}
+                          ><i class="bx bx-spreadsheet me-1"></i> Read
+                          </Link>
+                        }
+
+                        {access?.Redux1.state.ReceivedObject?.UserAccess?.[access.name]?.update &&
+                          <Link 
+                            class="btn btn-sm btn-outline-primary ms-2"
+                            data-bs-toggle="modal"
+                            data-bs-target="#updateModal"
+                            onClick={() => APICalls.RetrieveAPICall(each.id)}
+                          ><i class="bx bx-edit-alt me-1"></i> Edit
+                          </Link>
+                        }
+
+                        {access?.Redux1.state.ReceivedObject?.UserAccess?.[access.name]?.delete &&
+                          <Link
+                            class="btn btn-sm btn-outline-danger ms-2"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modalCenter"
+                            onClick={() => APICalls.RetrieveAPICall(each.id)}
+                          ><i class="bx bx-trash me-1"></i> Delete
+                          </Link> 
+                        }
                       </div>
                     </td>
                   </tr>    

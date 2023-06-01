@@ -6,6 +6,7 @@ import validateFormObject from '../../../../dFunction/bValidateFormObject'
 import submitFormObject from '../../../../dFunction/cSubmitFormObject'
 import handleInput from '../../../../dFunction/dHandleInput'
 import regex from '../../../../dFunction/eRegex'
+import FinalRouteName from '../../../../gRoute/FinalRouteName'
 import Avatar from '../../../../hAsset/profile.png'
 import APIs from './extra/APIs'
 import { Action } from './extra/State'
@@ -30,40 +31,42 @@ const Register = () => {
   const validateFormValues = FormValue => {
     const errors = {}
 
-    // image
-    if (!FormValue.image) {
-      errors.image = "Please select image"
-    } 
-    // firstName
-    if (!FormValue.firstName) {
-      errors.firstName = "Please enter first name"
-    } else if (FormValue.password.length < 3 || FormValue.password.length > 15) {
-      errors.firstName = "First name should be 3 to 15 characters"
-    } else if (!regex.name.test(FormValue.firstName)) {
-      errors.firstName = "Please enter valid first name"
-    }
-    // lastName
-    if (!FormValue.lastName) {
-      errors.lastName = "Please enter last name"
-    } else if (FormValue.password.length < 3 || FormValue.password.length > 15) {
-      errors.lastName = "Last name should be 3 to 15 characters"
-    } else if (!regex.name.test(FormValue.lastName)) {
-      errors.lastName = "Please enter valid last name"
-    }
-    // email
-    if (!FormValue.email) {
-      errors.email = "Please enter email"
-    } else if (!regex.email.test(FormValue.email)) {
-      errors.email = "Please enter valid email"
-    }
-    // password
-    if (!FormValue.password) {
-      errors.password = "Please enter password"
-    } else if (FormValue.password.length < 8 || FormValue.password.length > 16) {
-        errors.password = "Password length should be 8 to 16 characters"
-    } else if (!regex.password.test(FormValue.password)) {
-        errors.password = "Password should have 1 lowercase, 1 uppercase, 1 number, and be 8 to 16 characters long"
-    } 
+		// firstName
+		if (!FormValue.firstName) {
+			errors.firstName = "Please enter first name"
+		} else if (!regex.name.test(FormValue.firstName)) {
+			errors.email = "Please enter valid first name"
+		}
+		// lastName
+		if (!FormValue.lastName) {
+			errors.lastName = "Please enter last name"
+		} else if (!regex.name.test(FormValue.lastName)) {
+			errors.email = "Please enter valid last name"
+		}
+		// image
+		if (!FormValue.image) {
+			errors.image = "Please select image"
+		}
+		// email
+		if (!FormValue.email) {
+			errors.email = "Please enter email"
+		} else if (!regex.email.test(FormValue.email)) {
+			errors.email = "Please enter valid email"
+		}
+		// password
+		if (!FormValue.password) {
+			errors.password = "Please enter password"
+		} else if (!regex.password.test(FormValue.password)) {
+			errors.password = "Password should have 1 lowercase, 1 uppercase, 1 number, and be 8 to 16 characters long"
+		} 
+		// confirmPassword
+		if (!FormValue.confirmPassword) {
+			errors.confirmPassword = "Please enter confirm password"
+		} else if (!regex.password.test(FormValue.password)) {
+			errors.confirmPassword = "Confirm password should have 1 lowercase, 1 uppercase, 1 number, and be 8 to 16 characters long"
+		} else if (FormValue.password !== FormValue.confirmPassword) {
+			errors.confirmPassword = "Please match the password"
+		}
 
     return errors;
   }	
@@ -87,79 +90,67 @@ const Register = () => {
 
   // JSX
   return (
-	  <React.Fragment>
-      <div className="title flex flex-col items-center">
-        <h4 className='text-5xl font-bold'>Register</h4>
-        <span className='py-4 text-xl w-2/3 text-center text-gray-500'>
-          Happy to join you!
-        </span>
-      </div>
+    <div class="form-container">
+      <h2>Register</h2>
+      <form onSubmit={event => validateFormObject(event, Redux, validateFormValues)} noValidate>
+        <input 
+          type="file" 
+          name="image" 
+          accept="image/*" 
+          onChange={event => handleInput(event, Redux)}
+        />
+        <small className='danger' >{Redux.state.FormObject.FormError.image}</small>
 
-      <form className='py-1' onSubmit={event => validateFormObject(event, Redux, validateFormValues)} noValidate>
-        <div className='profile flex justify-center py-4'>
-          <label htmlFor="profile">
-            <img 
-              src={Redux.state.FormObject.FormValue.image?.url || Avatar} 
-              className='profile_img' 
-              alt="avatar" 
-            />
-          </label>
-          
-          <input 
-            type="file" 
-            id='profile' 
-            name='image' 
-            onChange={event => handleInput(event, Redux)}
-          />
-        </div>
-        <p className='text-sm text-red-500 pl-4 pt-1' >{Redux.state.FormObject.FormError?.image}</p>
+        <input 
+          type="text" 
+          name="firstName" 
+          placeholder="First Name" 
+          onChange={event => handleInput(event, Redux)}
+        />
+        <small className='danger' >{Redux.state.FormObject.FormError.firstName}</small>
 
-        <div className="textbox flex flex-col items-center gap-6">
-          <input 
-            className='my_textbox' 
-            type='text' 
-            name='firstName'
-            placeholder='Enter First Name'
-            onChange={event => handleInput(event, Redux)}
-          />
-          <p className='text-sm text-red-500 pl-4 pt-1' >{Redux.state.FormObject.FormError?.firstName}</p>
+        <input 
+          type="text" 
+          name="lastName" 
+          placeholder="Last Name" 
+          onChange={event => handleInput(event, Redux)}
+        />
+        <small className='danger' >{Redux.state.FormObject.FormError.lastName}</small>
 
-          <input 
-            className='my_textbox' 
-            type='text' 
-            name='lastName'
-            placeholder='Enter Last Name'
-            onChange={event => handleInput(event, Redux)}
-          />
-          <p className='text-sm text-red-500 pl-4 pt-1' >{Redux.state.FormObject.FormError?.lastName}</p>
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="Email" 
+          onChange={event => handleInput(event, Redux)}
+        />
+        <small className='danger' >{Redux.state.FormObject.FormError.email}</small>
 
-          <input 
-            className='my_textbox' 
-            type='email' 
-            name='email'
-            placeholder='Enter Email'
-            onChange={event => handleInput(event, Redux)}
-          />
-          <p className='text-sm text-red-500 pl-4 pt-1' >{Redux.state.FormObject.FormError?.email}</p>
+        <input 
+          type="password" 
+          name="password" 
+          placeholder="Password" 
+          onChange={event => handleInput(event, Redux)}
+        />
+        <small className='danger' >{Redux.state.FormObject.FormError.password}</small>
 
-          <input 
-            className='my_textbox' 
-            type='password' 
-            name='password'
-            placeholder='Enter Password'
-            onChange={event => handleInput(event, Redux)}
-          />
-          <p className='text-sm text-red-500 pl-4 pt-1' >{Redux.state.FormObject.FormError?.password}</p>
+        <input 
+          type="password" 
+          name="confirmPassword" 
+          placeholder="Confirm Password" 
+          onChange={event => handleInput(event, Redux)}
+        />
+        <small className='danger' >{Redux.state.FormObject.FormError.confirmPassword}</small>
 
-          <button className='my_btn' type='submit'>Register</button>
-        </div>
-
-        <div className="text-center py-4">
-          <span className='text-gray-500'>Already Register? <Link className='text-red-500' to="/">Login Now</Link></span>
-        </div>
-
+        <button type="submit">Register</button>
       </form>
-    </React.Fragment>
+      <p>
+        Already have an account? <Link to={FinalRouteName.Auth.LoginRegister.LoginRoute}>Login</Link>
+      </p>
+      <p>
+        Forgot your password? <Link to={FinalRouteName.Auth.ForgotResetPassword.ForgotPasswordRoute}>Reset Password</Link>
+      </p>
+
+    </div>
   )
 }
 

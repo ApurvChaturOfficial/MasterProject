@@ -10,7 +10,7 @@ import { Action } from './extra/State';
 import parse from 'html-react-parser';
 
 
-const BlogRetrieve = () => {
+const BlogRetrieve = ({ Redux1 }) => {
 	const { id } = useParams()
 
 	// Redux
@@ -22,7 +22,7 @@ const BlogRetrieve = () => {
 
 	// API Calls
 	const APICalls = {
-		BlogRetrieveAPICall: () => APIs.BlogCardRetrieveAPI(Redux, id),
+		BlogRetrieveAPICall: () => APIs.BlogCardRetrieveAPI(Redux, id, Redux1),
 	}
 
 	// All Renders

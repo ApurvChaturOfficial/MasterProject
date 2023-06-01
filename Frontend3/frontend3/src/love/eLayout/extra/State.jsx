@@ -7,6 +7,7 @@ const InitialState = {
 	},	
 	ReceivedObject: {},
 	RequiredObject: {},
+	ExtraObject: {},
 }
 
 const LayoutState = (state=InitialState, action) => {
@@ -17,6 +18,8 @@ const LayoutState = (state=InitialState, action) => {
 			return {...state, ReceivedObject: action.payload}
 		case 'required-object-layout':
 			return {...state, RequiredObject: action.payload}
+		case 'extra-object-layout':
+			return {...state, ExtraObject: action.payload}
 		default:
 			return state
 	}
@@ -26,6 +29,7 @@ export const Action = {
 	FormObject: 'form-object-layout',
 	ReceivedObject: 'received-object-layout',
 	RequiredObject: 'required-object-layout',
+	ExtraObject: 'extra-object-layout',
 }  
 
 export default LayoutState

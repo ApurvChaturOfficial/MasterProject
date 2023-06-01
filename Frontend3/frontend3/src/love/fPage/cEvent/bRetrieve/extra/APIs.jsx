@@ -1,8 +1,11 @@
 import API from "../../../../aAPI/API";
+import loading from "../../../../dFunction/fLoading";
 
 const APIs = {
   // EventCard Retrieve API
-  EventCardRetrieveAPI: (Redux, id) => {
+  EventCardRetrieveAPI: (Redux, id, Redux1) => {
+    loading.start(Redux1)
+    
     API.EventCard.RetrieveAPI({id})
     .then(response => {
       // console.log(response.data);
@@ -31,11 +34,13 @@ const APIs = {
               updatedAt: serverResponse.retrieve.personal_info?.updated_by ? serverResponse.retrieve.personal_info?.updated_at : "-",
 						}
 				}})
+        loading.stop(Redux1)
       }
     })
     .catch(error => {
         // console.log(error.response.data);
         const serverResponse = error.response.data
+        loading.stop(Redux1)
     });
   },
 

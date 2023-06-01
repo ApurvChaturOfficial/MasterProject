@@ -4,7 +4,7 @@ import validateFormObject from '../../../../../../../dFunction/bValidateFormObje
 import handleInput from '../../../../../../../dFunction/dHandleInput'
 import EventHandler from './EventHandler'
 
-export const List = ({ Redux, APICalls }) => {
+export const List = ({ Redux, APICalls, access }) => {
   return (
     <div class="card">
       <div class="table-responsive text-nowrap">
@@ -26,7 +26,7 @@ export const List = ({ Redux, APICalls }) => {
                     <td>
                       <div class="avatar">
                         <i class="fab fa-angular fa-lg text-danger me-3"></i>
-                        <img src={each.image?.url || "../assets/img/avatars/1.png"} alt="" class="w-px-40 h-100 w-100 rounded-circle object-cover" />
+                        <img src={each.image?.url || "../assets/img/avatars/1.png"} alt="" class="w-px-40 h-100 w-100 rounded-circle" style={{objectFit: "contain"}}  />
                       </div>                        
                     </td>
                     <td> <strong>{each.title}</strong></td>
@@ -40,28 +40,35 @@ export const List = ({ Redux, APICalls }) => {
                     </td>
                     <td>
                       <div class="d-flex">
-                        <Link 
-                          class="btn btn-sm btn-outline-primary"
-                          data-bs-toggle="modal"
-                          data-bs-target="#exLargeModal"
-                          onClick={() => APICalls.RetrieveAPICall(each.id)}
-                        ><i class="bx bx-spreadsheet me-1"></i> Read
-                        </Link>
-                        <Link 
-                          class="btn btn-sm btn-outline-primary ms-2"
-                          data-bs-toggle="modal"
-                          data-bs-target="#updateModal"
-                          onClick={() => APICalls.RetrieveAPICall(each.id)}
-                        ><i class="bx bx-edit-alt me-1"></i> Edit
-                        </Link>
-                    
-                        <Link
-                          class="btn btn-sm btn-outline-danger ms-2"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalCenter"
-                          onClick={() => APICalls.RetrieveAPICall(each.id)}
-                        ><i class="bx bx-trash me-1"></i> Delete
-                        </Link> 
+                        {access?.Redux1.state.ReceivedObject?.UserAccess?.[access.name]?.retrieve &&
+                          <Link 
+                            class="btn btn-sm btn-outline-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exLargeModal"
+                            onClick={() => APICalls.RetrieveAPICall(each.id)}
+                          ><i class="bx bx-spreadsheet me-1"></i> Read
+                          </Link>
+                        }
+
+                        {access?.Redux1.state.ReceivedObject?.UserAccess?.[access.name]?.update &&
+                          <Link 
+                            class="btn btn-sm btn-outline-primary ms-2"
+                            data-bs-toggle="modal"
+                            data-bs-target="#updateModal"
+                            onClick={() => APICalls.RetrieveAPICall(each.id)}
+                          ><i class="bx bx-edit-alt me-1"></i> Edit
+                          </Link>
+                        }
+
+                        {access?.Redux1.state.ReceivedObject?.UserAccess?.[access.name]?.delete &&
+                          <Link
+                            class="btn btn-sm btn-outline-danger ms-2"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modalCenter"
+                            onClick={() => APICalls.RetrieveAPICall(each.id)}
+                          ><i class="bx bx-trash me-1"></i> Delete
+                          </Link> 
+                        }
                       </div>
                     </td>
                   </tr>    
@@ -751,87 +758,18 @@ export const Delete = ({ Redux, APICalls, close4 }) => {
               aria-label="Close"
             ></button>
           </div>
-          {Redux.state.ReceivedObject.Retrieve &&
-            <div class="modal-body">
-              <div class="card mb-4">
-                <div class="card-body">
-                  <div class="mb-3 col-12">
-                    <div class="alert alert-warning">
-                      <h6 class="alert-heading fw-bold mb-1">Are you sure you want to delete following instance?</h6>
-                      <p class="mb-0">Once you delete your account, there is no going back. Please be certain.</p>
-                    </div>
+          <div class="modal-body">
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="mb-3 col-12">
+                  <div class="alert alert-warning">
+                    <h6 class="alert-heading fw-bold mb-1">Are you sure you want to delete following instance?</h6>
+                    <p class="mb-0">Once you delete your account, there is no going back. Please be certain.</p>
                   </div>
-                  <button class="btn btn-danger deactivate-account" onClick={() => APICalls.DeleteAPICall(Redux.state.ReceivedObject.Retrieve?.id)}>Sure Delete</button>
                 </div>
+                <button class="btn btn-danger deactivate-account" onClick={() => APICalls.DeleteAPICall(Redux.state.FormObject.FormValue?.id)}>Sure Delete</button>
               </div>
-
-              <div class="row">
-                  <div class="col-xl">
-                    <div class="card mb-4">
-                      <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">Basic Info</h5>
-                        <small class="text-muted float-end">Default label</small>
-                      </div>
-                      <div class="card-body">
-                        <dl class="row mt-2">
-                          <dt class="col-sm-3 text-truncate">Image</dt>
-                          <dd class="col-sm-9">
-                            <div class="avatar">
-                              <img src={Redux.state.FormObject.FormValue?.image?.url || "../assets/img/avatars/1.png"} alt="" class="w-px-40 h-100 w-100 rounded-circle" />
-                            </div> 
-                          </dd>
-
-                          <dt class="col-sm-3 text-truncate">Title</dt>
-                          <dd class="col-sm-9">{Redux.state.ReceivedObject.Retrieve?.title}</dd>
-
-                          <dt class="col-sm-3 text-truncate">Sub Title</dt>
-                          <dd class="col-sm-9">
-                            <p>{Redux.state.ReceivedObject.Retrieve?.subTitle}</p>
-                          </dd>
-
-                          <dt class="col-sm-3 text-truncate">Status</dt>
-                          <dd class="col-sm-9">
-                            {Redux.state.ReceivedObject.Retrieve?.isActive === 'active' ?
-                              <span class="badge bg-label-primary">Active</span>  
-                              :
-                              <span class="badge bg-label-danger">Inctive</span>
-                            }
-                          </dd>
-                          </dl>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xl">
-                    <div class="card mb-4">
-                      <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">Personal Info</h5>
-                        <small class="text-muted float-end">Default label</small>
-                      </div>
-                      <div class="card-body">
-                        <dl class="row mt-2">
-                          <dt class="col-sm-3 text-truncate">Created By</dt>
-                          <dd class="col-sm-9">{Redux.state.ReceivedObject.Retrieve?.createdBy}</dd>
-                          
-                          <dt class="col-sm-3 text-truncate">Created At</dt>
-                          <dd class="col-sm-9">{Redux.state.ReceivedObject.Retrieve?.createdAt}</dd>
-                          
-                          <dt class="col-sm-3 text-truncate">Updated By</dt>
-                          <dd class="col-sm-9">{Redux.state.ReceivedObject.Retrieve?.updatedBy}</dd>
-                          
-                          <dt class="col-sm-3 text-truncate">Updated At</dt>
-                          <dd class="col-sm-9">{Redux.state.ReceivedObject.Retrieve?.updatedAt}</dd>
-                        </dl>
-                      </div>
-                    </div>
-                  </div>
-                </div>
             </div>
-          }
-          <div class="modal-footer">
-            <button type="button" ref={close4} class="btn btn-outline-secondary" data-bs-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>

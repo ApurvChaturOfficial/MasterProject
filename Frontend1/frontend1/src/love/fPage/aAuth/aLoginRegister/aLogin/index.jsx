@@ -32,23 +32,20 @@ const Login = () => {
 	const validateFormValues = FormValue => {
 		const errors = {}
 
-    if (Redux.state.ExtraObject.active === 'email') {
-      // email
-      if (!FormValue.email) {
-        errors.email = "Please enter email"
-      } else if (!regex.email.test(FormValue.email)) {
-        errors.email = "Please enter valid email"
-      }
-    } else if (Redux.state.ExtraObject.active === 'password') {
-      // password
-      if (!FormValue.password) {
-        errors.password = "Please enter password"
-      } else if (FormValue.password.length < 8 || FormValue.password.length > 16) {
-          errors.password = "Password length should be 8 to 16 characters"
-      } else if (!regex.password.test(FormValue.password)) {
-          errors.password = "Password should have 1 lowercase, 1 uppercase, 1 number, and be 8 to 16 characters long"
-      } 
+    // email
+    if (!FormValue.email) {
+      errors.email = "Please enter email"
+    } else if (!regex.email.test(FormValue.email)) {
+      errors.email = "Please enter valid email"
     }
+    // password
+    if (!FormValue.password) {
+      errors.password = "Please enter password"
+    } else if (FormValue.password.length < 8 || FormValue.password.length > 16) {
+        errors.password = "Password length should be 8 to 16 characters"
+    } else if (!regex.password.test(FormValue.password)) {
+        errors.password = "Password should have 1 lowercase, 1 uppercase, 1 number, and be 8 to 16 characters long"
+    } 
 
 		return errors;
 	}	
@@ -57,25 +54,11 @@ const Login = () => {
   // First Render
   useEffect(() => {
     clearFormObject(Redux)
-
-    Redux.dispatch({ type: Redux.action.ExtraObject, payload: {
-			...Redux.state.ExtraObject,
-			active: "email",
-		} })
   }, [])
 
   // Submit Render
   useEffect(() => {
-		submitFormObject(Redux, () => {
-      if (Redux.state.ExtraObject?.active === 'email') {
-        return Redux.dispatch({ type: Redux.action.ExtraObject, payload: {
-          ...Redux.state.ExtraObject,
-          active: "password",
-        } })
-      } else if (Redux.state.ExtraObject?.active === 'password')
-        return APICalls.LoginAPICall()
-      }
-    )
+		submitFormObject(Redux, APICalls.LoginAPICall)
 	}, [Redux.state.FormObject.FormError])
 
   // Extra Render
@@ -85,81 +68,37 @@ const Login = () => {
 
   // JSX
   return (
-	  <React.Fragment>
-      <div className='title flex flex-col items-center'>
-        <h4 className='text-5xl font-bold'>Hello Again!</h4>
-        <span className='py-4 text-xl w-2/3 text-center text-gray-500' >
-          Explore more by connecting with us.
-        </span>
-      </div>
+    <div class="form-container">
+      <h2>Login</h2>
+      <form onSubmit={event => validateFormObject(event, Redux, validateFormValues)} noValidate>
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="Email" 
+          onChange={event => handleInput(event, Redux)}
+        />
+        <small className='danger' >{Redux.state.FormObject.FormError.email}</small>
 
-      {Redux.state.ExtraObject.active &&
-        Redux.state.ExtraObject.active === 'email' ?
-          <form className='py-1' onSubmit={event => validateFormObject(event, Redux, validateFormValues)} noValidate>
-            <div className='profile flex justify-center py-4'>
-              <img className='profile_img' src={Avatar} alt='avatar'/>
-            </div>
+        <input 
+          type="password" 
+          name="password" 
+          placeholder="Password"
+          onChange={event => handleInput(event, Redux)}
+        />
+        <small className='danger' >{Redux.state.FormObject.FormError.password}</small>
 
-            <div className='textbox flex flex-col items-center gap-6'>
-              <div className='flex flex-col items-center gap-1'>
-                <input 
-                  className={Redux.state.FormObject.FormError?.email ? 'my_textbox my_textbox_error' : 'my_textbox'} 
-                  type='email' 
-                  name='email'
-                  placeholder='Enter email'
-                  value={Redux.state.FormObject.FormValue?.email || ""}
-                  onChange={event => handleInput(event, Redux)}
-                />
-                <p className='text-sm text-red-500 pl-4 pt-1' >{Redux.state.FormObject.FormError?.email}</p>
-              </div>
-              <button className='my_btn' type='submit'>Let's Go</button>
-            </div>
+        <button type="submit">Login</button>
+      </form>
+      <p>
+        Don't have an account? <Link to={FinalRouteName.Auth.LoginRegister.RegisterRoute}>Register</Link>
+      </p>
+      <p>
+        Forgot your password? <Link to={FinalRouteName.Auth.ForgotResetPassword.ForgotPasswordRoute}>Reset Password</Link>
+      </p>
+    </div>
 
-            <div className='text-center py-4'>
-              <span className='text-gray-500'>
-                Not a member 
-                <Link to={FinalRouteName.Auth.LoginRegister.RegisterRoute} className='text-red-500 ml-2'>
-                  Register Now
-                </Link>
-              </span>
-            </div>
-          </form>
-        :
-        Redux.state.ExtraObject.active === 'password' ?
-          <form className='py-1' onSubmit={event => validateFormObject(event, Redux, validateFormValues)} noValidate>
-            <div className='profile flex justify-center py-4'>
-              <img className='profile_img' src={Avatar} alt='avatar'/>
-            </div>
 
-            <div className='textbox flex flex-col items-center gap-6'>
-              <div className='flex flex-col items-center gap-1'>
-                <input 
-                  className={Redux.state.FormObject.FormError?.password ? 'my_textbox my_textbox_error' : 'my_textbox'} 
-                  type='text' 
-                  name='password'
-                  placeholder='Enter password'
-                  value={Redux.state.FormObject.FormValue?.password || ""}
-                  onChange={event => handleInput(event, Redux)}
-                />
-                <p className='text-red-500 pl-4 pt-1' >{Redux.state.FormObject.FormError?.password}</p>
-              </div>
-              <button className='my_btn' type='submit'>Sign In</button>
-            </div>
-
-            <div className='text-center py-4'>
-              <span className='text-gray-500'>
-                Forgot Password? 
-                <Link to={FinalRouteName.Auth.ForgotResetPassword.ForgotPasswordRoute} className='text-red-500 ml-2'>
-                  Recover Now
-                </Link>
-              </span>
-            </div>
-          </form>
-        :
-        <div className='text-center py-4'>Loading...</div>
-      }
-    </React.Fragment>
-  )
+)
 }
 
 export default Login

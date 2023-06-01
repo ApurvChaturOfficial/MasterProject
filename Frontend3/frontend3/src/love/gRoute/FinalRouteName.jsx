@@ -2,7 +2,7 @@ import RouteName from "./RouteName";
 
 const FinalRouteName = {
     Home: {
-        ListRoute: `/${RouteName.Home.HomeRoute}`,
+        HomeRoute: `/${RouteName.Home.HomeRoute}`,
     },
     Portfolio: {
         ListRoute: `/portfolio/${RouteName.Portfolio.ListRoute}`,

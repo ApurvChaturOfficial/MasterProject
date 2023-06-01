@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react'
-import Footer from '../../cComponent/aLayout/bFooter'
-import Navbar from '../../cComponent/aLayout/cNavbar';
 import Home from '../../cComponent/bPage/aLanding/aHome'
 import About from '../../cComponent/bPage/aLanding/bAbout'
 import Experience from '../../cComponent/bPage/aLanding/cExperience'

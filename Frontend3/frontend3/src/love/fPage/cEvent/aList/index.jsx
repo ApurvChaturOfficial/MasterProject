@@ -6,7 +6,7 @@ import Event from '../../../cComponent/bPage/aLanding/fEvent';
 import APIs from './extra/APIs';
 import { Action } from './extra/State';
 
-const EventList = () => {
+const EventList = ({ Redux1 }) => {
 	// Redux
 	const Redux = {
 		state: useSelector((fullState) => fullState.EventListState),
@@ -16,7 +16,7 @@ const EventList = () => {
 
 	// API Calls
 	const APICalls = {
-		EventListAPICall: () => APIs.EventListAPI(Redux),
+		EventListAPICall: () => APIs.EventListAPI(Redux, Redux1),
 	}
 
 	// All Renders

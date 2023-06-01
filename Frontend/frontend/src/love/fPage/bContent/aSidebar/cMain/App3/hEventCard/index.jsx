@@ -15,7 +15,7 @@ import LCRUD from '../../../../../../cComponent/aLCRUD';
 import { Create, Delete, List, Retrieve, Update } from './extra/Component';
 import FinalRouteName from '../../../../../../gRoute/FinalRouteName';
 
-const EventCard = () => {
+const EventCard = ({ Redux1 }) => {
   // Normal Variable
   const close1 = useRef()
   const close2 = useRef()
@@ -137,6 +137,10 @@ const EventCard = () => {
         next: FinalRouteName.Content.Sidebar.Main.BlogRoute,
         breadcrumb: "Event Card"
       }}
+      access={{
+				name: "Event Card",
+				Redux1: Redux1
+			}}
     />
   )
 }

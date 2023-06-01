@@ -16,11 +16,12 @@ router.route("/register").post(userController().register);
 router.route("/login").post(userController().login);
 router.route("/logout").get(authenticateUser(UserModel), userController().logout);
 router.route("/forgot-password").post(userController().forgotPassword);
+router.route("/validate-otp").post(userController().validateOTP);
 router.route("/reset-password/:token").put(userController().resetPassword);
 
 router.route("/profile-retrieve").get(authenticateUser(UserModel), userController().profileRetrieve);
 router.route("/profile-update").post(authenticateUser(UserModel), userController().profileUpdate);
-router.route("/profile-password-update").post(authenticateUser(UserModel), userController().profilePasswordUpdate);
+router.route("/profile-update-password").post(authenticateUser(UserModel), userController().profileUpdatePassword);
 
 
 module.exports = router

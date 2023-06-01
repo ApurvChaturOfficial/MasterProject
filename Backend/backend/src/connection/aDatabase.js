@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const database = () => {
-    const DB_URL1 = "mongodb+srv://ApurvChaturNew:ApurvChatur@cluster0.degxoy1.mongodb.net/SampleAuthenticationApp"
+    const DB_URL1 = "mongodb+srv://ApurvChaturNew:ApurvChatur@cluster0.degxoy1.mongodb.net/SampleAuthenticationAppNew"
     const DB_URL2 = "mongodb+srv://ApurvChaturNew:ApurvChatur@cluster0.degxoy1.mongodb.net/SampleAdministrationApp"
     const DB_URL3 = "mongodb+srv://ApurvChaturNew:ApurvChatur@cluster0.degxoy1.mongodb.net/PersonalPortfolioApp"
     const DB_URL4 = "mongodb+srv://ApurvChaturNew:ApurvChatur@cluster0.degxoy1.mongodb.net/NehaPortfolioApp"
@@ -13,8 +13,8 @@ const database = () => {
     process.env.ACTIVE_APP === 'SampleAdministrationApp' ? DB_URL = DB_URL2 :
     process.env.ACTIVE_APP === 'PersonalPortfolioApp' ? DB_URL = DB_URL3 :
     process.env.ACTIVE_APP === 'NehaPortfolioApp' ? DB_URL = DB_URL4 :
-    process.env.ACTIVE_APP === 'AnnushreePortfolioApp' ? DB_URL = DB_URL5 :
-    DB_URL =DB_URL1
+    process.env.ACTIVE_APP === 'AnushreePortfolioApp' ? DB_URL = DB_URL5 :
+    DB_URL = DB_URL1
 
     mongoose.set('strictQuery', true);
     mongoose

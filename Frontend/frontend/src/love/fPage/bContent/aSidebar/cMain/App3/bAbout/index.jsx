@@ -1,19 +1,14 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import LCRUD from '../../../../../../cComponent/aLCRUD';
 import clearFormObject from '../../../../../../dFunction/aClearFormObject';
-import validateFormObject from '../../../../../../dFunction/bValidateFormObject';
 import submitFormObject from '../../../../../../dFunction/cSubmitFormObject';
-import handleInput from '../../../../../../dFunction/dHandleInput';
-import regex from '../../../../../../dFunction/eRegex';
 import FinalRouteName from '../../../../../../gRoute/FinalRouteName';
 import APIs from './extra/APIs';
 import { Create, Delete, List, Retrieve, Update } from './extra/Component';
-import EventHandler from './extra/EventHandler';
 import { Action } from './extra/State';
 
-const About = () => {
+const About = ({ Redux1 }) => {
   // Normal Variable
   const close1 = useRef()
   const close2 = useRef()
@@ -126,6 +121,10 @@ const About = () => {
         next: FinalRouteName.Content.Sidebar.Main.ExperienceRoute,
         breadcrumb: "About"
       }}
+      access={{
+				name: "About",
+				Redux1: Redux1
+			}}
     />
   )
 }

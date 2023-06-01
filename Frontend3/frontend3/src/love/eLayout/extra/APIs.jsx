@@ -1,8 +1,11 @@
 import API from "../../aAPI/API";
+import loading from "../../dFunction/fLoading";
 
 const APIs = {
   // Home List API
   HomeListAPI: (Redux, navigate) => {
+    loading.start(Redux)
+
     API.Home.ListAPI()
     .then(response => {
       // console.log(response.data);
@@ -28,6 +31,7 @@ const APIs = {
     .catch(error => {
       console.log(error.response.data);
       const serverResponse = error.response.data
+      loading.stop(Redux)
     });
   },
 
@@ -57,6 +61,7 @@ const APIs = {
     .catch(error => {
         console.log(error.response.data);
         const serverResponse = error.response.data
+      loading.stop(Redux)
     });
   },
 
@@ -84,6 +89,7 @@ const APIs = {
     .catch(error => {
         console.log(error.response.data);
         const serverResponse = error.response.data
+      loading.stop(Redux)
     });
   },
 
@@ -111,6 +117,7 @@ const APIs = {
     .catch(error => {
         console.log(error.response.data);
         const serverResponse = error.response.data
+      loading.stop(Redux)
     });
   },
 
@@ -138,6 +145,7 @@ const APIs = {
     .catch(error => {
         console.log(error.response.data);
         const serverResponse = error.response.data
+      loading.stop(Redux)
     });
   },
 
@@ -165,6 +173,7 @@ const APIs = {
     .catch(error => {
         console.log(error.response.data);
         const serverResponse = error.response.data
+      loading.stop(Redux)
     });
   },
 
@@ -194,11 +203,14 @@ const APIs = {
 							cards: lastObject.relation_info.cards,
 						}
 				} })
+
+        loading.stop(Redux)
       }
     })
     .catch(error => {
-        console.log(error.response.data);
-        const serverResponse = error.response.data
+      console.log(error.response.data);
+      const serverResponse = error.response.data
+      loading.stop(Redux)
     });
   },
 

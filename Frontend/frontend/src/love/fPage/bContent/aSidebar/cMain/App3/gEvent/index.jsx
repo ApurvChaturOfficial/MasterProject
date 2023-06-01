@@ -13,7 +13,7 @@ import APIs from './extra/APIs';
 import { Create, Delete, List, Retrieve, Update } from './extra/Component';
 import { Action } from './extra/State';
 
-const Event = () => {
+const Event = ({ Redux1 }) => {
   // Normal Variable
   const close1 = useRef()
   const close2 = useRef()
@@ -113,6 +113,10 @@ const Event = () => {
         next: FinalRouteName.Content.Sidebar.Main.EventCardRoute,
         breadcrumb: "Event"
       }}
+			access={{
+				name: "Event",
+				Redux1: Redux1
+			}}
     />
   )
 }

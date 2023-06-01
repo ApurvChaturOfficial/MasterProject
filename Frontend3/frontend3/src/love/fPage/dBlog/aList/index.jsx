@@ -6,7 +6,7 @@ import Blog from '../../../cComponent/bPage/aLanding/gBlog';
 import APIs from './extra/APIs';
 import { Action } from './extra/State';
 
-const BlogList = () => {
+const BlogList = ({ Redux1 }) => {
 	// Redux
 	const Redux = {
 		state: useSelector((fullState) => fullState.BlogListState),
@@ -16,7 +16,7 @@ const BlogList = () => {
 
 	// API Calls
 	const APICalls = {
-		BlogListAPICall: () => APIs.BlogListAPI(Redux),
+		BlogListAPICall: () => APIs.BlogListAPI(Redux, Redux1),
 	}
 
 	// All Renders

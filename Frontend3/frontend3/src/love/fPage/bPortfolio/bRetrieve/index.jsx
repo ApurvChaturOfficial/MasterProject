@@ -10,7 +10,7 @@ import { Action } from './extra/State';
 import parse from 'html-react-parser';
 
 
-const PortfolioRetrieve = () => {
+const PortfolioRetrieve = ({ Redux1 }) => {
 	const { id } = useParams()
 
 	// Redux
@@ -22,7 +22,7 @@ const PortfolioRetrieve = () => {
 
 	// API Calls
 	const APICalls = {
-		PortfolioRetrieveAPICall: () => APIs.PortfolioCardRetrieveAPI(Redux, id),
+		PortfolioRetrieveAPICall: () => APIs.PortfolioCardRetrieveAPI(Redux, id, Redux1),
 	}
 
 	// All Renders

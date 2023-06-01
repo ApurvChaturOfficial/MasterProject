@@ -15,7 +15,7 @@ import LCRUD from '../../../../../../cComponent/aLCRUD';
 import { Create, Delete, List, Retrieve, Update } from './extra/Component';
 import FinalRouteName from '../../../../../../gRoute/FinalRouteName';
 
-const PortfolioCard = () => {
+const PortfolioCard = ({ Redux1 }) => {
   // Normal Variable
   const close1 = useRef()
   const close2 = useRef()
@@ -137,6 +137,10 @@ const PortfolioCard = () => {
         next: FinalRouteName.Content.Sidebar.Main.EventRoute,
         breadcrumb: "Portfolio Card"
       }}
+      access={{
+				name: "Portfolio Card",
+				Redux1: Redux1
+			}}
     />
   )
 }
