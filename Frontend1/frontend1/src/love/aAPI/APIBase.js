@@ -6,8 +6,8 @@ const APIBase = (props) => {
     const configuration = {
         method: props.method,
         url: props.url,
-        baseURL: "http://localhost:4000",
-        // baseURL: "https://ac-sample-authentication-app.onrender.com",
+        // baseURL: "http://localhost:4000",
+        baseURL: "https://ac-sample-authentication-app.onrender.com",
         headers: { 
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': 'http://localhost:3000',
