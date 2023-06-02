@@ -27,8 +27,8 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(fileUpload())
 app.use(cors({ origin:  [
-  "https://sample-administration-app.nelify.app", 
-  "https://sample-administration-app-admin.nelify.app"
+  "https://sample-administration-app.netlify.app", 
+  "https://sample-administration-app-admin.netlify.app"
 ], credentials: true }))
 
 app.use("/api/v1/base", baseRoute)
