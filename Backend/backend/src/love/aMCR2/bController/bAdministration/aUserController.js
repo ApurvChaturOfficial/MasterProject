@@ -225,7 +225,9 @@ exports.userController = (Model= UserModel, Label= 'User') => {
 			// Remove Token
 			const options = {
 					expires: new Date(Date.now()),
-					httpOnly: true
+					httpOnly: true,
+					secure: true,
+					sameSite: "none"	
 			}
 
 			// Response
