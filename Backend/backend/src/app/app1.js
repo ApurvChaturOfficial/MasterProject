@@ -22,7 +22,7 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(fileUpload())
 app.use(cors({ origin:  [
-  "https://sample-authentication-app.nelify.app", 
+  "https://verifymee.nelify.app", 
   "https://sample-authentication-app-admin.nelify.app"
 ], credentials: true }))
 

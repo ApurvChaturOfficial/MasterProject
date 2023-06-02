@@ -19,7 +19,7 @@ const Dashboard = ({ Redux1 }) => {
                         You are doing very well, our best wishes with you. Check your overall profile glance on this dashboard below.
                       </p>
 
-                      <Link to={FinalRouteName.Content.Sidebar.Main.Sample1Route} class="btn btn-sm btn-outline-primary">Start Journey <i class="bx bx-chevrons-right ms-1"></i></Link>
+                      <Link to={FinalRouteName.Content.Sidebar.Administration.UserRoute} class="btn btn-sm btn-outline-primary">Start Journey <i class="bx bx-chevrons-right ms-1"></i></Link>
                     </div>
                   </div>
                   <div class="col-sm-5 text-center text-sm-left">

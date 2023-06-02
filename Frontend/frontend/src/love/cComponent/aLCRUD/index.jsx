@@ -18,7 +18,7 @@ const LCRUD = (props) => {
 	
   // JSX
   return (
-    // access?.Redux1.state.ReceivedObject?.UserAccess?.[access.name]?.list ?
+    access?.Redux1.state.ReceivedObject?.UserAccess?.[access.name]?.list ?
       <div class="content-wrapper">
         <div class="container-xxl flex-grow-1 container-p-y">
           <Header Redux={Redux} header={header} access={access} />
@@ -60,8 +60,8 @@ const LCRUD = (props) => {
           close4={close4}
         />
       </div>
-      // :
-      // <UnauthorisedCard />
+      :
+      <UnauthorisedCard />
   )
 }
 

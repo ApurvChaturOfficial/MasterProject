@@ -41,34 +41,34 @@ export const List = ({ Redux, APICalls, access }) => {
                     <td>
                       <div class="d-flex">
                         {access?.Redux1.state.ReceivedObject?.UserAccess?.[access.name]?.retrieve &&
-                            <Link 
-                              class="btn btn-sm btn-outline-primary"
-                              data-bs-toggle="modal"
-                              data-bs-target="#exLargeModal"
-                              onClick={() => APICalls.RetrieveAPICall(each.id)}
-                            ><i class="bx bx-spreadsheet me-1"></i> Read
-                            </Link>
-                          }
+                          <Link 
+                            class="btn btn-sm btn-outline-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exLargeModal"
+                            onClick={() => APICalls.RetrieveAPICall(each.id)}
+                          ><i class="bx bx-spreadsheet me-1"></i> Read
+                          </Link>
+                        }
 
-                          {access?.Redux1.state.ReceivedObject?.UserAccess?.[access.name]?.update &&
-                            <Link 
-                              class="btn btn-sm btn-outline-primary ms-2"
-                              data-bs-toggle="modal"
-                              data-bs-target="#updateModal"
-                              onClick={() => APICalls.RetrieveAPICall(each.id)}
-                            ><i class="bx bx-edit-alt me-1"></i> Edit
-                            </Link>
-                          }
+                        {access?.Redux1.state.ReceivedObject?.UserAccess?.[access.name]?.update &&
+                          <Link 
+                            class="btn btn-sm btn-outline-primary ms-2"
+                            data-bs-toggle="modal"
+                            data-bs-target="#updateModal"
+                            onClick={() => APICalls.RetrieveAPICall(each.id)}
+                          ><i class="bx bx-edit-alt me-1"></i> Edit
+                          </Link>
+                        }
 
-                          {access?.Redux1.state.ReceivedObject?.UserAccess?.[access.name]?.delete &&
-                            <Link
-                              class="btn btn-sm btn-outline-danger ms-2"
-                              data-bs-toggle="modal"
-                              data-bs-target="#modalCenter"
-                              onClick={() => APICalls.RetrieveAPICall(each.id)}
-                            ><i class="bx bx-trash me-1"></i> Delete
-                            </Link> 
-                          }
+                        {access?.Redux1.state.ReceivedObject?.UserAccess?.[access.name]?.delete &&
+                          <Link
+                            class="btn btn-sm btn-outline-danger ms-2"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modalCenter"
+                            onClick={() => APICalls.RetrieveAPICall(each.id)}
+                          ><i class="bx bx-trash me-1"></i> Delete
+                          </Link> 
+                        }
                       </div>
                     </td>
                   </tr>    

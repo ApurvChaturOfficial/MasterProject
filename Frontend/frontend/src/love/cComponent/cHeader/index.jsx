@@ -40,7 +40,7 @@ const Header = ({Redux, header, access}) => {
                       }}
                     > <i class="bx bx-plus-circle me-1"></i>Create New Instance </Link>
                   :
-                  null
+                  null                
                 }
 
                 {header.next &&

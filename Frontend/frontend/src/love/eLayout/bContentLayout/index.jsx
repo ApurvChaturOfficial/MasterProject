@@ -139,7 +139,7 @@ const ContentLayout = (props) => {
               </Link>
             </li>
 
-            {process.env.REACT_APP_ACTIVE_APP === "SampleAuthenticationApp" ?
+            {/* {process.env.REACT_APP_ACTIVE_APP === "SampleAuthenticationApp" ?
                 <React.Fragment>
                 </React.Fragment>
               :
@@ -201,7 +201,7 @@ const ContentLayout = (props) => {
                 </React.Fragment>
               :
               null
-            }
+            } */}
 
             {process.env.REACT_APP_ACTIVE_APP === "SampleAuthenticationApp" ?
                 <React.Fragment>
