@@ -35,13 +35,13 @@ const Portfolio = ({Redux, disable}) => {
 								<h3><Link to={`${FinalRouteName.Portfolio.RetrieveRoute}/${each._id}`}>{each.basic_info.title}</Link></h3>
 								<p className='text-light' >{each.basic_info.sub_title}</p>
 								<div className='portfolio__item-cta' >
-								{each.more_info.links &&
-									each.more_info.links.map(each1 => {
-										return (
-											<Link to={each1.link} className={`btn ${each1.label === 'Demo' && 'btn-primary'}`} >{each1.label}</Link>
-										)
-									})
-								}
+									{each.more_info.links &&
+										each.more_info.links.map(each1 => {
+											return (
+												<Link to={each1.url} className={`btn ${(each1.label === 'App Demo' || each1.label === "Admin Demo") && 'btn-primary'}`} >{each1.label}</Link>
+											)
+										})
+									}
 								</div>
 							</article>
 						)

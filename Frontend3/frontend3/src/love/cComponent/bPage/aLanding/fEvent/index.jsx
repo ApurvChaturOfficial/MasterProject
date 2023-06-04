@@ -43,6 +43,16 @@ const Event = ({Redux, disable}) => {
 									<BiTargetLock className='event__details-icon' fontSize={"18px"} /><small className='text-light'>Target Date : </small> <br />
 									<AiOutlineSend className='event__details-icon' fontSize={"18px"} /><small className='text-light'>Completed Date : </small>
 								</div>
+
+								<div className='event__item-cta' >
+									{each.more_info.links &&
+										each.more_info.links.map(each1 => {
+											return (
+												<Link to={each1.url} className={`btn ${each1.label === 'Demo' && 'btn-primary'}`} >{each1.label}</Link>
+											)
+										})
+									}
+								</div>
 								
 							</article>
 						)
