@@ -52,6 +52,14 @@ const ContentLayout = (props) => {
             <a href="index.html" class="app-brand-link">
               <span class="app-brand-logo demo">
                 <img 
+                  src={Logo} 
+                  alt="" 
+                  width="35px"
+                />
+              </span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">Assista</span>
+              <span class="app-brand-logo demo">
+                <img 
                   src={
                     process.env.REACT_APP_ACTIVE_APP === "SampleAuthenticationApp" ? Logo1 :
                     process.env.REACT_APP_ACTIVE_APP === "SampleAdministrationApp" ? Logo2 :
@@ -111,17 +119,11 @@ const ContentLayout = (props) => {
                         </g>
                       </g>
                     </svg>
-                  } 
-                  alt="" 
-                  width="35px"
-                />
-                <img 
-                  src={Logo} 
+                    } 
                   alt="" 
                   width="35px"
                 />
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Assista</span>
             </a>
 
             <span class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none" style={{cursor: "pointer"}} onClick={() => {
