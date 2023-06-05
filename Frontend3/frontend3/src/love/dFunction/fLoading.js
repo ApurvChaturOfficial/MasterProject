@@ -1,7 +1,7 @@
 const loading = {
   start: Redux => {
     return (
-      Redux?.dispatch({ type: Redux.action.ExtraObject, payload: {
+      Redux.dispatch({ type: Redux.action.ExtraObject, payload: {
         ...Redux.state.ExtraObject,
         loading: true
       } })
@@ -10,7 +10,7 @@ const loading = {
   
   stop: Redux => {
     return (
-      Redux?.dispatch({ type: Redux.action.ExtraObject, payload: {
+      Redux.dispatch({ type: Redux.action.ExtraObject, payload: {
         ...Redux.state.ExtraObject,
         loading: false
       } })

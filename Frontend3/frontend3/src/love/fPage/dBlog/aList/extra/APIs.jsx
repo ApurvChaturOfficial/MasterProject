@@ -3,8 +3,8 @@ import loading from "../../../../dFunction/fLoading";
 
 const APIs = {
   // Blog List API
-  BlogListAPI: (Redux, Redux1) => {
-    loading.start(Redux1)
+  BlogListAPI: (Redux) => {
+    loading.start(Redux)
 
     API.Blog.ListAPI()
     .then(response => {
@@ -24,13 +24,13 @@ const APIs = {
 							cards: lastObject.relation_info.cards,
 						}
 				} })
-        loading.stop(Redux1)
+        loading.stop(Redux)
       }
     })
     .catch(error => {
         // console.log(error.response.data);
         const serverResponse = error.response.data
-        loading.stop(Redux1)
+        loading.stop(Redux)
     });
   },
 

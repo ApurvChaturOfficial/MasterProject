@@ -48,7 +48,7 @@ const Event = ({Redux, disable}) => {
 									{each.more_info.links &&
 										each.more_info.links.map(each1 => {
 											return (
-												<Link to={each1.url} className={`btn ${each1.label === 'Demo' && 'btn-primary'}`} >{each1.label}</Link>
+												<a href={each1.url} target="_blank" rel='noreferrer' className={`btn ${(each1.label === 'App Demo' || each1.label === "Admin Demo") && 'btn-primary'}`} >{each1.label}</a>
 											)
 										})
 									}

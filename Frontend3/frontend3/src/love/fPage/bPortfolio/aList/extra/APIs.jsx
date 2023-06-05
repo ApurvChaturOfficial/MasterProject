@@ -4,12 +4,12 @@ import FinalRouteName from "../../../../gRoute/FinalRouteName";
 
 const APIs = {
   // Portfolio List API
-  PortfolioListAPI: (Redux, Redux1) => {
-    loading.start(Redux1)
+  PortfolioListAPI: (Redux) => {
+    loading.start(Redux)
 
     API.Portfolio.ListAPI()
     .then(response => {
-      console.log(response.data);
+      // console.log(response.data);
       const serverResponse = response.data;
 
       if (serverResponse.success === true) {
@@ -37,13 +37,13 @@ const APIs = {
 						}
 				} })
 
-        loading.stop(Redux1)
+        loading.stop(Redux)
       }
     })
     .catch(error => {
-        // console.log(error.response.data);
-        const serverResponse = error.response.data
-        loading.stop(Redux1)
+      // console.log(error.response.data);
+      const serverResponse = error.response.data
+      loading.stop(Redux)
     });
   },
 

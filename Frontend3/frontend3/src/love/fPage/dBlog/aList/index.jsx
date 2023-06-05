@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../../cComponent/aLayout/aHeader'
 import Footer from '../../../cComponent/aLayout/bFooter'
 import Blog from '../../../cComponent/bPage/aLanding/gBlog';
+import Loader from '../../../cComponent/cLoader';
 import APIs from './extra/APIs';
 import { Action } from './extra/State';
 
@@ -16,7 +17,7 @@ const BlogList = ({ Redux1 }) => {
 
 	// API Calls
 	const APICalls = {
-		BlogListAPICall: () => APIs.BlogListAPI(Redux, Redux1),
+		BlogListAPICall: () => APIs.BlogListAPI(Redux),
 	}
 
 	// All Renders
@@ -32,6 +33,9 @@ const BlogList = ({ Redux1 }) => {
 	
 	// JSX
   return (
+		Redux.state.ExtraObject?.loading ?
+		<Loader />
+		:
 		Redux.state.ReceivedObject.BlogList &&
     <React.Fragment>
 			<Header heading={Redux.state.ReceivedObject.BlogList.subTitle} />

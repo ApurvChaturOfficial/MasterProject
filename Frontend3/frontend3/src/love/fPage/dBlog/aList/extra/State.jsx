@@ -7,6 +7,7 @@ const InitialState = {
 	},	
 	ReceivedObject: {},
 	RequiredObject: {},
+	ExtraObject: {},
 }
 
 const BlogListState = (state=InitialState, action) => {
@@ -17,6 +18,9 @@ const BlogListState = (state=InitialState, action) => {
 			return {...state, ReceivedObject: action.payload}
 		case 'required-object-blog-list':
 			return {...state, RequiredObject: action.payload}
+		case 'extra-object-blog-list':
+			return {...state, ExtraObject: action.payload}	
+	
 		default:
 			return state
 	}
@@ -26,6 +30,7 @@ export const Action = {
 	FormObject: 'form-object-blog-list',
 	ReceivedObject: 'received-object-blog-list',
 	RequiredObject: 'required-object-blog-list',
+	ExtraObject: 'extra-object-blog-list',
 }  
 
 export default BlogListState

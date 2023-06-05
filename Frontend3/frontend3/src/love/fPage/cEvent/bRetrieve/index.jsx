@@ -11,6 +11,7 @@ import parse from 'html-react-parser';
 import { BsFillCalendarDateFill, BsFillSkipStartFill } from 'react-icons/bs';
 import { BiTargetLock } from 'react-icons/bi';
 import { AiOutlineSend } from 'react-icons/ai';
+import Loader from '../../../cComponent/cLoader';
 
 
 const EventRetrieve = ({ Redux1 }) => {
@@ -25,7 +26,7 @@ const EventRetrieve = ({ Redux1 }) => {
 
 	// API Calls
 	const APICalls = {
-		EventRetrieveAPICall: () => APIs.EventCardRetrieveAPI(Redux, id, Redux1),
+		EventRetrieveAPICall: () => APIs.EventCardRetrieveAPI(Redux, id),
 	}
 
 	// All Renders
@@ -41,6 +42,9 @@ const EventRetrieve = ({ Redux1 }) => {
 	
 	// JSX
   return (
+		Redux.state.ExtraObject?.loading ?
+		<Loader />
+		:
     <React.Fragment>
 			<Header heading={"My Events"} />
 

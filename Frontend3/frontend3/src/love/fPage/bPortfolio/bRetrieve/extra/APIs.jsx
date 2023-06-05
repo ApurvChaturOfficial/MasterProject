@@ -3,8 +3,8 @@ import loading from "../../../../dFunction/fLoading";
 
 const APIs = {
   // PortfolioCard Retrieve API
-  PortfolioCardRetrieveAPI: (Redux, id, Redux1) => {
-    loading.start(Redux1)
+  PortfolioCardRetrieveAPI: (Redux, id) => {
+    loading.start(Redux)
 
     API.PortfolioCard.RetrieveAPI({id})
     .then(response => {
@@ -29,13 +29,13 @@ const APIs = {
 
 						}
 				}})
-        loading.stop(Redux1)
+        loading.stop(Redux)
       }
     })
     .catch(error => {
         // console.log(error.response.data);
         const serverResponse = error.response.data
-        loading.stop(Redux1)
+        loading.stop(Redux)
     });
   },
 

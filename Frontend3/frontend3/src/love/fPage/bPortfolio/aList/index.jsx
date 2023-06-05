@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../../cComponent/aLayout/aHeader'
-import Footer from '../../../cComponent/aLayout/bFooter'
-import Navbar from '../../../cComponent/aLayout/cNavbar';
 import Portfolio from '../../../cComponent/bPage/aLanding/ePortfolio'
+import Loader from '../../../cComponent/cLoader';
 import APIs from './extra/APIs';
 import { Action } from './extra/State';
 
-const PortfolioList = ({ Redux1 }) => {
+const PortfolioList = () => {
 	// Redux
 	const Redux = {
 		state: useSelector((fullState) => fullState.PortfolioListState),
@@ -17,7 +16,7 @@ const PortfolioList = ({ Redux1 }) => {
 
 	// API Calls
 	const APICalls = {
-		PortfolioListAPICall: () => APIs.PortfolioListAPI(Redux, Redux1),
+		PortfolioListAPICall: () => APIs.PortfolioListAPI(Redux),
 	}
 
 	// All Renders
@@ -33,11 +32,14 @@ const PortfolioList = ({ Redux1 }) => {
 	
 	// JSX
   return (
-		Redux.state.ReceivedObject.PortfolioList &&
-    <React.Fragment>
-			<Header heading={Redux.state.ReceivedObject.PortfolioList.subTitle} />
-			<Portfolio Redux={Redux} disable />
-    </React.Fragment>
+		Redux.state.ExtraObject?.loading ?
+			<Loader />
+			:
+			Redux.state.ReceivedObject.PortfolioList &&
+			<React.Fragment>
+				<Header heading={Redux.state.ReceivedObject.PortfolioList.subTitle} />
+				<Portfolio Redux={Redux} disable />
+			</React.Fragment>
   )
 }
 

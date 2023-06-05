@@ -7,6 +7,7 @@ const InitialState = {
 	},	
 	ReceivedObject: {},
 	RequiredObject: {},
+	ExtraObject: {},
 }
 
 const PortfolioListState = (state=InitialState, action) => {
@@ -17,6 +18,8 @@ const PortfolioListState = (state=InitialState, action) => {
 			return {...state, ReceivedObject: action.payload}
 		case 'required-object-portfolio-list':
 			return {...state, RequiredObject: action.payload}
+		case 'extra-object-portfolio-list':
+			return {...state, ExtraObject: action.payload}	
 		default:
 			return state
 	}
@@ -26,6 +29,7 @@ export const Action = {
 	FormObject: 'form-object-portfolio-list',
 	ReceivedObject: 'received-object-portfolio-list',
 	RequiredObject: 'required-object-portfolio-list',
+	ExtraObject: 'extra-object-portfolio-list',
 }  
 
 export default PortfolioListState

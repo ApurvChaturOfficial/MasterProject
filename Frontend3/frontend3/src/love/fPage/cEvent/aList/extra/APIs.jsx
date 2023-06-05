@@ -3,8 +3,8 @@ import loading from "../../../../dFunction/fLoading";
 
 const APIs = {
   // Event List API
-  EventListAPI: (Redux, Redux1) => {
-    loading.start(Redux1)
+  EventListAPI: (Redux) => {
+    loading.start(Redux)
 
     API.Event.ListAPI()
     .then(response => {
@@ -24,13 +24,13 @@ const APIs = {
 							cards: lastObject.relation_info.cards,
 						}
 				} })
-        loading.stop(Redux1)
+        loading.stop(Redux)
       }
     })
     .catch(error => {
         // console.log(error.response.data);
         const serverResponse = error.response.data
-        loading.stop(Redux1)
+        loading.stop(Redux)
     });
   },
 

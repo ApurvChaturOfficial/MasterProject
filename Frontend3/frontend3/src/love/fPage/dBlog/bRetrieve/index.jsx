@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 import './index.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
-import ME1 from '../../../hAssets/me-about.jpg'
+import {  useParams } from 'react-router-dom';
 import Header from '../../../cComponent/aLayout/aHeader'
-import Footer from '../../../cComponent/aLayout/bFooter'
 import APIs from './extra/APIs';
 import { Action } from './extra/State';
 import parse from 'html-react-parser';
+import Loader from '../../../cComponent/cLoader';
 
 
 const BlogRetrieve = ({ Redux1 }) => {
@@ -22,7 +21,7 @@ const BlogRetrieve = ({ Redux1 }) => {
 
 	// API Calls
 	const APICalls = {
-		BlogRetrieveAPICall: () => APIs.BlogCardRetrieveAPI(Redux, id, Redux1),
+		BlogRetrieveAPICall: () => APIs.BlogCardRetrieveAPI(Redux, id),
 	}
 
 	// All Renders
@@ -38,6 +37,9 @@ const BlogRetrieve = ({ Redux1 }) => {
 	
 	// JSX
   return (
+		Redux.state.ExtraObject?.loading ?
+		<Loader />
+		:
     <React.Fragment>
 			<Header heading={"My Blogs"} />
 

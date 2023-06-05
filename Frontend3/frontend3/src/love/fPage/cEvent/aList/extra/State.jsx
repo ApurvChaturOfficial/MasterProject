@@ -7,6 +7,7 @@ const InitialState = {
 	},	
 	ReceivedObject: {},
 	RequiredObject: {},
+	ExtraObject: {},
 }
 
 const EventListState = (state=InitialState, action) => {
@@ -17,6 +18,8 @@ const EventListState = (state=InitialState, action) => {
 			return {...state, ReceivedObject: action.payload}
 		case 'required-object-event-list':
 			return {...state, RequiredObject: action.payload}
+		case 'extra-object-portfolio-list':
+			return {...state, ExtraObject: action.payload}	
 		default:
 			return state
 	}
@@ -26,6 +29,7 @@ export const Action = {
 	FormObject: 'form-object-event-list',
 	ReceivedObject: 'received-object-event-list',
 	RequiredObject: 'required-object-event-list',
+	ExtraObject: 'extra-object-portfolio-list',
 }  
 
 export default EventListState

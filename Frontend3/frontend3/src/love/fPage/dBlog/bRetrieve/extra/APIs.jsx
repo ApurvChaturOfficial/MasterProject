@@ -3,8 +3,8 @@ import loading from "../../../../dFunction/fLoading";
 
 const APIs = {
   // BlogCard Retrieve API
-  BlogCardRetrieveAPI: (Redux, id, Redux1) => {
-    loading.start(Redux1)
+  BlogCardRetrieveAPI: (Redux, id) => {
+    loading.start(Redux)
 
     API.BlogCard.RetrieveAPI({id})
     .then(response => {
@@ -34,13 +34,13 @@ const APIs = {
               updatedAt: serverResponse.retrieve.personal_info?.updated_by ? serverResponse.retrieve.personal_info?.updated_at : "-",
 						}
 				}})
-        loading.stop(Redux1)
+        loading.stop(Redux)
       }
     })
     .catch(error => {
       // console.log(error.response.data);
       const serverResponse = error.response.data
-      loading.stop(Redux1)
+      loading.stop(Redux)
     });
   },
 

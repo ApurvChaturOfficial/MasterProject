@@ -30,18 +30,18 @@ function App() {
 						<Route element={<Landing Redux1={Redux} />} path="" />
 						
 						<Route path={`portfolio`} >
-							<Route element={<PortfolioList />} Redux1={Redux} path={`${RouteName.Portfolio.ListRoute}`} />
-							<Route element={<PortfolioRetrieve />} Redux1={Redux} path={`${RouteName.Portfolio.RetrieveRoute}/:id`} />
+							<Route element={<PortfolioList Redux1={Redux} />} path={`${RouteName.Portfolio.ListRoute}`} />
+							<Route element={<PortfolioRetrieve Redux1={Redux} />} path={`${RouteName.Portfolio.RetrieveRoute}/:id`} />
 						</Route>
 						
 						<Route path={`event`} >
-							<Route element={<EventList />} Redux1={Redux} path={`${RouteName.Event.ListRoute}`} />
-							<Route element={<EventRetrieve />} Redux1={Redux} path={`${RouteName.Event.RetrieveRoute}/:id`} />
+							<Route element={<EventList Redux1={Redux} />} path={`${RouteName.Event.ListRoute}`} />
+							<Route element={<EventRetrieve Redux1={Redux} />} path={`${RouteName.Event.RetrieveRoute}/:id`} />
 						</Route>
 						
 						<Route path={`blog`} >
-							<Route element={<BlogList />} Redux1={Redux} path={`${RouteName.Blog.ListRoute}`} />
-							<Route element={<BlogRetrieve />} Redux1={Redux} path={`${RouteName.Blog.RetrieveRoute}/:id`} />
+							<Route element={<BlogList Redux1={Redux} />} path={`${RouteName.Blog.ListRoute}`} />
+							<Route element={<BlogRetrieve Redux1={Redux} />} path={`${RouteName.Blog.RetrieveRoute}/:id`} />
 						</Route>
 					</Route>
 				</Routes>

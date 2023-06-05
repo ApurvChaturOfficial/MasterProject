@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../../cComponent/aLayout/aHeader'
 import Footer from '../../../cComponent/aLayout/bFooter'
 import Event from '../../../cComponent/bPage/aLanding/fEvent';
+import Loader from '../../../cComponent/cLoader';
 import APIs from './extra/APIs';
 import { Action } from './extra/State';
 
@@ -16,7 +17,7 @@ const EventList = ({ Redux1 }) => {
 
 	// API Calls
 	const APICalls = {
-		EventListAPICall: () => APIs.EventListAPI(Redux, Redux1),
+		EventListAPICall: () => APIs.EventListAPI(Redux),
 	}
 
 	// All Renders
@@ -32,6 +33,9 @@ const EventList = ({ Redux1 }) => {
 	
 	// JSX
   return (
+		Redux.state.ExtraObject?.loading ?
+		<Loader />
+		:
 		Redux.state.ReceivedObject.EventList &&
     <React.Fragment>
 			<Header heading={Redux.state.ReceivedObject.EventList.subTitle} />
