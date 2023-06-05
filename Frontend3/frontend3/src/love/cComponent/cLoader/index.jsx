@@ -10,7 +10,10 @@ import { BsDiscFill, BsFillLightningChargeFill } from 'react-icons/bs';
 const Loader = () => {
   // Normal Variables
   const canvasRef = useRef(null);
-
+  const bg = process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" ? "#4db5ff" :
+             process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" ? "#ee349a" :
+             process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp" ? "#C8A2C8" : "#4db5ff"
+ 
   // State Variables
   const [playerState, setPlayerState] = useState("idle")
 
@@ -74,6 +77,11 @@ const Loader = () => {
     function animate() {
         ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
         
+        ctx.beginPath();
+        ctx.arc(CANVAS_WIDTH/2, CANVAS_HEIGHT/2, 300, 0, 2 * Math.PI);
+        ctx.fillStyle = bg;
+        ctx.fill();
+
         let position = Math.floor(gameFrame/staggerFrames) % spriteAnimations[playerState].loc.length
     
         let frameX = spriteWidth * position
@@ -124,7 +132,7 @@ const Loader = () => {
 
       <canvas ref={canvasRef} style={{position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%"}} />
 
-      <div style={{position: "absolute", bottom: "10%"}}>
+      <div style={{position: "absolute", bottom: "8%"}}>
         <div style={{marginBottom: "0.5rem"}}>
           <p style={{marginTop: 0}} >Loading...</p>
           <small>In the mean time play with the dog...</small>
