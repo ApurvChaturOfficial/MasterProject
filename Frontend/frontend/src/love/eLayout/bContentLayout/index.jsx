@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Action } from "./extra/State";
 import APIs from "./extra/APIs";
 import FinalRouteName from "../../gRoute/FinalRouteName";
+import Logo from "../../hAssets/www.png";
 import Logo1 from "../../hAssets/1.png";
 import Logo2 from "../../hAssets/2.png";
 import Logo3 from "../../hAssets/3.png";
@@ -114,8 +115,13 @@ const ContentLayout = (props) => {
                   alt="" 
                   width="35px"
                 />
+                <img 
+                  src={Logo} 
+                  alt="" 
+                  width="35px"
+                />
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Admin</span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">Assista</span>
             </a>
 
             <span class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none" style={{cursor: "pointer"}} onClick={() => {
