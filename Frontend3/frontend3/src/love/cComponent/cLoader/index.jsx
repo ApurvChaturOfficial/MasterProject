@@ -132,9 +132,9 @@ const Loader = () => {
 
       <canvas ref={canvasRef} style={{position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%"}} />
 
-      <div style={{position: "absolute", bottom: "8%"}}>
+      <div style={{position: "absolute", bottom: "5%"}}>
         <div style={{marginBottom: "0.5rem"}}>
-          <p style={{marginTop: 0}} >Loading...</p>
+          <p style={{marginTop: 0}} >Fetching Data...</p>
           <small>In the mean time play with the dog...</small>
         </div>
 
