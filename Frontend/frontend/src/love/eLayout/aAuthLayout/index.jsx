@@ -53,7 +53,7 @@ const AuthLayout = () => {
                     <img 
                       src={
                         process.env.REACT_APP_ACTIVE_APP === "SampleAuthenticationApp" ? Logo1 :
-                        process.env.REACT_APP_ACTIVE_APP === "SampleAdministrationApp" ? Logo2 :
+                        process.env.REACT_APP_ACTIVE_APP === "SampleAdministrationApp" ? null :
                         process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" ? Logo3 :
                         process.env.REACT_APP_ACTIVE_APP === "SofiePortfolioApp" ? Logo4 :
                         process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp" ? Logo5 : 
