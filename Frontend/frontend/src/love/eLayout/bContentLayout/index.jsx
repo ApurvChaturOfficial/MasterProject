@@ -64,7 +64,7 @@ const ContentLayout = (props) => {
                     process.env.REACT_APP_ACTIVE_APP === "SampleAuthenticationApp" ? Logo1 :
                     process.env.REACT_APP_ACTIVE_APP === "SampleAdministrationApp" ? Logo2 :
                     process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" ? Logo3 :
-                    process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" ? Logo4 :
+                    process.env.REACT_APP_ACTIVE_APP === "SofiePortfolioApp" ? Logo4 :
                     process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp" ? Logo5 : 
                     <svg
                       width="25"
@@ -157,7 +157,7 @@ const ContentLayout = (props) => {
               :
               (
                 process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" || 
-                process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" || 
+                process.env.REACT_APP_ACTIVE_APP === "SofiePortfolioApp" || 
                 process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp"
               ) ?
                 <React.Fragment>
@@ -254,7 +254,7 @@ const ContentLayout = (props) => {
           :
               (
                 process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" || 
-                process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" || 
+                process.env.REACT_APP_ACTIVE_APP === "SofiePortfolioApp" || 
                 process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp"
               ) ?
                 <React.Fragment>

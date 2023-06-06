@@ -21,7 +21,7 @@ const Footer = ({Redux}) => {
 				<img 
 					src={
 						process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" ? Logo1 :
-						process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" ? Logo2 :
+						process.env.REACT_APP_ACTIVE_APP === "SofiePortfolioApp" ? Logo2 :
 						process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp" ? Logo3 : 
 						Logo1
 					} 

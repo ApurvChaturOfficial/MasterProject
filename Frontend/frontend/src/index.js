@@ -16,7 +16,7 @@ root.render(
       {(process.env.REACT_APP_ACTIVE_APP === "SampleAdministrationApp") && <App2 />}
       {(
         process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" || 
-        process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" || 
+        process.env.REACT_APP_ACTIVE_APP === "SofiePortfolioApp" || 
         process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp"
       ) && <App3 />}
     </Provider>

@@ -22,6 +22,8 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(fileUpload())
 app.use(cors({ origin:  [
+  // "http://localhost:3000",
+  // "http://localhost:3001",
   "https://verifymee.netlify.app", 
   "https://sample-authentication-app-admin.netlify.app"
 ], credentials: true }))

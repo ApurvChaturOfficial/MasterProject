@@ -11,7 +11,7 @@ const Loader = () => {
   // Normal Variables
   const canvasRef = useRef(null);
   const bg = process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" ? "#4db5ff" :
-             process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" ? "#ee349a" :
+             process.env.REACT_APP_ACTIVE_APP === "SofiePortfolioApp" ? "#06b7b7" :
              process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp" ? "#C8A2C8" : "#4db5ff"
  
   // State Variables
@@ -111,7 +111,7 @@ const Loader = () => {
               </div>
             </div> 
             :
-            process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" ? 
+            process.env.REACT_APP_ACTIVE_APP === "SofiePortfolioApp" ? 
             <div class="loadingio-spinner">
               <div class="ldio">
                 <div><div><div><div></div></div></div><div><div><div></div></div></div></div>

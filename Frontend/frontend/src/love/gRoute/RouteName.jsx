@@ -32,7 +32,7 @@ const RouteName = {
 				:
 				(
 					process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" || 
-					process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" || 
+					process.env.REACT_APP_ACTIVE_APP === "SofiePortfolioApp" || 
 					process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp"
 				) ? {
 					HomeRoute: "home",				
@@ -53,7 +53,7 @@ const RouteName = {
 			:
 			(
 				process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" || 
-				process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" || 
+				process.env.REACT_APP_ACTIVE_APP === "SofiePortfolioApp" || 
 				process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp"
 			) ? {
 				HomeRoute: "home",				

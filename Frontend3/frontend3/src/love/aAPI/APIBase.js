@@ -9,7 +9,7 @@ const APIBase = (props) => {
         // baseURL: "http://localhost:4000",
         baseURL: (
             process.env.REACT_APP_ACTIVE_APP === "PersonalPortfolioApp" ? "https://ac-personal-portfolio-app.onrender.com" : 
-            process.env.REACT_APP_ACTIVE_APP === "NehaPortfolioApp" ? "https://ac-neha-portfolio-app.onrender.com" :
+            process.env.REACT_APP_ACTIVE_APP === "SofiePortfolioApp" ? "https://ac-sofie-portfolio-app.onrender.com" :
             process.env.REACT_APP_ACTIVE_APP === "AnushreePortfolioApp" ? "https://ac-anushree-portfolio-app.onrender.com" :
             "adasd"
         ),
