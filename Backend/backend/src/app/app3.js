@@ -42,7 +42,7 @@ process.env.ACTIVE_APP === 'SofiePortfolioApp' ?
   // "http://localhost:3000",
   // "http://localhost:3001",
   "https://sofie-portfolio-app-admin.netlify.app",
-  "https://sofiebirkin.netlify.app",
+  "https://sofiebirkinn.netlify.app",
 ] :
 process.env.ACTIVE_APP === 'AnushreePortfolioApp' ?
 [
