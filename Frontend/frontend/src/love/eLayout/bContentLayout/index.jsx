@@ -49,15 +49,7 @@ const ContentLayout = (props) => {
         {/* Side Navbar */}
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme ">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
-              <span class="app-brand-logo demo">
-                <img 
-                  src={Logo} 
-                  alt="" 
-                  width="35px"
-                />
-              </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Assista</span>
+            <Link to={FinalRouteName.Content.Sidebar.DashboardRoute} class="app-brand-link">
               <span class="app-brand-logo demo">
                 <img 
                   src={
@@ -124,7 +116,17 @@ const ContentLayout = (props) => {
                   width="35px"
                 />
               </span>
-            </a>
+
+              <span class="app-brand-logo demo">
+                <img 
+                  src={Logo} 
+                  alt="" 
+                  width="35px"
+                />
+              </span>
+
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">Assista</span>
+            </Link>
 
             <span class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none" style={{cursor: "pointer"}} onClick={() => {
               Redux.dispatch({ type: Redux.action.ExtraObject, payload: {

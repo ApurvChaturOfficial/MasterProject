@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 import APIs from './extra/APIs';
 import { Action } from './extra/State';
 import Logo from "../../hAssets/www.png";
@@ -9,6 +9,7 @@ import Logo2 from "../../hAssets/2.png";
 import Logo3 from "../../hAssets/3.png";
 import Logo4 from "../../hAssets/4.png";
 import Logo5 from "../../hAssets/5.png";
+import FinalRouteName from '../../gRoute/FinalRouteName';
 
 
 const AuthLayout = () => {
@@ -47,15 +48,7 @@ const AuthLayout = () => {
             <div class="card-body">
 							{/* Logo */}
               <div class="app-brand justify-content-center">
-                <a href="index.html" class="app-brand-link gap-2">
-                  <span class="app-brand-logo demo">
-                    <img 
-                      src={Logo} 
-                      alt="" 
-                      width="35px"
-                    />
-                  </span>
-                  <span class="app-brand-text demo text-body fw-bolder">Assista</span>
+                <Link to={FinalRouteName.Auth.LoginRegister.LoginRoute} class="app-brand-link gap-2">
                   <span class="app-brand-logo demo">
                     <img 
                       src={
@@ -122,7 +115,15 @@ const AuthLayout = () => {
                       width="35px"
                     />
                   </span>
-                </a>
+                  <span class="app-brand-logo demo">
+                    <img 
+                      src={Logo} 
+                      alt="" 
+                      width="35px"
+                    />
+                  </span>
+                  <span class="app-brand-text demo text-body fw-bolder">Assista</span>
+                </Link>
               </div>
 
 							{/* Content */}
