@@ -1,7 +1,8 @@
+const ErrorHandler = require("./bErrorHandler");
 
 const idsToObjects = async (list, model, label, next) => {
     const objects = [];
-
+    console.log("first")
     for (const each of list) {
         const object_retrieve = await new Promise(async resolve => {
             resolve(await model.findById(each._id))
@@ -12,6 +13,8 @@ const idsToObjects = async (list, model, label, next) => {
 
         objects.push(object_retrieve);
     }
+    console.log("first")
+
     return objects
 }
 

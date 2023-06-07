@@ -39,9 +39,9 @@ const Event = ({Redux, disable}) => {
 								<p className='text-light' >{each.basic_info.sub_title}</p>
 
 								<div style={{marginTop: "1.5em"}} >
-									<BsFillSkipStartFill className='event__details-icon' fontSize={"18px"} /><small className='text-light'>Start Date : </small> <br />
-									<BiTargetLock className='event__details-icon' fontSize={"18px"} /><small className='text-light'>Target Date : </small> <br />
-									<AiOutlineSend className='event__details-icon' fontSize={"18px"} /><small className='text-light'>Completed Date : </small>
+									<BsFillSkipStartFill className='event__details-icon' fontSize={"18px"} /><small className='text-light'>Start: {each.more_info?.date?.start}</small> <br />
+									<BiTargetLock className='event__details-icon' fontSize={"18px"} /><small className='text-light'>Target: {each.more_info?.date?.target}</small> <br />
+									<AiOutlineSend className='event__details-icon' fontSize={"18px"} /><small className='text-light'>Complete: {each.more_info?.date?.complete}</small>
 								</div>
 
 								<div className='event__item-cta' >

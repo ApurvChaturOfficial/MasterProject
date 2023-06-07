@@ -48,6 +48,11 @@ const APIs = {
         more_info: {
           description: Redux.state.FormObject.FormValue.description,
           detail: Redux.state.FormObject.FormValue.detail,
+          date: {
+            start: Redux.state.FormObject.FormValue.start,
+            target: Redux.state.FormObject.FormValue.target,
+            complete: Redux.state.FormObject.FormValue.complete,
+          },
           links: Redux.state.FormObject.FormValue.links,
           references: Redux.state.FormObject.FormValue.references,
         }
@@ -89,6 +94,9 @@ const APIs = {
 
             description: serverResponse.retrieve.more_info.description,
             detail: serverResponse.retrieve.more_info.detail,
+            start: serverResponse.retrieve.more_info?.date?.start,
+            target: serverResponse.retrieve.more_info?.date?.target,
+            complete: serverResponse.retrieve.more_info?.date?.complete,
             links: serverResponse.retrieve.more_info.links,
             references: serverResponse.retrieve.more_info.references,
 
@@ -114,6 +122,9 @@ const APIs = {
           
             description: serverResponse.retrieve.more_info.description,
             detail: serverResponse.retrieve.more_info.detail,
+            start: serverResponse.retrieve.more_info?.date?.start,
+            target: serverResponse.retrieve.more_info?.date?.target,
+            complete: serverResponse.retrieve.more_info?.date?.complete,
             links: serverResponse.retrieve.more_info.links,
             references: serverResponse.retrieve.more_info.references,
           }
@@ -142,6 +153,11 @@ const APIs = {
         more_info: {
           description: Redux.state.FormObject.FormValue.description,
           detail: Redux.state.FormObject.FormValue.detail,
+          date: {
+            start: Redux.state.FormObject.FormValue.start,
+            target: Redux.state.FormObject.FormValue.target,
+            complete: Redux.state.FormObject.FormValue.complete,
+          },
           links: Redux.state.FormObject.FormValue.links,
           references: Redux.state.FormObject.FormValue.references,
         }

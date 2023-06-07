@@ -116,6 +116,7 @@ exports.portfolioController = (Model= PortfolioModel, Label= 'Portfolio') => {
 				)
 			)
 
+			console.log(request.body.relation_info.cards)
 			// Update
 			object_retrieve = await Model.findByIdAndUpdate(
 				request.params.id,
@@ -127,7 +128,7 @@ exports.portfolioController = (Model= PortfolioModel, Label= 'Portfolio') => {
 			)
 	
 			// Response
-			response.status(200).json({
+			response.status(201).json({
 				success: true,
 				message: `${Label} Updated Successfully`,
 				update: object_retrieve

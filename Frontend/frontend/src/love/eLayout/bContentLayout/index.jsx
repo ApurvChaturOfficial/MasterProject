@@ -111,7 +111,7 @@ const ContentLayout = (props) => {
                         </g>
                       </g>
                     </svg>
-                    } 
+                  } 
                   alt="" 
                   width="35px"
                 />

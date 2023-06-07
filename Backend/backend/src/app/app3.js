@@ -26,7 +26,7 @@ const app = express()
 
 // Use
 app.use(express.json({
-  limit: '50mb'
+  limit: '1000mb'
 }))
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))

@@ -245,6 +245,48 @@ export const Create = ({ Redux, validateFormValues, close1, editor1, editor2 }) 
                         <div class="form-text text-danger">{Redux.state.FormObject.FormError.description}</div>
                       </div>
 
+                      {/* Start */}
+                      <div class="mb-3">
+                        <label class="form-label" for="start">Start Date</label>
+                        <input 
+                          type="text" 
+                          class="form-control" 
+                          id="start" 
+                          placeholder="Enter Start Date" 
+                          name='start'
+                          value={Redux.state.FormObject.FormValue?.start || ""}
+                          onChange={event => handleInput(event, Redux)}
+                        />
+                      </div>
+
+                      {/* Target */}
+                      <div class="mb-3">
+                        <label class="form-label" for="target">Target Date</label>
+                        <input 
+                          type="text" 
+                          class="form-control" 
+                          id="target" 
+                          placeholder="Enter Target Date" 
+                          name='target'
+                          value={Redux.state.FormObject.FormValue?.target || ""}
+                          onChange={event => handleInput(event, Redux)}
+                        />
+                      </div>
+
+                      {/* Complete */}
+                      <div class="mb-3">
+                        <label class="form-label" for="complete">Completed Date</label>
+                        <input 
+                          type="text" 
+                          class="form-control" 
+                          id="complete" 
+                          placeholder="Enter Complete Date" 
+                          name='complete'
+                          value={Redux.state.FormObject.FormValue?.complete || ""}
+                          onChange={event => handleInput(event, Redux)}
+                        />
+                      </div>
+
                       {/* Links */}
                       <div class="mb-3">
                         <label class="form-label" for="links">
@@ -498,6 +540,15 @@ export const Retrieve = ({ Redux, close2 }) => {
                       <dt class="col-sm-4">Details :</dt>
                       <dd class="col-sm-12">{Redux.state.ReceivedObject.Retrieve?.detail ? parse(Redux.state.ReceivedObject.Retrieve?.detail) : ""}</dd>
 
+                      <dt class="col-sm-4">Start :</dt>
+                      <dd class="col-sm-12">{Redux.state.ReceivedObject.Retrieve?.start}</dd>
+
+                      <dt class="col-sm-4">Target :</dt>
+                      <dd class="col-sm-12">{Redux.state.ReceivedObject.Retrieve?.target}</dd>
+
+                      <dt class="col-sm-4">Completed :</dt>
+                      <dd class="col-sm-12">{Redux.state.ReceivedObject.Retrieve?.complete}</dd>
+
                       <dt class="col-sm-12 mb-2">Links :</dt>
                       {Redux.state.ReceivedObject.Retrieve &&
                         Redux.state.ReceivedObject.Retrieve.links.map((each, index) => {
@@ -738,6 +789,48 @@ export const Update = ({ Redux, validateFormValues, close3, editor1, editor2 }) 
                           })}
                         />
                         <div class="form-text text-danger">{Redux.state.FormObject.FormError.description}</div>
+                      </div>
+
+                      {/* Start */}
+                      <div class="mb-3">
+                        <label class="form-label" for="start">Start Date</label>
+                        <input 
+                          type="text" 
+                          class="form-control" 
+                          id="start" 
+                          placeholder="Enter Start Date" 
+                          name='start'
+                          value={Redux.state.FormObject.FormValue?.start || ""}
+                          onChange={event => handleInput(event, Redux)}
+                        />
+                      </div>
+
+                      {/* Target */}
+                      <div class="mb-3">
+                        <label class="form-label" for="target">Target Date</label>
+                        <input 
+                          type="text" 
+                          class="form-control" 
+                          id="target" 
+                          placeholder="Enter Target Date" 
+                          name='target'
+                          value={Redux.state.FormObject.FormValue?.target || ""}
+                          onChange={event => handleInput(event, Redux)}
+                        />
+                      </div>
+
+                      {/* Complete */}
+                      <div class="mb-3">
+                        <label class="form-label" for="complete">Completed Date</label>
+                        <input 
+                          type="text" 
+                          class="form-control" 
+                          id="complete" 
+                          placeholder="Enter Complete Date" 
+                          name='complete'
+                          value={Redux.state.FormObject.FormValue?.complete || ""}
+                          onChange={event => handleInput(event, Redux)}
+                        />
                       </div>
 
                       {/* Links */}
