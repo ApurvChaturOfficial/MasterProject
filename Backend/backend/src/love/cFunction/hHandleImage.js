@@ -8,6 +8,9 @@ const handleImage = async (target, folder, type, retrieve) => {
     } else if (target?.url?.startsWith("data:image") && !retrieve.public_id) {
       const myCloud = await cloudinary.v2.uploader.upload(target.url, {
         folder: folder,
+        transformation: [
+          { width: 500, height: 500, crop: 'scale' }
+        ]
       });
   
       return {
@@ -19,6 +22,9 @@ const handleImage = async (target, folder, type, retrieve) => {
 
       const myCloud = await cloudinary.v2.uploader.upload(target.url, {
         folder: folder,
+        transformation: [
+          { width: 500, height: 500, crop: 'scale' }
+        ]
       });
   
       return {
@@ -29,6 +35,9 @@ const handleImage = async (target, folder, type, retrieve) => {
   } else if (type === 'create') {
     const myCloud = await cloudinary.v2.uploader.upload(target.url, {
       folder: folder,
+      transformation: [
+          { width: 500, height: 500, crop: 'scale' }
+        ]
     });
     
     return {

@@ -18,7 +18,7 @@ exports.portfolioCardController = (Model= PortfolioCardModel, Label= 'Portfolio 
 			const object_list = await searchFilterPaginate.query
 
 			// Response
-			response.status(201).json({
+			response.status(200).json({
 				success: true,
 				message: `${Label} Listed Successfully`,
 				total_count: await Model.countDocuments(),

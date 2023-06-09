@@ -116,7 +116,6 @@ exports.portfolioController = (Model= PortfolioModel, Label= 'Portfolio') => {
 				)
 			)
 
-			console.log(request.body.relation_info.cards)
 			// Update
 			object_retrieve = await Model.findByIdAndUpdate(
 				request.params.id,

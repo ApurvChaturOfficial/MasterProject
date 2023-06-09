@@ -179,6 +179,14 @@ exports.userController = (Model= UserModel, Label= 'User') => {
 				)
 			)
 
+			request.body.image && (
+				request.body.image = await handleImage(
+					request.body.image, 
+					Label,
+					'create'
+				)
+			)
+
 			// Relation Info
 			request.body?.relation_info?.role && (
 				request.body.relation_info.role = await idToObject(
