@@ -40,12 +40,7 @@ const Header = ({Redux, header, access}) => {
                       }}
                     > <i class="bx bx-plus-circle me-1"></i>Create New Instance </Link>
                   :
-                  <Link 
-                    class="btn btn-sm btn-outline-primary me-2 mt-2"
-                    data-bs-toggle="modal"
-                    data-bs-target="#createModal"
-                    onClick={header.onClick}
-                  > <i class="bx bx-plus-circle me-1"></i>Create New Instance </Link>                
+                  null             
                 }
 
                 {header.next &&
