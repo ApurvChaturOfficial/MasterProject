@@ -9,7 +9,7 @@ const handleImage = async (target, folder, type, retrieve) => {
       const myCloud = await cloudinary.v2.uploader.upload(target.url, {
         folder: folder,
         transformation: [
-          { width: 500, height: 500, crop: 'scale' }
+          { width: 500, crop: 'scale' }
         ]
       });
   
@@ -23,7 +23,7 @@ const handleImage = async (target, folder, type, retrieve) => {
       const myCloud = await cloudinary.v2.uploader.upload(target.url, {
         folder: folder,
         transformation: [
-          { width: 500, height: 500, crop: 'scale' }
+          { width: 500, crop: 'scale' }
         ]
       });
   
@@ -36,7 +36,7 @@ const handleImage = async (target, folder, type, retrieve) => {
     const myCloud = await cloudinary.v2.uploader.upload(target.url, {
       folder: folder,
       transformation: [
-          { width: 500, height: 500, crop: 'scale' }
+          { width: 500, crop: 'scale' }
         ]
     });
     
