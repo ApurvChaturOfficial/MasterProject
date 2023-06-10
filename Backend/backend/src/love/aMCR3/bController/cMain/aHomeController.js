@@ -3,6 +3,7 @@ const catchAsyncError = require("../../../cFunction/aCatchAsyncError")
 const ErrorHandler = require("../../../cFunction/bErrorHandler")
 const SearchFilterPaginate = require("../../../cFunction/fSearchFilterPaginate")
 const handleImage = require("../../../cFunction/hHandleImage")
+const handlePDF = require("../../../cFunction/hHandlePDF")
 const BaseModel = require("../../aModel/aSetting/aBaseModel")
 const HomeModel = require("../../aModel/cMain/aHomeModel")
 
@@ -46,7 +47,7 @@ exports.homeController = (Model= HomeModel, Label= 'Home') => {
 
 			// Resume
 			request.body.more_info.resume && (
-				request.body.more_info.resume = await handleImage(
+				request.body.more_info.resume = await handlePDF(
 					request.body.more_info.resume, 
 					Label,
 					'create',
@@ -107,7 +108,7 @@ exports.homeController = (Model= HomeModel, Label= 'Home') => {
 
 			// Resume
 			request.body.basic_info.resume && (
-				request.body.more_info.resume = await handleImage(
+				request.body.more_info.resume = await handlePDF(
 					request.body.more_info.resume, 
 					Label,
 					'update',
