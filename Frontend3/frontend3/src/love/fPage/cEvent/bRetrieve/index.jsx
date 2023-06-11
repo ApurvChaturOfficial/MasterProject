@@ -60,6 +60,9 @@ const EventRetrieve = ({ Redux1 }) => {
 					</div>
 
 					<div className='event-card-single__content' >
+						<span class={Redux.state.ReceivedObject?.EventCardRetrieve?.date?.complete ? "event__badge1" : "event__badge2"}>
+							{Redux.state.ReceivedObject?.EventCardRetrieve?.date?.complete ? "Event Closed" : "Event Open"} 
+						</span>
 						<h2>{Redux.state.ReceivedObject?.EventCardRetrieve?.title}</h2>
 						<h4 style={{marginTop: "0.5em"}} className="text-light" >{Redux.state.ReceivedObject?.EventCardRetrieve?.subTitle}</h4>
 						
