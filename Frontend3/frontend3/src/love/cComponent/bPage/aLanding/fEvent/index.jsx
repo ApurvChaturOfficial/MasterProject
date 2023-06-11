@@ -35,6 +35,9 @@ const Event = ({Redux, disable}) => {
 								<div className='event__item-image'>
 									<img src={each.basic_info.image.url} alt="" ></img>
 								</div>
+								<span class={each.more_info?.date?.complete ? "event__badge1" : "event__badge2"}>
+									{each.more_info?.date?.complete ? "Event Closed" : "Event Open"} 
+								</span>
 								<h3><Link to={`${FinalRouteName.Event.RetrieveRoute}/${each._id}`}>{each.basic_info.title}</Link></h3>
 								<p className='text-light' >{each.basic_info.sub_title}</p>
 
