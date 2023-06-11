@@ -64,9 +64,9 @@ const EventRetrieve = ({ Redux1 }) => {
 						<h4 style={{marginTop: "0.5em"}} className="text-light" >{Redux.state.ReceivedObject?.EventCardRetrieve?.subTitle}</h4>
 						
 						<div style={{marginTop: "1.5em"}} >
-							<BsFillSkipStartFill className='event__details-icon' fontSize={"18px"} /><small >Start Date : </small> <br />
-							<BiTargetLock className='event__details-icon' fontSize={"18px"} /><small >Target Date : </small> <br />
-							<AiOutlineSend className='event__details-icon' fontSize={"18px"} /><small >Completed Date : </small>
+							<BsFillSkipStartFill className='event__details-icon' fontSize={"18px"} /><small className='text-light'>Start: {Redux.state.ReceivedObject?.EventCardRetrieve?.date?.start}</small> <br />
+							<BiTargetLock className='event__details-icon' fontSize={"18px"} /><small className='text-light'>Target: {Redux.state.ReceivedObject?.EventCardRetrieve?.date?.target}</small> <br />
+							<AiOutlineSend className='event__details-icon' fontSize={"18px"} /><small className='text-light'>Complete: {Redux.state.ReceivedObject?.EventCardRetrieve?.date?.complete}</small>
 						</div>
 
 						<p>{parse(Redux.state.ReceivedObject?.EventCardRetrieve?.description || "")}</p>

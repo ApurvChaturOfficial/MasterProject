@@ -25,6 +25,7 @@ const APIs = {
               description: serverResponse.retrieve.more_info.description,
               detail: serverResponse.retrieve.more_info.detail,
               links: serverResponse.retrieve.more_info.links,
+              date: serverResponse.retrieve.more_info.date,
 
               createdBy: `${serverResponse.retrieve.personal_info.created_by.first_name} ${serverResponse.retrieve.personal_info.created_by.last_name}`,
               createdAt: serverResponse.retrieve.personal_info.created_at,
