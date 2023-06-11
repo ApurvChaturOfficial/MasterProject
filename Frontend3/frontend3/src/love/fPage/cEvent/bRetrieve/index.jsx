@@ -75,7 +75,7 @@ const EventRetrieve = ({ Redux1 }) => {
 							{Redux.state.ReceivedObject?.EventCardRetrieve?.links &&
 								Redux.state.ReceivedObject?.EventCardRetrieve?.links.map(each => {
 									return (
-										<Link to={each.link} className={`btn ${each.label === 'Demo' && 'btn-primary'}`} >{each.label}</Link>
+										<a href={each.url} target="_blank" rel='noreferrer' className={`btn ${(each.label === 'App Demo' || each.label === "Admin Demo") && 'btn-primary'}`} >{each.label}</a>
 									)
 								})
 							}

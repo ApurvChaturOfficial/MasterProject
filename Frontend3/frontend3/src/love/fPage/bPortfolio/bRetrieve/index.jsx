@@ -61,7 +61,7 @@ const PortfolioRetrieve = ({ Redux1 }) => {
 							{Redux.state.ReceivedObject?.PortfolioCardRetrieve?.links &&
 								Redux.state.ReceivedObject?.PortfolioCardRetrieve?.links.map(each => {
 									return (
-										<Link to={each.link} className={`btn ${each.label === 'Demo' && 'btn-primary'}`} >{each.label}</Link>
+										<a href={each.url} target="_blank" rel='noreferrer' className={`btn ${(each.label === 'App Demo' || each.label === "Admin Demo") && 'btn-primary'}`} >{each.label}</a>
 									)
 								})
 							}

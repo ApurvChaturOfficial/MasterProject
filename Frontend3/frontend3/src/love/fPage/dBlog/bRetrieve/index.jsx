@@ -65,7 +65,7 @@ const BlogRetrieve = ({ Redux1 }) => {
 							{Redux.state.ReceivedObject?.BlogCardRetrieve?.links &&
 								Redux.state.ReceivedObject?.BlogCardRetrieve?.links.map(each => {
 									return (
-										<Link to={each.link} className={`btn ${each.label === 'Demo' && 'btn-primary'}`} >{each.label}</Link>
+										<a href={each.url} target="_blank" rel='noreferrer' className={`btn ${(each.label === 'App Demo' || each.label === "Admin Demo") && 'btn-primary'}`} >{each.label}</a>
 									)
 								})
 								
